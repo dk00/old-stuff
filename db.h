@@ -22,6 +22,8 @@ public:
   vactor<int>& getId(string& tag);
   int getId(string& filename);
   void write(FILE *fp);
+  const vector<int>& getMaster();
+  const vector<PlayList>& getPlayList();
 private:
   vector<Item> master;
   map<string, int> file_name_map;
