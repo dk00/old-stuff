@@ -1,6 +1,7 @@
 %{
-	typedef char* string;
-	#define YYSTYPE string
+	#include<string>
+	using namespace std;
+	#define YYSTYPE char*
         #include "pro.tab.h"
         #include <stdio.h>
         #include <string.h>

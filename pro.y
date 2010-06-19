@@ -1,8 +1,17 @@
 %{
 	#include<stdio.h>
-        typedef char* string;
-        #define YYSTYPE string
+	#include<string>
+	#include"db.c"
+        using namespace std;
+        #define YYSTYPE char* 
+	extern int yyparse();
+	extern int yylex();
+	extern int yywrap();
 	extern int lineno;
+	int yyerror(char*);
+	DB myDB;
+	Item tmpItem;
+	PlayList tmpPlayList("");
 %}
 %token TITLE ARTIST FILENAME PLAYLIST ITEM ID VAL
 
@@ -17,39 +26,51 @@ blockStmt  : itemStmt
 	   | listStmt
 	   ;
 
-itemStmt : tag '{' itemAttributeA '}'
+itemStmt : '{' { tmpItem = Item(); } itemAttributeA '}' { myDB += tmpItem; } tag
+	      
 	 ;
 
-tag : ID dotTag
+tag : /*empty*/
+    | ID { myDB.setTag(tmpItem, $1); } dotTag
     ;
 
 dotTag	: /*empty*/
-	| ',' ID dotTag
+	| ',' ID { myDB.setTag(tmpItem, $2); } dotTag
 	; 
 
 itemAttributeA	: /*empty*/
 	        | itemAttributeA itemAttribute
 		;
-itemAttribute	: TITLE VAL { printf("title: %s\n", $2);}
-	        | ARTIST VAL { printf("artist: %s\n", $2);}
-		| FILENAME VAL { printf("filename: %s\n", $2);}
+itemAttribute	: TITLE VAL { tmpItem.title = $2; }
+	        | ARTIST VAL { tmpItem.artist = $2;}
+		| FILENAME VAL { tmpItem.filename = $2;}
 		;
 
 
-listStmt : PLAYLIST VAL '{' listAttributeA '}'
+listStmt : PLAYLIST VAL { tmpPlayList = PlayList($2); } '{' listAttributeA '}' 
+	   { myDB.addPlayList(tmpPlayList);}
 	 ;
 
 listAttributeA	: /*empty*/
 	        | listAttributeA listAttribute
 		;
 
-listAttribute	: ITEM VAL { printf("add '%s' to list\n", $2); }
-		| ITEM ID { printf("add item with tag %s\n", $2); }
+listAttribute	: ITEM VAL 
+		  {
+		    tmpPlayList += myDB.getId($2); 
+		  }
+		| ITEM ID 
+		  {
+		    vector<int> tmpVector = myDB.getTagId($2);
+		    for(int i=0;i<tmpVector.size();++i)
+		      tmpPlayList += tmpVector[i];
+		  }
 		;
 %%
 int main()
 {
   yyparse();
+  //myDB.showAll();
   return 0;
 }
 int yyerror(char *msg)

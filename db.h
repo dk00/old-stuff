@@ -2,28 +2,35 @@
 #include<string>
 #include<vector>
 using namespace std;
-struct Item {
-  string title, artist, filename;
+class Item {
+  public:
+    string title, artist, filename;
 };
 
 class PlayList {
 public:
   void operator+=(int id);
-  PlayList();
+  PlayList(string);
+
+  void show(); //for debug
 private:
   string name;
-  vector<string> list;
+  vector<int> list;
 };
 
 class DB {
 public:
   DB();
   int operator+=(Item& t);
-  vactor<int>& getId(string& tag);
-  int getId(string& filename);
+  vector<int>& getTagId(string tag);
+  int getId(string filename);
+  void setTag(Item&, string);
+  void addPlayList(PlayList&);
   void write(FILE *fp);
   const vector<int>& getMaster();
   const vector<PlayList>& getPlayList();
+
+  void showAll(); //for debug
 private:
   vector<Item> master;
   map<string, int> file_name_map;
