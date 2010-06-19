@@ -1,3 +1,5 @@
+#ifndef _db_h
+#define _db_h
 #include<map>
 #include<string>
 #include<vector>
@@ -9,9 +11,10 @@ class Item {
 
 class PlayList {
 public:
-  void operator+=(int id);
-  PlayList(string);
-
+  PlayList(const string& str);
+  PlayList& operator+=(int id);
+  unsigned count()const;
+  int operator[](int i)const;
   void show(); //for debug
 private:
   string name;
@@ -21,14 +24,15 @@ private:
 class DB {
 public:
   DB();
-  int operator+=(Item& t);
-  vector<int>& getTagId(string tag);
-  int getId(string filename);
-  void setTag(Item&, string);
-  void addPlayList(PlayList&);
-  void write(FILE *fp);
-  const vector<int>& getMaster();
-  const vector<PlayList>& getPlayList();
+  DB& operator+=(const Item& t);
+  DB& operator+=(const PlayList&);
+  const vector<int>& getTagId(const string& tag);
+  int getId(const string& filename);
+  void setTag(const Item&, const string&);
+  
+  const vector<Item>& getMaster() const;
+  const vector<PlayList>& getPlayList() const;
+  void write(const string& name);
 
   void showAll(); //for debug
 private:
@@ -37,4 +41,4 @@ private:
   map<string, vector<int> > tag_map;
   vector<PlayList> p;
 };
-
+#endif
