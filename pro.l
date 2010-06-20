@@ -1,18 +1,16 @@
 %{
-	#include<string>
-	using namespace std;
-	#define YYSTYPE char*
-        #include "pro.tab.h"
-        #include <stdio.h>
-        #include <string.h>
-	int lineno = 1;
+	#define YYSTYPE const char*
+  #include "y.tab.hpp"
+  #include <stdio.h>
+  #include <string.h>
+  int lineno = 1;
 %}
 char [A-Za-z]
 num [0-9]
 %%
 "/*"("/")?([^/]|[^*]"/")*"*/" {}
 [ \t]  { }
-\n     { lineno++; }
+\n     { }
 title return TITLE; 
 artist  return ARTIST;
 filename return FILENAME;
@@ -28,4 +26,3 @@ item return ITEM;
 }
 .       return yytext[0]; 
 %%
-int yywrap() { return 1; }

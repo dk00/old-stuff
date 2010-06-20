@@ -16,8 +16,8 @@ public:
   unsigned count()const;
   int operator[](int i)const;
   void show(); //for debug
-private:
   string name;
+private:  
   vector<int> list;
 };
 

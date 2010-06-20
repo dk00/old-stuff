@@ -4,7 +4,7 @@
 #include<cstdint>
 using namespace std;
 union _node {
-  uint8_t buf[388];
+  uint8_t buf[1];
 	struct {
 		char id[4];
 		uint32_t len;
@@ -115,7 +115,7 @@ union _node {
 	struct {
 		char id[4];
 		uint32_t len, size, type, unk1, unk2, pos, strlen, unk, unk4;
-    char str[1];
+    uint8_t str[1];
 	} stringobj;
 	struct {
 		char id[4];
@@ -131,9 +131,11 @@ union _node {
 class node {
 public: 
   node(const uint8_t def[]);
-  void append(node * ch);
-  _node data;
-  vector<node *> child;  
+  node(const uint8_t def[], int len);
+  ~node();
+  void append(node *ch);
+  _node *data;
+  vector<node *> child;
 };
 
 void MakeDB(const DB& db, FILE *fp);

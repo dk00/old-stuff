@@ -26,6 +26,7 @@ DB::DB(){
 
 DB& DB::operator+=(const Item& t){
   file_name_map[t.filename] = master.size();
+  p[0] += master.size();
   master.push_back(t);
 	return *this;
 }

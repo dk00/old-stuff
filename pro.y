@@ -1,15 +1,17 @@
 %{
 	#include<stdio.h>
 	#include<string>
-	#include"db.c"
-        using namespace std;
-        #define YYSTYPE char* 
-	extern int yyparse();
-	extern int yylex();
-	extern int yywrap();
+	#include"db.h"
+  using namespace std;
+  #define YYSTYPE const char* 
+  int yyparse(void);
+  extern "C" {    
+    int yylex(void);  
+    int yywrap(){ return 1;}
+  }
 	extern int lineno;
 	int yyerror(char*);
-	DB myDB;
+	extern DB myDB;
 	Item tmpItem;
 	PlayList tmpPlayList("");
 %}
@@ -48,7 +50,7 @@ itemAttribute	: TITLE VAL { tmpItem.title = $2; }
 
 
 listStmt : PLAYLIST VAL { tmpPlayList = PlayList($2); } '{' listAttributeA '}' 
-	   { myDB.addPlayList(tmpPlayList);}
+	   { myDB += tmpPlayList;}
 	 ;
 
 listAttributeA	: /*empty*/
@@ -67,14 +69,7 @@ listAttribute	: ITEM VAL
 		  }
 		;
 %%
-int main()
-{
-  yyparse();
-  //myDB.showAll();
-  return 0;
-}
-int yyerror(char *msg)
-{
+int yyerror(char *msg) {
   printf("Fail (around line  %d) \n", lineno);
 }
 
