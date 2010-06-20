@@ -29,11 +29,8 @@ public:
   const vector<int>& getTagId(const string& tag);
   int getId(const string& filename);
   void setTag(const Item&, const string&);
-  
   const vector<Item>& getMaster() const;
   const vector<PlayList>& getPlayList() const;
-  void write(const string& name);
-
   void showAll(); //for debug
 private:
   vector<Item> master;

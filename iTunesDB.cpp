@@ -1,24 +1,21 @@
 #include"db.h"
 #include"debug.h"
-#include"unicode.h"
+#include"utils.h"
 #include"iTunesDB.h"
 #include"iTunesDB_default.h"
 #include<cstdio>
 #include<cstdlib>
 #include<cstring>
-
 node::node(const uint8_t def[]) {
   int len = ((_node *)def)->common.len;
   data = (_node *)new char[len];
   memcpy(data->buf, def, len);
 }
-
 node::node(const uint8_t def[], int add) {
   int len = ((_node *)def)->common.len + add;
   data = (_node *)new char[len];
   memcpy(data->buf, def, len);
 }
-
 node::~node() {
   delete data;
 }

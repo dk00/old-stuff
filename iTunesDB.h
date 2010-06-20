@@ -138,5 +138,4 @@ public:
   vector<node *> child;
 };
 
-void MakeDB(const DB& db, FILE *fp);
 #endif

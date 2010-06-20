@@ -1,5 +1,4 @@
 #include"db.h"
-#include"iTunesDB.h"
 #include<cstdio>
 PlayList::PlayList(const string& str) : name(str) {}
 PlayList& PlayList::operator+=(int id) {
@@ -57,13 +56,6 @@ const vector<Item>& DB::getMaster() const {
 const vector<PlayList>& DB::getPlayList() const {
   return p;
 }
-
-void DB::write(const string& name){
-  FILE *fp = fopen(name.c_str(), "wb");
-  MakeDB(*this, fp);
-  fclose(fp);
-}
-
 void DB::showAll(){
   puts("item:");
   for(int i=0;i<master.size();++i)

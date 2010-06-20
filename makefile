@@ -1,5 +1,5 @@
-source=iTunesDB.cpp db.cpp unicode.cpp 
-header=db.h unicode.h iTunesDB.h iTunesDB_default.h
+source=iTunesDB.cpp db.cpp unicode.cpp hash58.cpp
+header=db.h utils.h iTunesDB.h iTunesDB_default.h
 parser=y.tab.cpp lex.yy.o
 all: main
 main: main.cpp $(source) $(header) $(parser)
