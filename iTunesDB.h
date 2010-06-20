@@ -23,26 +23,25 @@ union _node {
 	struct {
 		char id[4];
 		uint32_t len;
-		uint32_t size;
     uint32_t num;
 	} list;
 	struct {
 		char id[4];
-		uint32_t len;
-		uint32_t size;
+		uint32_t len, size, nstr, tid, visible;
 		char type[4];
-		uint8_t type0;
-		uint8_t type1;
-		uint8_t cf;
+		uint8_t type0, type1, cf, rating;
 		uint32_t mtime;
 		uint32_t tsize;
+    uint32_t tlen;
 		uint32_t tnum;
 		uint32_t total;
 		uint32_t year;
 		uint32_t brate;
 		uint32_t srate;
+    uint32_t vol;
 		uint32_t start;
 		uint32_t stop;
+    uint32_t scheck;
 		uint32_t pcnt;
 		uint32_t pcnt1;
 		uint32_t lastplay;
@@ -51,10 +50,13 @@ union _node {
 		uint32_t drmuid;
 		uint32_t adddate;
 		uint32_t btime;
+    uint64_t dbid;
 		uint8_t chcek;
 		uint8_t arating;
 		uint16_t bpm;
+    uint16_t acnt;
 		uint16_t unk9;
+    uint32_t asize;
 		uint32_t unk11;
 		uint32_t srate1;
 		uint32_t rdate;
@@ -64,26 +66,20 @@ union _node {
 		uint32_t unk16;
 		uint32_t skipcnt;
 		uint32_t lastskip;
+    uint8_t hasa;
 		uint8_t sskip;
 		uint8_t playpos;
 		uint8_t flag4;
-		uint8_t lf;
-		uint8_t unk17;
-		uint32_t unk21;
-		uint32_t pregap;
-		uint64_t scnt;
-		uint32_t unk25;
-		uint32_t postgap;
-		uint32_t unk27;
-		uint32_t snum;
-		uint32_t epi;
-		uint32_t unk31;
-		uint32_t unk32;
-		uint32_t unk33;
-		uint32_t unk34;
-		uint32_t unk35;
-		uint32_t unk36;
-		uint32_t unk37;
+    uint64_t dbid2;
+
+    uint32_t flag176;
+    uint32_t unk21, pregap;
+    uint32_t scnt0, scnt1;
+    uint32_t unk25, postgap, unk27;
+
+    uint32_t mediatype;
+		uint32_t snum,epi;
+		uint32_t unk31,unk32,unk33, unk34, unk35, unk36, unk37;
 		uint32_t gapless;
 		uint32_t unk38;
 		uint32_t tf;
@@ -112,6 +108,11 @@ union _node {
 		uint32_t gid, tid, time, grpref, unk4, unk5;
 		uint64_t unk6;
 	} playlistitem;
+	struct {
+		char id[4];
+		uint32_t len, size, type;
+    uint8_t data[1];
+  } dataobj;
 	struct {
 		char id[4];
 		uint32_t len, size, type, unk1, unk2, pos, strlen, unk, unk4;

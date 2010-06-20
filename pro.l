@@ -8,14 +8,16 @@
 char [A-Za-z]
 num [0-9]
 %%
-"/*"("/")?([^/]|[^*]"/")*"*/" {}
 [ \t]  { }
 \n     { }
-title return TITLE; 
-artist  return ARTIST;
-filename return FILENAME;
-playlist return PLAYLIST;
-item return ITEM;
+title     return TITLE; 
+artist    return ARTIST;
+filename  return FILENAME;
+file      return FILENAME;
+playlist  return PLAYLIST;
+list      return PLAYLIST;
+item      return ITEM;
+song      return ITEM;
 ({char}|{num})* {
   yylval = strdup(yytext); 
   return ID; 
@@ -24,5 +26,5 @@ item return ITEM;
   yylval = strndup(yytext+1,strlen(yytext)-2);
   return VAL;
 }
-.       return yytext[0]; 
+.         return yytext[0]; 
 %%

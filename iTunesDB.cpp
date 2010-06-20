@@ -39,9 +39,14 @@ void MakeString(node *r,int type, const string& s) {
   r->append(c);
 }
 
-void MakeItem(node *r, const Item& t) {
+void MakeItem(node *r, const Item& t, int id) {
   node *c = new node(def_item);
-  MakeString(c, 4, t.artist);
+  c->data->trackitem.nstr = 2;
+  c->data->trackitem.tid = id;
+  if (t.artist.length() > 0) {
+    MakeString(c, 4, t.artist);
+    c->data->trackitem.nstr++;
+  }
   string tmp = GetType(t.filename);
   strncpy(c->data->trackitem.type, tmp.c_str(), 4);
   int i;
@@ -49,19 +54,27 @@ void MakeItem(node *r, const Item& t) {
   if (i <= 0) tmp = "";
   else tmp = t.filename.c_str() + i;
   MakeString(c, 6, tmp);
+  c->data->trackitem.mediatype = 1;
+  if (tmp == "mp4") {
+    c->data->trackitem.flag176 = 0x100;
+    c->data->trackitem.mediatype = 2;
+  }
   tmp = ":iPod_Control:Music:" + t.filename;
   MakeString(c, 2, tmp);
-  MakeString(c, 1, t.title);
+  if (t.title.length() > 0) {
+    MakeString(c, 1, t.title);
+    c->data->trackitem.nstr++;
+  }
   r->append(c);
 }
 void MakeListSet(node *r, const vector<Item>& master, int type) {
   node *c = new node(def_dataset);
   c->data->dataset.type = type;
   node *p = new node(def_track_list);
-  p->data->list.num = 2 + master.size();
+  p->data->list.num = master.size();
   c->append(p);
   for (int i;i < master.size();++i)
-    MakeItem(c, master[i]);
+    MakeItem(c, master[i], i + 1);
   r -> append(c);
 }
 void MakeListItem(node *r, unsigned id) {
@@ -78,7 +91,7 @@ void MakePlayList(node *r, const PlayList& p) {
   c->data->playlist.inum = n;
   MakeString(c, 1, p.name);
   for(int i = 0;i < n;++i)
-    MakeListItem(c, p[i]);
+    MakeListItem(c, p[i] + 1);
   r->append(c);
 }
 void MakeListSet(node *r, const vector<PlayList>& s, int type) {
@@ -86,26 +99,47 @@ void MakeListSet(node *r, const vector<PlayList>& s, int type) {
   c->data->dataset.type = type;
   node *p = new node(def_list_set);
   p->data->list.num = s.size();
+  if (type == 3) ++p->data->list.num;
   c->append(p);
-  for(int i = 0;i < s.size();++i)
+  for (int i = 0;i < s.size();++i) {
     MakePlayList(c, s[i]);
+    if(i == 0)
+      c->child.back()->data->playlist.master = 1;
+  }
+  if (type == 3) {
+    node *podcast = new node(def_podcast);
+    podcast->data->playlist.dnum = 1;
+    MakeString(podcast, 1, "PodCast");
+    //podcast->append(new node(def_podcast_dat1));
+    c->append(podcast);    
+  }
   r->append(c);
 }
 int WriteDB(node *r, FILE *fp) {
   long pos = ftell(fp);
   fseek(fp, r->data->common.len, SEEK_CUR);
-  r->data->common.size = 0;  
+  int List = 0;
+  if (!memcmp(r->data->common.id, "mhlt", 4) || 
+      !memcmp(r->data->common.id, "mhlp", 4)) List = 1;
+  if (!List) r->data->common.size = 0;  
   for (int i = 0;i < r->child.size();++i) {
     WriteDB(r->child[i], fp);
     r->data->common.size += r->child[i]->data->common.size;  
   }
-  r->data->common.size += r->data->common.len;
+  if (!List) r->data->common.size += r->data->common.len;
   fseek(fp, pos, SEEK_SET);
-  if (!memcmp(r->data->common.id, "mhod", 4) && r->data->stringobj.type < 15) {
-    r->data->common.size += 16 + r->data->stringobj.strlen;
-    fwrite(r->data->buf, 1, r->data->common.size, fp);
+  if (!memcmp(r->data->common.id, "mhod", 4)) {
+    if(r->data->dataobj.type < 15) {
+      r->data->common.size += 16 + r->data->stringobj.strlen;
+      fwrite(r->data->buf, 1, r->data->common.size, fp);
+    }
+    if(r->data->dataobj.type == 100) {
+      r->data->common.size = 0x2C;
+      fwrite(r->data->buf, 1, r->data->common.size, fp);
+    }
   }
   else fwrite(r->data->buf, 1, r->data->common.len, fp);
+  if (List) r->data->common.size = r->data->common.len;
   fseek(fp, pos + r->data->common.size, SEEK_SET);
   return 0;
 }

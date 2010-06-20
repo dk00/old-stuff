@@ -18,56 +18,58 @@
 %token TITLE ARTIST FILENAME PLAYLIST ITEM ID VAL
 
 %%
-program : blockStmtA;
+DataBase    : Blocks;
 
-blockStmtA  : /*empty*/
-	    | blockStmtA blockStmt
-	    ;
+Blocks       : /*empty*/
+	          | Blocks Item
+            | Blocks List
+	          ;
 
-blockStmt  : itemStmt 
-	   | listStmt
-	   ;
+Item        : '{' 
+              { tmpItem = Item(); } 
+              AttributeList '}' 
+              { myDB += tmpItem; } 
+              TagList
+            ;
 
-itemStmt : '{' { tmpItem = Item(); } itemAttributeA '}' { myDB += tmpItem; } tag
-	      
-	 ;
+TagList     : /*empty*/
+            | ID 
+              { myDB.setTag(tmpItem, $1); } 
+              TagTail
+            ;
 
-tag : /*empty*/
-    | ID { myDB.setTag(tmpItem, $1); } dotTag
-    ;
+TagTail	    : /*empty*/
+          	| ',' ID 
+              { myDB.setTag(tmpItem, $2); } 
+              TagTail
+          	; 
+AttributeList	: /*empty*/
+	            | AttributeList Attribute
+          		;
+Attribute	  : TITLE VAL     { tmpItem.title = $2; }
+	          | ARTIST VAL    { tmpItem.artist = $2;}
+        		| FILENAME VAL  { tmpItem.filename = $2;}
+        		;
 
-dotTag	: /*empty*/
-	| ',' ID { myDB.setTag(tmpItem, $2); } dotTag
-	; 
+List        : PLAYLIST VAL 
+            { tmpPlayList = PlayList($2); } 
+            '{' ListContent '}' 
+        	  { myDB += tmpPlayList;}
+	          ;
 
-itemAttributeA	: /*empty*/
-	        | itemAttributeA itemAttribute
-		;
-itemAttribute	: TITLE VAL { tmpItem.title = $2; }
-	        | ARTIST VAL { tmpItem.artist = $2;}
-		| FILENAME VAL { tmpItem.filename = $2;}
-		;
+ListContent	: /*empty*/
+	          | ListContent ListItem
+		        ;
 
-
-listStmt : PLAYLIST VAL { tmpPlayList = PlayList($2); } '{' listAttributeA '}' 
-	   { myDB += tmpPlayList;}
-	 ;
-
-listAttributeA	: /*empty*/
-	        | listAttributeA listAttribute
-		;
-
-listAttribute	: ITEM VAL 
-		  {
-		    tmpPlayList += myDB.getId($2); 
-		  }
-		| ITEM ID 
-		  {
-		    vector<int> tmpVector = myDB.getTagId($2);
-		    for(int i=0;i<tmpVector.size();++i)
-		      tmpPlayList += tmpVector[i];
-		  }
-		;
+ListItem	  : ITEM VAL 
+		        { tmpPlayList += myDB.getId($2); }
+        		| ITEM ID 
+  {
+    vector<int> tmpVector = myDB.getTagId($2);
+		for(int i=0;i<tmpVector.size();++i)
+		tmpPlayList += tmpVector[i];
+	}
+		        ;
 %%
 int yyerror(char *msg) {
   printf("Fail (around line  %d) \n", lineno);

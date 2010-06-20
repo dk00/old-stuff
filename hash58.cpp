@@ -143,9 +143,6 @@ void hash58(uint8_t buf[], int flen, uint64_t id) {
   for (a = 0;a < 20;++a) key[a] ^= 0x36;
   for (;a < 64;++a) key[a] = 0x36;
   memcpy(buf, key, 64);
-  for (a = 0;a < 64;++a)
-    printf("%02x", key[a]);
-  puts("");
   sha1(buf, flen + 64);
   memcpy(buf + 64, buf, 20);
   for (a = 0;a < 64;++a) key[a] ^= 0x36^0x5c;
@@ -154,10 +151,10 @@ void hash58(uint8_t buf[], int flen, uint64_t id) {
 }
 
 void HashFile(FILE *fp, const char id_hex[]) {
-  uint64_t id, k;
-  for(int i=0;i < 8;++i) {
-    sscanf(id_hex + i*2, "%02X", &k);
-    id += k<<(i*8);
+  uint64_t id = 0, k;
+  for(int i = 0;i < 8;++i) {
+    sscanf(id_hex + i*2, "%02llX", &k);
+    id |= k<<(i*8);
   }
   uint8_t nul[20] = {0};
   fseek(fp, 0x18, SEEK_SET);
@@ -179,7 +176,7 @@ void HashFile(FILE *fp, const char id_hex[]) {
   tmp = fseek(fp, 0x58, SEEK_SET);
   puts("write hash");
   for (int a = 0;a < 20;++a)
-    printf("%02X ", buf[a]);
+    printf("%02x", buf[a]);
   puts("");  
   fwrite(buf, 1, 20, fp);
 }
