@@ -43,6 +43,8 @@ void MakeItem(node *r, const Item& t, int id) {
   node *c = new node(def_item);
   c->data->trackitem.nstr = 2;
   c->data->trackitem.tid = id;
+  c->data->trackitem.tlen = 1;
+  c->data->trackitem.dbid = id;
   if (t.artist.length() > 0) {
     MakeString(c, 4, t.artist);
     c->data->trackitem.nstr++;
