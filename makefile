@@ -15,4 +15,4 @@ y.tab.hpp: pro.y
 test: test.cpp $(source) $(header)
 	g++ test.cpp debug.cpp $(source) -o test -std=c++0x -DDEBUG -g
 svn: $(source) $(header) $(parser)
-	svn add $(source) $(header) $(parser)
+	svn add $(source) $(header) $(parser)i

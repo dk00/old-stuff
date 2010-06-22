@@ -42,6 +42,8 @@ void DB::setTag(const Item& item, const string& tag){
 const vector<int>& DB::getTagId(const string& tag){
 	if(tag_map.count(tag))
 	  return tag_map[tag];
+  static vector<int> none;
+  return none;
 }
 
 int DB::getId(const string& filename){

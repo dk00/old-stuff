@@ -5,7 +5,7 @@ extern int yyparse();
 extern FILE *yyin;
 DB myDB;
 void usage(const char *name) {
-  printf("Usage: %s FWGUID file...\n");
+  printf("Usage: %s FWGUID file...\n", name);
 }
 main(int argc, char **argv) {
   if (argc < 3) {

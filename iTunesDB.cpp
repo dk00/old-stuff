@@ -1,5 +1,4 @@
 #include"db.h"
-#include"debug.h"
 #include"utils.h"
 #include"iTunesDB.h"
 #include"iTunesDB_default.h"
@@ -104,6 +103,7 @@ void MakeListSet(node *r, const vector<PlayList>& s, int type) {
   if (type == 3) ++p->data->list.num;
   c->append(p);
   for (int i = 0;i < s.size();++i) {
+    printf("Play list %d\n", i);
     MakePlayList(c, s[i]);
     if(i == 0)
       c->child.back()->data->playlist.master = 1;
@@ -147,6 +147,7 @@ int WriteDB(node *r, FILE *fp) {
 }
 
 void MakeDB(const DB& db, FILE *fp) {
+  puts("Generating Database");
   node *r = new node(def_db);
   MakeListSet(r, db.getMaster(), 1); 
   MakeListSet(r, db.getPlayList(), 3);

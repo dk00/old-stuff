@@ -65,9 +65,9 @@ ListItem	  : ITEM VAL
 		        { tmpPlayList += myDB.getId($2); }
         		| ITEM ID 
   {
-    vector<int> tmpVector = myDB.getTagId($2);
+    const vector<int>& tmpVector = myDB.getTagId($2);
 		for(int i=0;i<tmpVector.size();++i)
-		tmpPlayList += tmpVector[i];
+	  	tmpPlayList += tmpVector[i];
 	}
 		        ;
 %%
