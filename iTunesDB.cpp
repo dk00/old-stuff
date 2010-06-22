@@ -105,6 +105,7 @@ void MakeListSet(node *r, const vector<PlayList>& s, int type) {
   for (int i = 0;i < s.size();++i) {
     printf("Play list %d\n", i);
     MakePlayList(c, s[i]);
+    c->child.back()->data->playlist.pid = i + 1;
     if(i == 0)
       c->child.back()->data->playlist.master = 1;
   }
