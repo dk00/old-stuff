@@ -1,15 +1,15 @@
 import re
 from threading import Lock
 from httplib import HTTPConnection
-class Trigger(Lock):
+class Trigger():
   def __init__(self):
-    Lock.__init__(self)
-    self.acquire()
+    self.lock = Lock()
+    self.lock.acquire()
   def wait(self):
-    self.acquire()
+    self.lock.acquire()
   def trigger(self):
-    self.acquire(False)
-    self.release()
+    self.lock.acquire(False)
+    self.lock.release()
 
 def CheckOpts(opts, def_opts):
   for att in def_opts.keys():

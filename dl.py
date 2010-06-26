@@ -219,8 +219,7 @@ class task(Thread):
     print 'Stop'
     self.Stop = True
     self.wr.stop = True
-    self.wr.sth_to_write.acquire(False)
-    self.wr.sth_to_write.release()    
+    self.wr.sth_to_write.trigger()    
     for i in range(1, len(self.opts['coop']) - 1):
       url = self.opts['coop'][i]
       headers = {}
