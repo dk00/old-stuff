@@ -12,16 +12,21 @@ class MyServer(HTTPServer):
     self.tasks.append(t)
 
 class MyHTTPHandler(BaseHTTPRequestHandler):
+  def auth(self):
+    if self.serv.auth(self.headers['authorization']):
+      return True
+    self.responce(403, 'Unauthorized')
+    self.send_header('WWW-Authenticate', serv.auth_method);
+    self.serv.ui.auth(self.wfile)
+    return False
   def do_GET(self):
-    self.send_response(200, 'TEST')
-    if not self.serv.auth(self.headers['authorization']):
-      self.responce(403, 'Unauthorized')
-      self.send_header('WWW-Authenticate', serv.auth_method);
-      self.serv.ui.auth(self.wfile)
-      return 'Unauthorized'
-      self.responce(200, 'OK')
-      self.serv.ui.info(self.wfile)
+    if not self.auth():
+      return False
+    self.responce(200, 'OK')
+    self.serv.ui.info(self.wfile)
   def do_POST(self):
+    if not self.auth():
+      return False    
     data = parse_qs(self.rfile.read(), True)
     if 'command' in data and data['command'] == 'new':
       #TODO: self.serv.newTask(data['name'], opt, other)
