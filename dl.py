@@ -38,7 +38,7 @@ class myWriter(Thread):
         pos, buf = self.queue.pop()
       print 'write data', pos
       self.f.seek(pos)
-      self.f.write(buf)        
+      self.f.write(buf)   
     return self.f.close()
 
 def urlget(url, headers, redirect = 8):
@@ -115,7 +115,7 @@ class task(Thread):
       'local_path':   '',
       'refer':        '',
       'block_size':   256*1024,
-      'num_threads':  1,
+      'num_threads':  3,
 #     ['range':        (0,),]
       'tags':         []
     }
