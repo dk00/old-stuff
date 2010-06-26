@@ -1,3 +1,6 @@
+//Usage:	java Download [linkAddr]
+//			(ex. java Download w.csie.org/~b96070/hell.jpg)
+
 import java.net.*;
 import java.io.*;
 import java.lang.*;

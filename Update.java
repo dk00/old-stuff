@@ -1,3 +1,6 @@
+//Usage:	java Update [linkAddr] [lastCheckDate]
+//			(ex. java Download w.csie.org/~b96070/hell.jpg Fri,\ 25\ Jun\ 2010\ 16:33:36\ GMT)
+
 import java.net.*;
 import java.io.*;
 import java.lang.*;
@@ -5,11 +8,10 @@ import java.lang.*;
 //import java.util.*;
 
 public class Update{
-	public static void main(String args[]){
+	public static int search(String addr, String time){
+		// alloc
 		final int PORT = 80;
-		if (args.length<3){
-			System.exit(1);
-		}
+		int idx;
 		Socket socket;
 		String s, t;
 		InputStream IS;
@@ -17,40 +19,40 @@ public class Update{
 		BufferedReader BR;
 		PrintStream PS;
 		try{
+			// parsing
+			idx = addr.indexOf("/");
+			s = addr.substring(0, idx);
+			t = addr.substring(idx);
 			// build client socket
-			socket=new Socket(args[0], PORT);
-			// build socket stream
-			IS=socket.getInputStream();
-			OS=socket.getOutputStream();
-			// build data stream
+			socket = new Socket(s, PORT);
+			IS = socket.getInputStream();
+			OS = socket.getOutputStream();
 			BR = new BufferedReader(new InputStreamReader(IS));
 			PS = new PrintStream(OS);
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			
 			// do something
-			s = "GET " + args[1] + " HTTP/1.0";		PS.println(s);
-			s =	"If-Modified-Since: " + args[2];	PS.println(s);
-				//Fri, 25 Jun 2010 16:33:36 GMT
-			s = "";									PS.println(s);
+			s = "GET " + t + " HTTP/1.0";		PS.println(s);
+			s =	"If-Modified-Since: " + time;	PS.println(s);
+			s = "";								PS.println(s);
 			s = BR.readLine();
 			t = s.substring(9, 12);
-			if (t.compareTo("302") == 0){
-				//System.out.println("302 Found");
-			} else if (t.compareTo("304") == 0){
-				//System.out.println("304 Not Modified");
-			} else{
-				//System.out.println(t);
-			}
-
 			// close
 			BR.close();
 			PS.close(); 
 			IS.close(); 
 			OS.close(); 
 			socket.close();
+			// return http response #
+			return Integer.valueOf(t).intValue();
 		}
 		catch(Exception e){
 			System.out.println("Error:"+e);
 		}
+		return -1;
+	}
+
+	public static void main(String args[]){
+		//int i = Update.search("w.csie.org/~b96070/hell.jpg", "Fri, 25 Jun 2010 16:33:36 GMT");
+		int i = Update.search(args[0], args[1]);
+		System.out.println(i);
 	}
 }
