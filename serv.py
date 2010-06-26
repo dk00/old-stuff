@@ -14,6 +14,7 @@ class MyServer(HTTPServer):
     t.init(opts)
     self.tasks[t.opts['ori_name']] = t
     t.start()
+    return t
   def restartTask(self, name):
     if name not in self.tasks:
       return False
@@ -56,7 +57,7 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       if 'path' in data:
         opts['local_path'] = data['path'][0]
       print 'download', opts
-      self.server.newTask(opts)
+      t = self.server.newTask(opts)
     #if data['command'] == 'start':
     #if data['command'] == 'stop':
     #if data['command'] == 'remove':
@@ -65,6 +66,9 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     #if data['command'] == 'accept':
     #if data['command'] == 'deny':
     self.send_response(200, 'OK')
+    if t != None:
+      t.download.wait()
+
     self.server.ui.info(self.wfile)
   def do_PUT(self):
     if not self.auth():
@@ -76,7 +80,8 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     self.send_response(200, 'OK')
     block_num = int(r.group(0))
     name = posixpath.basename(self.path)
-    todo = t[name].done(block_num, self.rfile.read())
+    length = int(self.headers['Content-Length'])
+    todo = t[name].done(block_num, self.rfile.read(length))
     
 if __name__ == "__main__":
   if len(sys.argv) < 2:

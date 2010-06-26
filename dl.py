@@ -21,8 +21,7 @@ class myWriter(Thread):
   def __init__(self):
     Thread.__init__(self)
     self.lock = Lock()
-    self.sth_to_write = Lock()
-    self.sth_to_write.acquire()
+    self.sth_to_write = mylib.Trigger()
     self.queue = []
     self.stop = False
     self.f = []
@@ -43,12 +42,11 @@ class myWriter(Thread):
   def append(self, pos, buf):
     with self.lock:
       self.queue.append((pos, buf))
-    self.sth_to_write.acquire(False)
-    self.sth_to_write.release()
+    self.sth_to_write.trigger()
   def run(self):
     while len(self.queue) > 0 or not self.stop:
       if len(self.queue) == 0:
-        self.sth_to_write.acquire()
+        self.sth_to_write.wait()
         continue
       with self.lock:
         pos, buf = self.queue.pop()
@@ -112,6 +110,7 @@ class dl(Thread):
 class task(Thread):
   def init(self, opts):
     self.Stop = False
+    self.download = mylib.Trigger()
     def_opts = {
       'url':          None,
       'refer':        '',
@@ -229,6 +228,7 @@ class task(Thread):
     for j in self.jobs:
       j.join()
     self.wr.join()
+    self.download.trigger()
 
   def done(self, block_num, buf):
     self.wr.append(block_num * self.opts['block_size'], buf)
