@@ -20,10 +20,11 @@ public class DownloadPanel extends JPanel{
 	private JTable jTable;
 	private JTextField urlField, fnameField;
 	private JScrollPane scrollPane;
+	private String hostUrl="http://bsd4.csie.ntu.edu.tw:5555";
 	public void request(String url, String fname){
 		int rid = jTable.getRowCount();
 		model.addRow(new Object[]{url,fname,0,0,"downloading"});
-		new Downloader(this,rid,"http://bsd4.csie.ntu.edu.tw:5555",url,fname).start();
+		new Downloader(serverPanel,this,rid,hostUrl,url,fname).start();
 	}
 	public void setStatus(int rid, String str){
 		jTable.setValueAt(str,rid,4);

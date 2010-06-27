@@ -31,6 +31,13 @@ public class ServerPanel extends JPanel{
 	private MyTableModel model;
 	private JTable table;
 	private JScrollPane scrollPane;
+	public String[] getCoopServ(){
+		Vector<String> coopServ = new Vector<String>();
+		for(int i=0;i<table.getRowCount();++i)
+			if((Boolean)table.getValueAt(i,4))
+				coopServ.add(table.getValueAt(i,0)+":"+table.getValueAt(i,1));
+		return coopServ.toArray(new String[coopServ.size()]);
+	}
 	public ServerPanel(){
 		password = new ArrayList<char[]>();
 		urlLabel = new JLabel("URL:");
