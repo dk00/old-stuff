@@ -21,6 +21,7 @@ public class Downloader extends Thread{
 			new NameValuePair("url", url),
 			new NameValuePair("path", fname)
 		};
+		System.out.println(url+" "+fname);  //debug
 		post.setRequestBody(var);
 	}
 	public void run(){
@@ -29,7 +30,24 @@ public class Downloader extends Thread{
 				System.err.println("Method filed: " + post.getStatusLine());	
 				downloadPanel.setStatus(rid,"failed!");
 			}
-			downloadPanel.setStatus(rid,"finished");
+			InputStream in = post.getResponseBodyAsStream();
+			StringBuffer str = new StringBuffer();
+			int c;
+			while((c=in.read())!=-1){
+				if(c=='\n'){
+					String tmp = str.toString();
+					if(tmp.startsWith("file size:")){
+						int size = new Integer(tmp.substring(11));
+						downloadPanel.setSize(rid, size/1000);
+					}
+					else
+						downloadPanel.setStatus(rid, tmp);
+					str = new StringBuffer();
+				}
+				else
+					str.append((char)c);
+					
+			}
 		}catch(Exception e){
 			System.out.println(e);
 			downloadPanel.setStatus(rid,"failed");

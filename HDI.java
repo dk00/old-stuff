@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.lang.*;
 
 public class HDI extends JFrame{
+	private ServerPanel serverPanel;
 	private DownloadPanel downloadPanel;
 	private JTabbedPane jTabbedPane;
 	private Process serverProcess;
@@ -19,10 +20,12 @@ public class HDI extends JFrame{
 		}catch(Exception e){
 			System.err.println("server failed: " + e);
 		}
+		serverPanel = new ServerPanel();
 		downloadPanel = new DownloadPanel();
 		jTabbedPane.add("Download", downloadPanel);
 		jTabbedPane.add("Youtube", new YoutubePanel(downloadPanel));
 		jTabbedPane.add("Image", new ImagePanel(downloadPanel));
+		jTabbedPane.add("Server", new ServerPanel());
 	}
 	public void finalize(){
 		serverProcess.destroy();

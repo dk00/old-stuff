@@ -21,11 +21,14 @@ public class DownloadPanel extends JPanel{
 	private JScrollPane scrollPane;
 	public void request(String url, String fname){
 		int rid = jTable.getRowCount();
-		model.addRow(new Object[]{url,fname,"downloading"});
+		model.addRow(new Object[]{url,fname,"unkonwn","downloading"});
 		new Downloader(this,rid,"http://127.0.0.1:11111",url,fname).start();
 	}
 	public void setStatus(int rid, String str){
-		jTable.setValueAt(str,rid,2);
+		jTable.setValueAt(str,rid,3);
+	}
+	public void setSize(int rid, int size){
+		jTable.setValueAt(size,rid,2);
 	}
 	public DownloadPanel(){
 		urlField = new JTextField();
@@ -34,7 +37,8 @@ public class DownloadPanel extends JPanel{
 		model = new DefaultTableModel();
 		jTable = new JTable(model); 	
 		jTable.setAutoCreateRowSorter(true);
-		model.addColumn("URL"); model.addColumn("FileName"); model.addColumn("Status");
+		model.addColumn("URL"); model.addColumn("FileName"); 
+		model.addColumn("Size(kb)"); model.addColumn("Status");
 		scrollPane = new JScrollPane(jTable);
 		TableModel tableModel = jTable.getModel();
 		jButton.addMouseListener(new MouseAdapter(){
