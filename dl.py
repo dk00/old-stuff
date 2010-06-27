@@ -270,7 +270,7 @@ class task(Thread):
     self.wr.sth_to_write.trigger()
     self.wr.join()
     if self.mes != None:
-      self.mes.trigger()
+      self.mes.trigger('complete')
   def done(self, block_num, buf):
     self.wr.append(block_num, buf)
     if block_num in self.remote:

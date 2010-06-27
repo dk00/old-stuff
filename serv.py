@@ -89,17 +89,20 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     self.send_response(200, 'OK')
     if 'hdi_ag' not in data and t != None:
       self.wfile.write('file size: ')
+      print 'file size: '
       if 'size' in t.opts:
+        print str(t.opts['size'])
         self.wfile.write(str(t.opts['size']))
       else:
         self.wfile.write('0')
       self.wfile.flush()
       t.mes = mylib.Trigger()
-      while not t.Stop:
-        t.mes.wait()
-        if t.mes.mes != None:
-          self.wfile.write(t.mes.mes)
-          self.wfile.flush()
+      t.mes.wait()
+#      while not t.Stop:
+#       t.mes.wait()
+#       if t.mes.mes != None:
+#         self.wfile.write(t.mes.mes)
+#         self.wfile.flush()
     self.UI.show('info')
   def do_PUT(self):
     if not self.auth():
