@@ -98,18 +98,18 @@ public class Update extends Thread{
 	private void handleResponse(String s, int response){
 		switch (response){
 			case 302:	
-				panel.message.append(s + " need not to update.\n");
+				panel.message.append(s + " need not to update. (302)\n");
 				break;	//found
 			case 304://not modified
 			case 200://ok
-				panel.message.append(s + " is available.\n");
+				panel.message.append(s + " is available. (" + response + ")\n");
 				this.download(s);
 				break;
 			case 404:
-				panel.message.append(s + " is broken.\n");
+				panel.message.append(s + " is broken. (404)\n");
 				break;	//not found
 			default:
-				panel.message.append(s + " is in case " + response + ".\n");
+				panel.message.append(s + " is in case (" + response + ")\n");
 				panel.message.append("We will not handle this case.\n");
 				break;
 		}
@@ -134,6 +134,8 @@ public class Update extends Thread{
 				s = addr.substring(0, idx);
 				t = addr.substring(idx);
 			}
+			System.out.println("ADDR: " + s);
+			System.out.println("TBU: " + t);
 			// build client socket
 			socket = new Socket(s, PORT);
 			IS = socket.getInputStream();
