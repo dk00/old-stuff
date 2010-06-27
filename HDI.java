@@ -26,6 +26,7 @@ public class HDI extends JFrame{
 		jTabbedPane.add("Youtube", new YoutubePanel(downloadPanel));
 		jTabbedPane.add("Image", new ImagePanel(downloadPanel));
 		jTabbedPane.add("Server", new ServerPanel());
+		jTabbedPane.add("Update", new UpdatePanel());
 	}
 	public void finalize(){
 		serverProcess.destroy();
