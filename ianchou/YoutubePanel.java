@@ -16,7 +16,7 @@ public class YoutubePanel extends JPanel{
 		mark = new JPanel(new BorderLayout());
 		mark.add(new JLabel(new ImageIcon("./img/youtube.png")), BorderLayout.CENTER);
 		label = new JLabel("URL:");
-		button = new JButton("下載");
+		button = new JButton("get");
 		text = new JTextField();
 		button.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){

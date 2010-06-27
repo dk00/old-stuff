@@ -28,8 +28,8 @@ public class ImagePanel extends JPanel{
 	public ImagePanel(DownloadPanel d){
 		downloadPanel = d;
 		label = new JLabel("URL:");
-		button1 = new JButton("圖片");
-		button2 = new JButton("下載");
+		button1 = new JButton("image");
+		button2 = new JButton("get");
 		text = new JTextField();
 		model = new MyTableModel();
 		table = new JTable(model);
@@ -55,7 +55,7 @@ public class ImagePanel extends JPanel{
 						num++;
 						downloadPanel.request((String)table.getValueAt(i,0),(String)table.getValueAt(i,1));				
 					}
-				JOptionPane.showMessageDialog(null ,num+" 個檔案加入下載");
+				JOptionPane.showMessageDialog(null ,num+" files download!");
 			}
 		});
 		scrollPane = new JScrollPane(table);

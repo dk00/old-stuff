@@ -22,23 +22,28 @@ public class DownloadPanel extends JPanel{
 	private JScrollPane scrollPane;
 	public void request(String url, String fname){
 		int rid = jTable.getRowCount();
-		model.addRow(new Object[]{url,fname,"unkonwn","unknown","downloading"});
-		new Downloader(this,rid,"http://127.0.0.1:11111",url,fname).start();
+		model.addRow(new Object[]{url,fname,0,0,"downloading"});
+		new Downloader(this,rid,"http://bsd4.csie.ntu.edu.tw:5555",url,fname).start();
 	}
 	public void setStatus(int rid, String str){
 		jTable.setValueAt(str,rid,4);
 	}
 	public void setSize(int rid, int size){
-		jTable.setValueAt(size+"kb",rid,2);
+		jTable.setValueAt(size,rid,2);
 	}
 	public void setGot(int rid,int size){
-		jTable.setValueAt(size+"kb",rid,3);
+		int total = (Integer)jTable.getValueAt(rid,2);
+		int now = (Integer)jTable.getValueAt(rid,3) + size;
+		if(now > total)
+			jTable.setValueAt(total,rid,3);
+		else
+			jTable.setValueAt(now,rid,3);
 	}
 	public DownloadPanel(ServerPanel sp){
 		serverPanel = sp;
 		urlField = new JTextField();
 		fnameField = new JTextField();
-		jButton = new JButton("下載");
+		jButton = new JButton("get");
 		model = new DefaultTableModel();
 		jTable = new JTable(model);
 		jTable.setAutoCreateRowSorter(true);

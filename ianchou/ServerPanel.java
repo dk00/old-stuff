@@ -35,8 +35,8 @@ public class ServerPanel extends JPanel{
 		password = new ArrayList<char[]>();
 		urlLabel = new JLabel("URL:");
 		portLabel = new JLabel("port:");
-		idLabel = new JLabel("帳號:");
-		pwLabel = new JLabel("密碼:");
+		idLabel = new JLabel("ID:");
+		pwLabel = new JLabel("PW:");
 		button = new JButton("add");
 		urlText = new JTextField();
 		portText = new JTextField();
