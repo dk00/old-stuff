@@ -6,8 +6,8 @@ import javax.swing.table.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-class ServerTableModel  extends DefaultTableModel{
-	public ServerTableModel (){
+class ServerTableModel extends DefaultTableModel{
+	public ServerTableModel(){
 		super();
 	}
 	public boolean isCellEditable(int r,int c){
@@ -49,7 +49,7 @@ public class ServerPanel extends JPanel{
 		portText = new JTextField();
 		idText = new JTextField();
 		pw = new JPasswordField();
-		model = new ServerTableModel ();
+		model = new ServerTableModel();
 		table = new JTable(model);
 		table.setAutoCreateRowSorter(true);
 		model.addColumn("NO."); model.addColumn("URL"); 
