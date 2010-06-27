@@ -5,6 +5,14 @@ import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
+class MyTableModel extends DefaultTableModel{
+	public MyTableModel(){
+		super();
+	}
+	public boolean isCellEditable(int r,int c){
+		return false;
+	}	
+}
 public class DownloadPanel extends JPanel{
 	private DefaultTableModel model;
 	private JButton jButton;
@@ -12,8 +20,12 @@ public class DownloadPanel extends JPanel{
 	private JTextField urlField, fnameField;
 	private JScrollPane scrollPane;
 	public void request(String url, String fname){
-		new Downloader("http://127.0.0.1:11111",url,fname).start();
+		int rid = jTable.getRowCount();
 		model.addRow(new Object[]{url,fname,"downloading"});
+		new Downloader(this,rid,"http://127.0.0.1:11111",url,fname).start();
+	}
+	public void setStatus(int rid, String str){
+		jTable.setValueAt(str,rid,2);
 	}
 	public DownloadPanel(){
 		urlField = new JTextField();

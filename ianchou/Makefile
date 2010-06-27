@@ -6,9 +6,9 @@ YoutubeParser.class: YoutubeParser.java
 YoutubePanel.class: YoutubePanel.java
 	javac -cp .. YoutubePanel.java
 Downloader.class: Downloader.java
-	javac -cp ../lib/commons-codec-1.3.jar:../lib/commons-logging-1.1.1.jar:../lib/commons-httpclient-3.1.jar:.. Downloader.java
+	javac  -cp ../lib/commons-codec-1.3.jar:../lib/commons-logging-1.1.1.jar:../lib/commons-httpclient-3.1.jar:.. Downloader.java
 DownloadPanel.class: DownloadPanel.java
-	javac -cp .. DownloadPanel.java
+	javac  -cp .. DownloadPanel.java
 ImagePanel.class: ImagePanel.java
 	javac -cp .. ImagePanel.java
 ImageInfo.class: ImageInfo.java
