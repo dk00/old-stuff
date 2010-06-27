@@ -16,21 +16,23 @@ public class YoutubePanel extends JPanel{
 		mark = new JPanel(new BorderLayout());
 		mark.add(new JLabel(new ImageIcon("./img/youtube.png")), BorderLayout.CENTER);
 		label = new JLabel("URL:");
-		button = new JButton("get!!!");
+		button = new JButton("下載");
 		text = new JTextField();
 		button.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				downloadPanel.request(new YoutubeParser(text.getText()).getURL(), "youtube.flv");
+				String fname = (String)JOptionPane.showInputDialog("file name:");
+				if ((fname != null) && (fname.length() > 0))
+					downloadPanel.request(new YoutubeParser(text.getText()).getURL(), fname);
 			}
 		});
 		this.setLayout(null);
-		mark.setBounds(50,50,700,200);
+		mark.setBounds(50,50,700,300);
 		this.add(mark);
-		label.setBounds(50,300,50,30);
+		label.setBounds(50,400,50,30);
 		this.add(label);
-		text.setBounds(100,300,500,30);
+		text.setBounds(100,400,500,30);
 		this.add(text);
-		button.setBounds(600,300,100,30);
+		button.setBounds(600,400,100,30);
 		this.add(button);
 	}	
 }

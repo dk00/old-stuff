@@ -21,12 +21,17 @@ public class DownloadPanel extends JPanel{
 		jButton = new JButton("下載");
 		model = new DefaultTableModel();
 		jTable = new JTable(model); 	
+		jTable.setAutoCreateRowSorter(true);
 		model.addColumn("URL"); model.addColumn("FileName"); model.addColumn("Status");
 		scrollPane = new JScrollPane(jTable);
 		TableModel tableModel = jTable.getModel();
 		jButton.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				request(urlField.getText(), fnameField.getText());
+				String s = urlField.getText(), f = fnameField.getText();
+				if(f.isEmpty())
+					request(s, s.substring(s.lastIndexOf("/")+1));
+				else
+					request(s, f);
 			}
 		});
 		JLabel label1 = new JLabel("URL:"), label2 = new JLabel("FileName:");

@@ -10,7 +10,7 @@ class MyTableModel extends DefaultTableModel{
 		super();
 	}
 	public boolean isCellEditable(int r,int c){
-		if(c==2)
+		if(c==3)
 			return true;
 		else
 			return false;
@@ -33,23 +33,29 @@ public class ImagePanel extends JPanel{
 		text = new JTextField();
 		model = new MyTableModel();
 		table = new JTable(model);
-		model.addColumn("URL"); model.addColumn("info"); model.addColumn("select");	
-		table.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(new JCheckBox()));
-		
+		table.setAutoCreateRowSorter(true);
+		model.addColumn("URL"); model.addColumn("FileName");
+		model.addColumn("size"); model.addColumn("select");	
+		table.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(new JCheckBox()));	
 		button1.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				String[] urls = new ImageParser(text.getText()).getURLs();
-				for(int i=0;i<urls.length;++i)
-					model.addRow(new Object[]{urls[i],"orz",new Boolean(false)});
+				ImageInfo[] links = new ImageParser(text.getText()).getURLs();
+				for(int i=0;i<links.length;++i)
+					model.addRow(new Object[]{links[i].url,
+						links[i].url.substring(links[i].url.lastIndexOf("/")+1),
+						links[i].width+"x"+links[i].height,
+						new Boolean(false)});
 			}
 		});
 		button2.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
+				int num=0;
 				for(int i=0;i<table.getRowCount();++i)
-					if((Boolean)table.getValueAt(i,2)){
-						String tmp = (String)table.getValueAt(i,0);
-						downloadPanel.request(tmp,tmp.substring(tmp.lastIndexOf("/")+1));				
+					if((Boolean)table.getValueAt(i,3)){
+						num++;
+						downloadPanel.request((String)table.getValueAt(i,0),(String)table.getValueAt(i,1));				
 					}
+				JOptionPane.showMessageDialog(null ,num+" 個檔案加入下載");
 			}
 		});
 		scrollPane = new JScrollPane(table);

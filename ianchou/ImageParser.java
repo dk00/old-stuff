@@ -9,12 +9,12 @@ import java.util.*;
 import java.net.*;
 
 public class ImageParser{
-	private ArrayList<String> URLs;
-	public	String[] getURLs(){
-		return URLs.toArray(new String[URLs.size()]);
+	private ArrayList<ImageInfo> URLs;
+	public	ImageInfo[] getURLs(){
+		return URLs.toArray(new ImageInfo[URLs.size()]);
 	}
 	public ImageParser(String url){
-		URLs = new ArrayList<String>();
+		URLs = new ArrayList<ImageInfo>();
 		try{
 			Parser parser = new Parser(url);
 			//parser.setEncoding("utf-8");
@@ -33,7 +33,7 @@ public class ImageParser{
 				Node tag = list.elementAt(i);
 				if(tag instanceof ImageTag){
 					ImageTag image = (ImageTag)list.elementAt(i);
-					URLs.add(image.getImageURL());
+					URLs.add(new ImageInfo(image.getImageURL(), image.getAttribute("title"), new Integer(image.getAttribute("width")),new Integer(image.getAttribute("height"))));
 				}
 			}
 		}catch (ParserException e){
