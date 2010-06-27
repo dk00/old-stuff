@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import re
 import sys
 import posixpath
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
@@ -58,9 +59,9 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     self.UI.show('wait_confirm')
   def do_POST(self):
     auth = self.auth()
-    print 'POST'
     length = int(self.headers['Content-Length'])
     data = parse_qs(self.rfile.read(length), True)
+    print data
     if 'cmd' not in data:
       self.send_response(400, 'Bad Request')
       self.UI.show('info')
@@ -76,37 +77,44 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       opts['local_path'] = ''
       if 'path' in data:
         opts['local_path'] = data['path'][0]
-      print 'download', opts
       t = self.server.newTask(opts)
     #if data['command'] == 'start':
     #if data['command'] == 'stop':
+
     #if data['command'] == 'remove':
     #if data['command'] == 'set':
     #if data['command'] == 'request':
     #if data['command'] == 'accept':
     #if data['command'] == 'deny':
     self.send_response(200, 'OK')
-    if t != None:
+    if 'hdi_ag' in data and t != None:
       t.download.wait()
     self.UI.show('info')
   def do_PUT(self):
     if not self.auth():
       return False
-    r = re.search('(<=?block_num=)\d+', self.headers['range'])
+    name = str(self.path[1:])
+    print name, self.server.tasks.keys()
+    if 'Range' not in self.headers or name not in self.server.tasks:
+      self.send_response(416, 'Requested Range Not Satisfiable')
+      return False
+    print self.headers['Range']
+    r = re.search('\d+', self.headers['Range'])
+    print 'PUT', r.group(0)
     if r == None:
       self.send_response(416, 'Requested Range Not Satisfiable')
       return False
     self.send_response(200, 'OK')
     block_num = int(r.group(0))
-    name = posixpath.basename(self.path)
+    
     length = int(self.headers['Content-Length'])
-    todo = t[name].done(block_num, self.rfile.read(length))
+    todo = self.server.tasks[name].done(block_num, self.rfile.read(length))
     
 if __name__ == "__main__":
   if len(sys.argv) < 2:
     exit(0)
   port = int(sys.argv[1])
   print 'start server'
-  s = MyServer(('localhost', port), MyHTTPHandler)
+  s = MyServer(('0.0.0.0', port), MyHTTPHandler)
   s.init()
   s.serve_forever()

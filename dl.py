@@ -8,14 +8,19 @@ from urlparse import parse_qs
 import mylib
 
 class RemoteFile():
-  def __init__(self, req):    
-    self.headers = parse_qs(req)
-    self.url = req['url']
-    self.headers.discard('url')
-  def seek(pos):
-    self.headers['Range'] = 'block_num=', pos
-  def write(buf):
-    r = urlconnect(url, self.headers, 'PUT', buf)
+  def __init__(self, req, url):
+    self.headers = parse_qs(req)    
+    print '>', self.headers
+    for i in self.headers.keys():
+      self.headers[i] = self.headers[i][0]
+    self.host = self.headers['host'].strip('/') + '/' + url
+    print self.host
+    del self.headers['host']
+  def seek(self, pos):
+    self.headers['Range'] = 'block_num=' + str(pos)
+  def write(self, buf):
+    self.headers['Content-Length'] = str(len(buf))
+    r, url, host, path = mylib.urlconnect(self.host, self.headers, 'PUT', buf)
     return r.status == 200
   def close():
     r = None
@@ -32,7 +37,7 @@ class myWriter(Thread):
     self.f = None
   def load(self, req):
     for url in req:
-      self.remote.append(RemoteFile(url))
+      self.remote.append(RemoteFile(url, self.t.opts['url']))
   def open(self, path):
     if path != '':
       try:
@@ -125,7 +130,7 @@ class task(Thread):
       'url':          None,
       'refer':        '',
       'block_size':   256*1024,
-      'num_threads':  8,
+      'num_threads':  2,
 #    ['range':        (0,),]
 #     'tags':         [],
       'coop':         [],
@@ -153,10 +158,8 @@ class task(Thread):
     self.wr = myWriter(self)
     if 'local_path' in opts:      
       self.wr.open(opts['local_path']) 
-    for req in self.opts['req']:
-      self.wr.load(req)
+    self.wr.load(opts['req'])
     self.wr.start()
-    j.start()
     if self.opts['size'] == None:
       return 0  #Size is unknown, can't download with multiple thread
     return self.opts['size']
@@ -172,32 +175,38 @@ class task(Thread):
       self.opts['end'] = (self.opts['size'] + self.opts['block_size'] - 1)/self.opts['block_size']
     num_blocks = self.opts['end'] - self.opts['start'] + 1
     if  num_blocks > 1:
-      self.todo = set([i for i in range(self.opts['start'], self.opts['end'])])
+      self.todo = [i for i in range(self.opts['start'], self.opts['end'])]
 
   def dispatch(self):
     if 'size' not in self.opts or self.todo == None:
       return
-    s = [b for b in self.todo]
+    s = self.todo
+    self.todo = set(self.todo)
     div_size = len(s)/(1 + len(self.opts['coop']))
     self.remote = set()
     j = 0
+    self.todo1 = self.todo
+    self.todo1.discard(0)    
     for i in range(0, len(self.opts['coop'])):
-      print self.opts['coop'][i]
       k = 1
       while k < div_size and k < len(s) and s[j] == s[j+k] + 1:
-        ++k      
-      cmd = self.opts['coop'][i]
+        k += 1
+      cmd = parse_qs(self.opts['coop'][i])
+      for i in cmd.keys():
+        cmd[i] = cmd[i][0]
       headers = {}
+      cmd['url'] = self.opts['url']
       cmd['start'] = str(s[j])
-      cmd['end'] = str(s[j+k-1])
+      cmd['end'] = str(s[j+k])
+      cmd['hdi_ag'] = '1'
       url = cmd['host']
       del cmd['host']
       print url, cmd
-      mylib.urlconnect(url, headers, 'POST', urlencode(cmd))
-      self.remote += set(s[j:j+k])
+      if mylib.urlconnect(url, headers, 'POST', urlencode(cmd)):
+        self.remote |= set(s[j:j+k])
+        self.todo1 -= self.remote
+#      self.opts['coop'][i] = parse_qs(self.opts['coop'][i])
     s = [b for b in (self.todo - self.remote)]
-    self.todo1 = set(s)
-    self.todo1.discard(0)
     part_size = (len(s))/self.opts['num_threads']
     part_size = max(1, part_size) 
     for part in range(1, min(len(s), self.opts['num_threads'])):
@@ -215,9 +224,11 @@ class task(Thread):
       j.setup(dl_opts)
       self.jobs.append(j)
     self.todo = set(s)
+    print len(self.todo), len(self.remote)
     
   def run(self):
     self.dispatch()
+    self.jobs[0].start()
     for j in self.jobs[1:]:
       j.init()
       j.start()
@@ -256,7 +267,7 @@ class task(Thread):
       headers = {}
       cmd['cmd'] = 'stop'
       url = cmd['host']
-      cmd.discard('host')
+      del cmd['host']
       mylib.urlconnect(url, headers, 'POST', urlencode(cmd))
     for j in self.jobs:
       j.join()
