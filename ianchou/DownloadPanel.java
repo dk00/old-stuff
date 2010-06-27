@@ -13,7 +13,7 @@ public class DownloadPanel extends JPanel{
 	private JScrollPane scrollPane;
 	public void request(String url, String fname){
 		new Downloader("http://127.0.0.1:11111",url,fname).start();
-		model.addRow(new Object[]{url,fname,"downloading?!"});
+		model.addRow(new Object[]{url,fname,"downloading"});
 	}
 	public DownloadPanel(){
 		urlField = new JTextField();

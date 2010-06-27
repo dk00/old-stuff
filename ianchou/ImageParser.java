@@ -14,6 +14,7 @@ public class ImageParser{
 		return URLs.toArray(new String[URLs.size()]);
 	}
 	public ImageParser(String url){
+		URLs = new ArrayList<String>();
 		try{
 			Parser parser = new Parser(url);
 			//parser.setEncoding("utf-8");

@@ -18,7 +18,8 @@ public class HDI extends JFrame{
 		}
 		downloadPanel = new DownloadPanel();
 		jTabbedPane.add("Download", downloadPanel);
-		jTabbedPane.add("youtube", new YoutubePanel(downloadPanel));
+		jTabbedPane.add("Youtube", new YoutubePanel(downloadPanel));
+		jTabbedPane.add("Image", new ImagePanel(downloadPanel));
 	}
 	public static void main(String[] args){
 		(new HDI()).setVisible(true);
