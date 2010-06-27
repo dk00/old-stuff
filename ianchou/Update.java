@@ -84,12 +84,15 @@ public class Update extends Thread{
 			panel.message.append(this.addr + " is not in the list.\n");
 			t = this.getTime();
 			int res = getResponse(this.addr, t);
+			System.out.println("kr1");
 			handleResponse(this.addr, res);
+			System.out.println("kr2");
 			//output
 			if (res == 302 || res == 304 || res == 200){
 				out.write(this.addr);	out.newLine();
 				out.write(t);		out.newLine();
 			}
+			System.out.println("kr3");
 		}
 		in.close();		out.close();
 		panel.message.append("Update done.\n");
@@ -144,9 +147,12 @@ public class Update extends Thread{
 			PS = new PrintStream(OS);
 			// do something
 			s = "GET " + t + " HTTP/1.0";		PS.println(s);
+			System.out.println("kr0");
 			s =	"If-Modified-Since: " + time;	PS.println(s);
 			s = "";								PS.println(s);
+			System.out.println("kr0");
 			s = BR.readLine();
+			System.out.println("kr0");
 			t = s.substring(9, 12);
 			// close
 			BR.close();
