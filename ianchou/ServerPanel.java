@@ -6,8 +6,8 @@ import javax.swing.table.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-class MyTableModel extends DefaultTableModel{
-	public MyTableModel(){
+class ServerTableModel  extends DefaultTableModel{
+	public ServerTableModel (){
 		super();
 	}
 	public boolean isCellEditable(int r,int c){
@@ -28,7 +28,7 @@ public class ServerPanel extends JPanel{
 	private JPasswordField pw;
 	private JLabel pwLabel;
 	private ArrayList<char[]> password;
-	private MyTableModel model;
+	private ServerTableModel  model;
 	private JTable table;
 	private JScrollPane scrollPane;
 	public String[] getCoopServ(){
@@ -49,7 +49,7 @@ public class ServerPanel extends JPanel{
 		portText = new JTextField();
 		idText = new JTextField();
 		pw = new JPasswordField();
-		model = new MyTableModel();
+		model = new ServerTableModel ();
 		table = new JTable(model);
 		table.setAutoCreateRowSorter(true);
 		model.addColumn("NO."); model.addColumn("URL"); 
