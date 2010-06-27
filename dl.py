@@ -119,6 +119,7 @@ class dl(Thread):
       if todo != self.block_num:
         self.opts['start'] = todo
         self.init()
+    print this.name, 'end'
 
 class task(Thread):
   def init(self, opts):
@@ -128,7 +129,7 @@ class task(Thread):
       'url':          None,
       'refer':        '',
       'block_size':   256*1024,
-      'num_threads':  2,
+      'num_threads':  8,
 #    ['range':        (0,),]
 #     'tags':         [],
       'coop':         [],
@@ -147,6 +148,8 @@ class task(Thread):
     if not j.setup(dl_opts):
       return False
     opts['ori_name'], self.opts['size'] = j.init()
+    if opts['ori_name'] == None:
+      return False
     self.setRange()
     if 'local_path' in opts:
       if opts['local_path'] == '':
@@ -196,12 +199,13 @@ class task(Thread):
       cmd['url'] = self.opts['url']
       cmd['start'] = str(s[j])
       cmd['end'] = str(s[j]+k)
+      j += k
       cmd['hdi_ag'] = '1'
       url = cmd['host']
       del cmd['host']
       if mylib.urlconnect(url, headers, 'POST', urlencode(cmd)):
-        self.remote |= set(range(s[j], s[j]+k))
-        self.todo1 -= set(range(s[j], s[j]+k))
+        self.remote |= set(range(int(cmd['start']), int(cmd['end'])))
+        self.todo1 -= set(range(int(cmd['start']), int(cmd['end'])))
 #      self.opts['coop'][i] = parse_qs(self.opts['coop'][i])
     s = [b for b in (self.todo - self.remote)]
     part_size = (len(s))/self.opts['num_threads']
@@ -258,14 +262,14 @@ class task(Thread):
     self.wr.load(opts['req'])
 
   def stop(self):
-    self.Stop = True    
-    for i in range(1, len(self.opts['coop']) - 1):
-      cmd = parse_qs(self.opts['coop'][i])
-      headers = {}
-      cmd['cmd'] = 'stop'
-      url = cmd['host']
-      del cmd['host']
-      mylib.urlconnect(url, headers, 'POST', urlencode(cmd))
+    self.Stop = True        
+#    for i in range(1, len(self.opts['coop']) - 1):
+#     cmd = parse_qs(self.opts['coop'][i])
+#     headers = {}
+#     cmd['cmd'] = 'stop'
+#     url = cmd['host']
+#     del cmd['host']
+#     mylib.urlconnect(url, headers, 'POST', urlencode(cmd))
     for j in self.jobs:
       j.join()
     self.wr.sth_to_write.trigger()
@@ -276,24 +280,26 @@ class task(Thread):
     self.wr.append(block_num, buf)
     if self.mes != None:
       self.mes.trigger('got' + str(len(buf)))
-    if block_num in self.remote:
+    if block_num in self.remote and block_num not in self.todo:
       self.remote.discard(block_num)
       if len(self.remote) + len(self.todo) == 0:
         self.wr.stop = True
       return None
+    if len(self.todo) == 0 and len(self.remote) > 0:
+      self.todo |= self.remote
     if self.todo == None:
       if self.wr.stop == True or len(buf) < self.opts['block_size']:
         self.wr.stop = True
         return None
       return block_num + 1
     self.todo.discard(block_num)
-    if len(self.todo) > 0 and len(self.todo1) == 0:
-      self.todo1 = self.todo
     if len(self.remote) + len(self.todo) == 0:
       self.wr.stop = True
       return None
-    if len(self.todo1)<1:
+    if len(self.todo) == 0:
       return None
+    if len(self.todo) > 0 and len(self.todo1) == 0:
+      self.todo1 = self.todo
     if block_num + 1 in self.todo1:
       self.todo1.discard(block_num + 1)
       return block_num + 1

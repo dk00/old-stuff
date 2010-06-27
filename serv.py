@@ -18,7 +18,9 @@ class MyServer(ThreadingMixIn, HTTPServer):
     return self.UIs[t]
   def newTask(self, opts):
     t = dl.task()
-    t.init(opts)
+    r = t.init(opts)
+    if r == None or r == False:
+      return None
     self.tasks[t.opts['url']] = t
     t.start()
     return t
@@ -68,6 +70,7 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       self.UI.show('info')
       return True
     cmd = data['cmd'][0]
+    error = None
     if cmd == 'download':
       copy = {
         'url':    'url',
@@ -86,9 +89,13 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       if 'req' in data:
         opts['req'] = data['req']
       print cmd, opts['url']
+      if 'start' in opts and 'end' in opts:
+        print opts['start'], opts['end']
       if 'local_path' in opts:
         print opts['local_path']
       t = self.server.newTask(opts)
+      if t == None or t == False:
+        error = "Can't download file"
     #if data['command'] == 'start':
     #if data['command'] == 'stop':
     #if data['command'] == 'remove':
@@ -97,6 +104,11 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     #if data['command'] == 'accept':
     #if data['command'] == 'deny':
     self.send_response(200, 'OK')
+    if error != None:
+      self.end_headers()
+      self.wfile.write(error + '\n')
+      return False
+
     if 'hdi_ag' not in data and t != None:
       self.end_headers()
       self.wfile.write('file size: ')
@@ -111,12 +123,10 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       while True:
         t.mes.wait()
         if t.mes.mes != None:
-          print t.mes.mes
           self.wfile.write(t.mes.mes+'\n')
           self.wfile.flush()
           if t.mes.mes == 'complete':
             break
-          
     else:
       self.UI.show('info')
   def do_PUT(self):
@@ -131,8 +141,7 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       self.send_response(416, 'Requested Range Not Satisfiable')
       return False
     self.send_response(200, 'OK')
-    block_num = int(r.group(0))
-    
+    block_num = int(r.group(0))    
     length = int(self.headers['Content-Length'])
     todo = self.server.tasks[name].done(block_num, self.rfile.read(length))
     

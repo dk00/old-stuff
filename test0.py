@@ -12,12 +12,12 @@ if __name__ == "__main__":
     exit(0)
   t = dl.task()
   req = [
-    {'host':  'linux9.csie.ntu.edu.tw:6666'}
+    {'host':  'linux7.csie.ntu.edu.tw:6666'}
   ]
   for i in range(0,len(req)):
     req[i] = urlencode(req[i], True)
   coop = [
-    { 'host': 'linux7.csie.ntu.edu.tw:6666',
+    { 'host': 'linux9.csie.ntu.edu.tw:6666',
       'cmd':  'download',
       'req':  req
     },
@@ -30,7 +30,6 @@ if __name__ == "__main__":
       'req':  req
     }
   ]
-  coop = []
   for i in range(0,len(coop)):
     coop[i] = urlencode(coop[i], True)
   cmd = {
@@ -40,6 +39,6 @@ if __name__ == "__main__":
     'coop': coop
   }
   data = urlencode(cmd, True)
-  r, url, host, path = mylib.urlconnect('linux9.csie.ntu.edu.tw:6666',{},'POST',data)
+  r, url, host, path = mylib.urlconnect('linux7.csie.ntu.edu.tw:6666',{},'POST',data)
   print r.read()
 
