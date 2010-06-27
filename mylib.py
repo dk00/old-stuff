@@ -27,7 +27,7 @@ def CheckOpts(opts, def_opts):
 def urlconnect(url, headers, method = 'GET', content = '', redirect = 8):
   while redirect>0:
     --redirect
-    s = re.search('([^:]://)?(?P<host>[^/:]+(:\d+)?)(?P<path>/.*)?',url)
+    s = re.search('([^:]+://)?(?P<host>[^/:]+(:\d+)?)(?P<path>/.*)?',url)
     host, path = s.group('host'), s.group('path')
     if host == None:
       return False
