@@ -2,12 +2,13 @@
 import re
 import sys
 import posixpath
+from SocketServer import ThreadingMixIn
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from urlparse import parse_qs
 import dl
 import ui
 import mylib
-class MyServer(HTTPServer):
+class MyServer(ThreadingMixIn, HTTPServer):
   def init(self):
     self.UIs = {'default': ui.HTML(self), 'java': ui.Java(self)}
     self.tasks = {}
@@ -88,22 +89,23 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     #if data['command'] == 'deny':
     self.send_response(200, 'OK')
     if 'hdi_ag' not in data and t != None:
+      self.end_headers()
       self.wfile.write('file size: ')
       print 'file size: '
       if 'size' in t.opts:
         print str(t.opts['size'])
-        self.wfile.write(str(t.opts['size']))
+        self.wfile.write(str(t.opts['size'])+'\n')
       else:
         self.wfile.write('0')
       self.wfile.flush()
       t.mes = mylib.Trigger()
-      t.mes.wait()
-#      while not t.Stop:
-#       t.mes.wait()
-#       if t.mes.mes != None:
-#         self.wfile.write(t.mes.mes)
-#         self.wfile.flush()
-    self.UI.show('info')
+      while not t.Stop:
+       t.mes.wait()
+       if t.mes.mes != None:
+         self.wfile.write(t.mes.mes+'\n')
+         self.wfile.flush()
+    else:
+      self.UI.show('info')
   def do_PUT(self):
     if not self.auth():
       return False
