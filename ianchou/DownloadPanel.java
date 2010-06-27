@@ -14,6 +14,7 @@ class MyTableModel extends DefaultTableModel{
 	}	
 }
 public class DownloadPanel extends JPanel{
+	private ServerPanel serverPanel;
 	private DefaultTableModel model;
 	private JButton jButton;
 	private JTable jTable;
@@ -21,24 +22,29 @@ public class DownloadPanel extends JPanel{
 	private JScrollPane scrollPane;
 	public void request(String url, String fname){
 		int rid = jTable.getRowCount();
-		model.addRow(new Object[]{url,fname,"unkonwn","downloading"});
+		model.addRow(new Object[]{url,fname,"unkonwn","unknown","downloading"});
 		new Downloader(this,rid,"http://127.0.0.1:11111",url,fname).start();
 	}
 	public void setStatus(int rid, String str){
-		jTable.setValueAt(str,rid,3);
+		jTable.setValueAt(str,rid,4);
 	}
 	public void setSize(int rid, int size){
-		jTable.setValueAt(size,rid,2);
+		jTable.setValueAt(size+"kb",rid,2);
 	}
-	public DownloadPanel(){
+	public void setGot(int rid,int size){
+		jTable.setValueAt(size+"kb",rid,3);
+	}
+	public DownloadPanel(ServerPanel sp){
+		serverPanel = sp;
 		urlField = new JTextField();
 		fnameField = new JTextField();
 		jButton = new JButton("下載");
 		model = new DefaultTableModel();
-		jTable = new JTable(model); 	
+		jTable = new JTable(model);
 		jTable.setAutoCreateRowSorter(true);
 		model.addColumn("URL"); model.addColumn("FileName"); 
-		model.addColumn("Size(kb)"); model.addColumn("Status");
+		model.addColumn("Size(kb)"); model.addColumn("Got(kb)");
+		model.addColumn("Status");
 		scrollPane = new JScrollPane(jTable);
 		TableModel tableModel = jTable.getModel();
 		jButton.addMouseListener(new MouseAdapter(){

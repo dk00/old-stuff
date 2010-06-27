@@ -21,7 +21,6 @@ public class Downloader extends Thread{
 			new NameValuePair("url", url),
 			new NameValuePair("path", fname)
 		};
-		System.out.println(url+" "+fname);  //debug
 		post.setRequestBody(var);
 	}
 	public void run(){
@@ -39,6 +38,10 @@ public class Downloader extends Thread{
 					if(tmp.startsWith("file size:")){
 						int size = new Integer(tmp.substring(11));
 						downloadPanel.setSize(rid, size/1000);
+					}
+					else if(tmp.startsWith("got")){
+						int size = new Integer(tmp.substring(3));
+						downloadPanel.setGot(rid, size/1000);
 					}
 					else
 						downloadPanel.setStatus(rid, tmp);

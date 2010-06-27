@@ -21,7 +21,7 @@ public class HDI extends JFrame{
 			System.err.println("server failed: " + e);
 		}
 		serverPanel = new ServerPanel();
-		downloadPanel = new DownloadPanel();
+		downloadPanel = new DownloadPanel(serverPanel);
 		jTabbedPane.add("Download", downloadPanel);
 		jTabbedPane.add("Youtube", new YoutubePanel(downloadPanel));
 		jTabbedPane.add("Image", new ImagePanel(downloadPanel));

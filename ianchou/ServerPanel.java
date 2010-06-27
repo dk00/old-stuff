@@ -32,6 +32,7 @@ public class ServerPanel extends JPanel{
 	private JTable table;
 	private JScrollPane scrollPane;
 	public ServerPanel(){
+		password = new ArrayList<char[]>();
 		urlLabel = new JLabel("URL:");
 		portLabel = new JLabel("port:");
 		idLabel = new JLabel("帳號:");
@@ -64,14 +65,22 @@ public class ServerPanel extends JPanel{
 		this.add(urlLabel);
 		urlText.setBounds(100,50,450,30);
 		this.add(urlText);
-		portLabel.setBounds(600,50,50,30);
+		portLabel.setBounds(550,50,50,30);
 		this.add(portLabel);
-		portText.setBounds(650,50,100,30);
+		portText.setBounds(600,50,100,30);
 		this.add(portText);
-
-		button.setBounds(600,50,100,30);
+		
+		idLabel.setBounds(50,100,50,30);
+		this.add(idLabel);
+		idText.setBounds(100,100,200,30);
+		this.add(idText);
+		pwLabel.setBounds(350,100,50,30);
+		this.add(pwLabel);
+		pw.setBounds(400,100,200,30);
+		this.add(pw);
+		button.setBounds(600,100,100,30);
 		this.add(button);
-		scrollPane.setBounds(50,100,700,400);
+		scrollPane.setBounds(50,150,700,350);
 		this.add(scrollPane);
 	}	
 }
