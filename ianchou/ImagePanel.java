@@ -5,8 +5,8 @@ import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
-class MyTableModel extends DefaultTableModel{
-	public MyTableModel(){
+class ImageTableModel  extends DefaultTableModel{
+	public ImageTableModel (){
 		super();
 	}
 	public boolean isCellEditable(int r,int c){
@@ -22,7 +22,7 @@ public class ImagePanel extends JPanel{
 	private JButton button2;
 	private JTextField text;
 	private JLabel label;
-	private MyTableModel model;
+	private ImageTableModel  model;
 	private JTable table;
 	private JScrollPane scrollPane;
 	public ImagePanel(DownloadPanel d){
@@ -31,7 +31,7 @@ public class ImagePanel extends JPanel{
 		button1 = new JButton("image");
 		button2 = new JButton("get");
 		text = new JTextField();
-		model = new MyTableModel();
+		model = new ImageTableModel ();
 		table = new JTable(model);
 		table.setAutoCreateRowSorter(true);
 		model.addColumn("URL"); model.addColumn("FileName");

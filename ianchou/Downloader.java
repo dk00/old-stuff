@@ -21,7 +21,6 @@ public class Downloader extends Thread{
 		client = new HttpClient();
 		reqServ = new String[]{host};
 		coopServ = sp.getCoopServ();
-
 		post = new PostMethod(host);
 		String req = "host="+URLEncoder.encode(reqServ[0]);
 		for(int i=1;i<reqServ.length;++i)

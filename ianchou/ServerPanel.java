@@ -35,7 +35,7 @@ public class ServerPanel extends JPanel{
 		Vector<String> coopServ = new Vector<String>();
 		for(int i=0;i<table.getRowCount();++i)
 			if((Boolean)table.getValueAt(i,4))
-				coopServ.add((String)table.getValueAt(i,0)+":"+(String)table.getValueAt(i,1));
+				coopServ.add((String)table.getValueAt(i,1)+":"+(String)table.getValueAt(i,2));
 		return coopServ.toArray(new String[coopServ.size()]);
 	}
 	public ServerPanel(){
