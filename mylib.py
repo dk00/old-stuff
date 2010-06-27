@@ -29,7 +29,6 @@ def urlconnect(url, headers, method = 'GET', content = '', redirect = 8):
     if host == None or path == None:
       return False
     c = HTTPConnection(host)
-    c.connect()
     c.request(method, path, content, headers)
     r = c.getresponse()
 #TODO: retry

@@ -3,12 +3,15 @@ import re
 import sys
 import posixpath
 from threading import Thread, Lock, Condition
+from urllib import urlencode
+from urlparse import parse_qs
 import mylib
 
 class RemoteFile():
-  def __init__(self, url):
-    self.url = url
-    self.headers = {}
+  def __init__(self, req):    
+    self.headers = parse_qs(req)
+    self.url = req['url']
+    self.headers.discard('url')
   def seek(pos):
     self.headers['Range'] = 'block_num=', pos
   def write(buf):
@@ -18,26 +21,27 @@ class RemoteFile():
     r = None
 
 class myWriter(Thread):
-  def __init__(self):
+  def __init__(self, task):
     Thread.__init__(self)
+    self.t = task
     self.lock = Lock()
     self.sth_to_write = mylib.Trigger()
     self.queue = []
     self.stop = False
-    self.f = []
+    self.remote = []
+    self.f = None
   def load(self, req):
     for url in req:
-      self.f.append(RemoteFile(url))
+      self.remote.append(RemoteFile(url))
   def open(self, path):
     if path != '':
       try:
-        f = open(path, 'r+b')
+        self.f = open(path, 'r+b')
       except IOError:
         try:
-          f = open(path, 'wb')
+          self.f = open(path, 'wb')
         except IOError:
           return False
-      self.f.append(f)
     return True
   def append(self, pos, buf):
     with self.lock:
@@ -50,12 +54,16 @@ class myWriter(Thread):
         continue
       with self.lock:
         pos, buf = self.queue.pop()
-      print 'write data', pos
-      for f in self.f:
+      if self.f != None:
+        self.f.seek(pos * self.t.opts['block_size'])
+        self.f.write(buf)
+      if pos in self.t.remote:
+        continue
+      for f in self.remote:
         f.seek(pos)
         f.write(buf)
-    for f in self.f:
-      f.close()
+    if self.f != None:
+      self.f.close()
     return True
 
 class dl(Thread):
@@ -146,11 +154,12 @@ class task(Thread):
       self.opt['start'], self.opt['end'] = self.opts['range']
     num_blocks = self.opts['end'] - self.opts['start'] + 1
     if  num_blocks > 1:
-      self.todo = set([i for i in range(self.opts['start'] + 1, self.opts['end'])])
-    self.wr = myWriter()
-    if 'local_path' in opts:
+      self.todo = set([i for i in range(self.opts['start'], self.opts['end'])])
+    self.wr = myWriter(self)
+    if 'local_path' in opts:      
       self.wr.open(opts['local_path'])
-    self.wr.load(opts['req'])
+    for req in self.opts['req']:
+      self.wr.load(req)
     self.wr.start()
     j.start()
     if self.opts['size'] == None:
@@ -158,19 +167,23 @@ class task(Thread):
     return self.opts['size']
 
   def dispatch(self):
-    s = self.todo.keys()
+    s = [b for b in self.todo]
     div_size = len(s)/(1 + len(self.opts['coop']))
-    self.dispatch = set()
+    self.remote = set()
     j = 0
     for i in range(1, len(self.opts['coop']) - 1):
       k = 1
       while k < div_size and k < len(s) and s[j] == s[j+k] + 1:
         ++k      
-      url = self.opts['coop'][i]
+      cmd = parse_qs(self.opts['coop'][i])
       headers = {}
-      mylib.urlconnect(url, headers, 'POST','command=require ' + self.opts['url'] + ' ' + str(s[j]) + ' ' + str(s[j+k-1]))
-      self.dispatch += set(range(s[j], s[j+k-1]))
-    s = (self.todo - self.dispatch).keys()
+      cmd['start'] = str(s[j])
+      cmd['end'] = str(s[j+k-1])
+      url = cmd['host']
+      cmd.discard('host')
+      mylib.urlconnect(url, headers, 'POST', urlencode(cmd))
+      self.remote += set(range(s[j], s[j+k-1]))
+    s = [b for b in (self.todo - self.remote)]
     part_size = (len(s))/self.opts['num_threads']
     part_size = max(1, part_size)
     dl_opts = {
@@ -182,9 +195,11 @@ class task(Thread):
       dl_opts['start'] = part * part_size
       j = dl()
       j.setup(dl_opts)
-      self.jobs.append(j)  
+      self.jobs.append(j)
+    self.todo = set(s)
     
   def run(self):
+    self.dispatch()
     for j in self.jobs[1:]:
       j.start()
     for j in self.jobs:
@@ -195,7 +210,7 @@ class task(Thread):
 #TODO: load task data
     self.opts = t.opts
     self.todo = t.todo
-    self.dispatch = t.dispatch
+    self.remote = t.remote
     j = dl()
     dl_opts = {
       'task':       self,      
@@ -216,34 +231,50 @@ class task(Thread):
     j.start()
 
   def stop(self):
-    print 'Stop'
-    self.Stop = True
-    self.wr.stop = True
-    self.wr.sth_to_write.trigger()    
+    self.Stop = True    
     for i in range(1, len(self.opts['coop']) - 1):
-      url = self.opts['coop'][i]
+      cmd = parse_qs(self.opts['coop'][i])
       headers = {}
-      mylib.urlconnect(url, headers, 'POST','command=stop ' + self.opts['url'])
+      cmd['cmd'] = 'stop'
+      url = cmd['host']
+      cmd.discard('host')
+      mylib.urlconnect(url, headers, 'POST', urlencode(cmd))
     for j in self.jobs:
       j.join()
+    self.wr.sth_to_write.trigger()
     self.wr.join()
     self.download.trigger()
-
   def done(self, block_num, buf):
-    self.wr.append(block_num * self.opts['block_size'], buf)
+    self.wr.append(block_num, buf)
+    if block_num in self.remote:
+      self.remote.discard(block_num)
+      if len(self.remote) + len(self.todo) == 0:
+        self.wr.stop = True
+      return None
     if self.todo == None:
       return block_num + 1
     self.todo.discard(block_num)
+    if len(self.remote) + len(self.todo) == 0:
+      self.wr.stop = True    
     if block_num + 1 in self.todo:
-      self.todo.discard(block_num + 1)
       return block_num + 1
     if len(self.todo) < 1:
       return None
-    return self.todo.pop()
+    tmp = self.todo.pop()
+    self.todo.add(tmp)
+    return tmp
 
 if __name__ == "__main__":
   if len(sys.argv) < 2:
     exit(0)
   t = task()
-  if t.init({'url': sys.argv[1]}):
+  coop = {
+    'host': 'linux7.csie.ntu.edu.tw:6666',
+    'cmd':  'request'
+  }
+  opts = {
+    'url': sys.argv[1], 
+    'local_path': ''
+  }
+  if t.init(opts):
     t.run()

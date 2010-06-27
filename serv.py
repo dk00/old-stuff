@@ -7,12 +7,16 @@ import dl
 import ui
 class MyServer(HTTPServer):
   def init(self):
-    self.ui = ui.UI(self)
+    self.UIs = {'default': ui.HTML(self), 'java': ui.Java(self)}
     self.tasks = {}
+  def getUI(self,t = 'default'):
+    if t not in self.UIs:
+      t = 'default'
+    return self.UIs[t]
   def newTask(self, opts):
     t = dl.task()
     t.init(opts)
-    self.tasks[t.opts['ori_name']] = t
+    self.tasks[t.opts['url']] = t
     t.start()
     return t
   def restartTask(self, name):
@@ -28,31 +32,47 @@ class MyServer(HTTPServer):
 class MyHTTPHandler(BaseHTTPRequestHandler):
   def auth(self):
 #    if self.serv.auth(self.headers['authorization']):
-    return True
+    if 'ui' in self.headers:
+      self.UI = self.server.getUI(self.headers['ui'])
+    else:
+      self.UI = self.server.getUI()
+    self.UI.setup(self)
+    auth = {
+      'download':   True,
+      'info':       True
+    }
+    return auth
+  def unauth(self):
     self.send_response(403, 'Unauthorized')
-    self.send_header('WWW-Authenticate', self.server.auth_method);
-    self.server.ui.auth(self.wfile)
-    return False
-  def do_GET(self):
-    if not self.auth():
-      return False
+    self.send_header('WWW-Authenticate', 'basic');
+    self.UI.show('auth')
+  def wait_confirm(self):
     self.send_response(200, 'OK')
-    self.server.ui.info(self.wfile)
+    self.UI.show('wait_confirm')
+  def do_GET(self):
+    auth = self.auth()
+    if 'info' not in auth:
+      self.unauth()
+      return True
+    self.send_response(200, 'OK')
+    self.UI.show('wait_confirm')
   def do_POST(self):
-    if not self.auth():
-      return False    
+    auth = self.auth()
     print 'POST'
     length = int(self.headers['Content-Length'])
     data = parse_qs(self.rfile.read(length), True)
     if 'cmd' not in data:
       self.send_response(400, 'Bad Request')
-      self.server.ui.info(self.wfile)
+      self.UI.show('info')
       return True
-    if data['cmd'][0] == 'download':
+    cmd = data['cmd'][0]
+    if cmd == 'download':
       opts = {}
       opts['url'] = data['url'][0]
       if 'coop' in data:
-        opts['coop'] = data['coop'][0].split('/')
+        opts['coop'] = data['coop']
+      if 'req' in data:
+        opts['req'] = data['req']
       opts['local_path'] = ''
       if 'path' in data:
         opts['local_path'] = data['path'][0]
@@ -68,8 +88,7 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     self.send_response(200, 'OK')
     if t != None:
       t.download.wait()
-
-    self.server.ui.info(self.wfile)
+    self.UI.show('info')
   def do_PUT(self):
     if not self.auth():
       return False
