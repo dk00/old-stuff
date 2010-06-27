@@ -1,3 +1,5 @@
+package ianchou;
+
 import ianchou.*;
 import java.io.*;
 import javax.swing.*;

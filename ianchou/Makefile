@@ -1,4 +1,4 @@
-All: ServerPanel.class ImageInfo.class ImageParser.class YoutubeParser.class Downloader.class DownloadPanel.class ImagePanel.class YoutubePanel.class
+All: ServerPanel.class ImageInfo.class ImageParser.class YoutubeParser.class Downloader.class DownloadPanel.class ImagePanel.class YoutubePanel.class Update.class UpdatePanel.class
 ImageParser.class: ImageParser.java
 	javac -cp ../lib/htmlparser.jar:../lib/htmllexer.jar:../filterbuilder.jar:../sitecapturer.jar:thumbelina.jar:.. ImageParser.java
 YoutubeParser.class: YoutubeParser.java
@@ -15,3 +15,7 @@ ImageInfo.class: ImageInfo.java
 	javac ImageInfo.java
 ServerPanel.class: ServerPanel.java
 	javac ServerPanel.java
+Update.class: Update.java
+	javac -cp .. Update.java
+UpdatePanel.class: UpdatePanel.java
+	javac -cp .. UpdatePanel.java
