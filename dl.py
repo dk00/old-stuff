@@ -157,7 +157,6 @@ class task(Thread):
     if 'local_path' in opts:      
       self.wr.open(opts['local_path']) 
     self.wr.load(opts['req'])
-    self.wr.start()
     if self.opts['size'] == None:
       return 0  #Size is unknown, can't download with multiple thread
     return self.opts['size']
@@ -167,13 +166,14 @@ class task(Thread):
     self.remote = set()
     if 'start' not in self.opts:
       self.opts['start'] = 0
+    self.opts['start'] = int(self.opts['start'])
     if 'size' not in self.opts:
       return
     if 'end' not in self.opts:
       self.opts['end'] = (self.opts['size'] + self.opts['block_size'] - 1)/self.opts['block_size']
-    num_blocks = self.opts['end'] - self.opts['start'] + 1
-    if  num_blocks > 1:
-      self.todo = [i for i in range(self.opts['start'], self.opts['end'])]
+    self.opts['end'] = int(self.opts['end'])
+    self.todo = [i for i in range(self.opts['start'], self.opts['end'])]
+    num_blocks = len(self.todo)
 
   def dispatch(self):
     if 'size' not in self.opts or self.todo == None:
@@ -184,10 +184,10 @@ class task(Thread):
     self.remote = set()
     j = 0
     self.todo1 = self.todo
-    self.todo1.discard(0)    
+    self.todo1.discard(0)
     for i in range(0, len(self.opts['coop'])):
-      k = 1
-      while k < div_size and k < len(s) and s[j] == s[j+k] + 1:
+      k = 0
+      while k < div_size and k < len(s) and s[j+k] + 1 == s[j+k+1]:
         k += 1
       cmd = parse_qs(self.opts['coop'][i])
       for i in cmd.keys():
@@ -195,13 +195,13 @@ class task(Thread):
       headers = {}
       cmd['url'] = self.opts['url']
       cmd['start'] = str(s[j])
-      cmd['end'] = str(s[j+k])
+      cmd['end'] = str(s[j]+k)
       cmd['hdi_ag'] = '1'
       url = cmd['host']
       del cmd['host']
       if mylib.urlconnect(url, headers, 'POST', urlencode(cmd)):
-        self.remote |= set(s[j:j+k])
-        self.todo1 -= self.remote
+        self.remote |= set(range(s[j], s[j]+k))
+        self.todo1 -= set(range(s[j], s[j]+k))
 #      self.opts['coop'][i] = parse_qs(self.opts['coop'][i])
     s = [b for b in (self.todo - self.remote)]
     part_size = (len(s))/self.opts['num_threads']
@@ -215,7 +215,7 @@ class task(Thread):
       dl_opts['start'] = part * part_size
       if part <= len(s) % part_size:
         dl_opts['start'] += 1
-
+      dl_opts['start'] = s[dl_opts['start']]
       self.todo1.discard(dl_opts['start'])
       j = dl()
       j.setup(dl_opts)
@@ -224,6 +224,7 @@ class task(Thread):
     
   def run(self):
     self.dispatch()
+    self.wr.start()
     self.jobs[0].start()
     for j in self.jobs[1:]:
       j.init()
@@ -234,8 +235,10 @@ class task(Thread):
 
   def load(self, t0):
 #TODO: load task data
+    self.Stop = False
     self.opts = t.opts
     self.todo = t.todo
+    self.todo1 = t.todo1
     self.remote = t.remote
     j = dl()
     dl_opts = {
@@ -253,8 +256,6 @@ class task(Thread):
     if 'local_path' in opts:
       self.wr.open(opts['local_path'])
     self.wr.load(opts['req'])
-    self.wr.start()
-    j.start()
 
   def stop(self):
     self.Stop = True    
@@ -273,17 +274,21 @@ class task(Thread):
       self.mes.trigger('complete')
   def done(self, block_num, buf):
     self.wr.append(block_num, buf)
+    if self.mes != None:
+      self.mes.trigger('got' + str(len(buf)))
     if block_num in self.remote:
       self.remote.discard(block_num)
       if len(self.remote) + len(self.todo) == 0:
         self.wr.stop = True
-      return None    
+      return None
     if self.todo == None:
       if self.wr.stop == True or len(buf) < self.opts['block_size']:
         self.wr.stop = True
         return None
       return block_num + 1
     self.todo.discard(block_num)
+    if len(self.todo) > 0 and len(self.todo1) == 0:
+      self.todo1 = self.todo
     if len(self.remote) + len(self.todo) == 0:
       self.wr.stop = True
       return None

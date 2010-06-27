@@ -69,19 +69,28 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
       return True
     cmd = data['cmd'][0]
     if cmd == 'download':
+      copy = {
+        'url':    'url',
+        'coop':   'coop',
+        'req':    'req',
+        'path':   'local_path',
+        'start':  'start',
+        'end':    'end'
+      }
       opts = {}
-      opts['url'] = data['url'][0]
+      for i in copy.keys():
+        if i in data:
+          opts[copy[i]] = data[i][0]
       if 'coop' in data:
         opts['coop'] = data['coop']
       if 'req' in data:
         opts['req'] = data['req']
-      opts['local_path'] = ''
-      if 'path' in data:
-        opts['local_path'] = data['path'][0]
+      print cmd, opts['url']
+      if 'local_path' in opts:
+        print opts['local_path']
       t = self.server.newTask(opts)
     #if data['command'] == 'start':
     #if data['command'] == 'stop':
-
     #if data['command'] == 'remove':
     #if data['command'] == 'set':
     #if data['command'] == 'request':
@@ -96,14 +105,18 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
         print str(t.opts['size'])
         self.wfile.write(str(t.opts['size'])+'\n')
       else:
-        self.wfile.write('0')
+        self.wfile.write('0'+'\n')
       self.wfile.flush()
       t.mes = mylib.Trigger()
-      while not t.Stop:
-       t.mes.wait()
-       if t.mes.mes != None:
-         self.wfile.write(t.mes.mes+'\n')
-         self.wfile.flush()
+      while True:
+        t.mes.wait()
+        if t.mes.mes != None:
+          print t.mes.mes
+          self.wfile.write(t.mes.mes+'\n')
+          self.wfile.flush()
+          if t.mes.mes == 'complete':
+            break
+          
     else:
       self.UI.show('info')
   def do_PUT(self):
