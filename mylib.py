@@ -6,9 +6,11 @@ class Trigger():
   def __init__(self):
     self.lock = Lock()
     self.lock.acquire()
+    self.mes = None
   def wait(self):
     self.lock.acquire()
-  def trigger(self):
+  def trigger(self, mes = ''):
+    self.mes = mes
     self.lock.acquire(False)
     self.lock.release()
 
@@ -31,8 +33,6 @@ def urlconnect(url, headers, method = 'GET', content = '', redirect = 8):
       return False
     if path == None:
       path = '/'
-    print method, host, path
-    print headers
     c = HTTPConnection(host)
     try:
       c.connect()

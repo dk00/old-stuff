@@ -6,6 +6,7 @@ from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from urlparse import parse_qs
 import dl
 import ui
+import mylib
 class MyServer(HTTPServer):
   def init(self):
     self.UIs = {'default': ui.HTML(self), 'java': ui.Java(self)}
@@ -61,7 +62,6 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     auth = self.auth()
     length = int(self.headers['Content-Length'])
     data = parse_qs(self.rfile.read(length), True)
-    print data
     if 'cmd' not in data:
       self.send_response(400, 'Bad Request')
       self.UI.show('info')
@@ -87,20 +87,28 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
     #if data['command'] == 'accept':
     #if data['command'] == 'deny':
     self.send_response(200, 'OK')
-    if 'hdi_ag' in data and t != None:
-      t.download.wait()
+    if 'hdi_ag' not in data and t != None:
+      self.wfile.write('file size: ')
+      if 'size' in t.opts:
+        self.wfile.write(str(t.opts['size']))
+      else:
+        self.wfile.write('0')
+      self.wfile.flush()
+      t.mes = mylib.Trigger()
+      while not t.Stop:
+        t.mes.wait()
+        if t.mes.mes != None:
+          self.wfile.write(t.mes.mes)
+          self.wfile.flush()
     self.UI.show('info')
   def do_PUT(self):
     if not self.auth():
       return False
     name = str(self.path[1:])
-    print name, self.server.tasks.keys()
     if 'Range' not in self.headers or name not in self.server.tasks:
       self.send_response(416, 'Requested Range Not Satisfiable')
       return False
-    print self.headers['Range']
     r = re.search('\d+', self.headers['Range'])
-    print 'PUT', r.group(0)
     if r == None:
       self.send_response(416, 'Requested Range Not Satisfiable')
       return False

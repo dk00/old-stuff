@@ -10,11 +10,9 @@ import mylib
 class RemoteFile():
   def __init__(self, req, url):
     self.headers = parse_qs(req)    
-    print '>', self.headers
     for i in self.headers.keys():
       self.headers[i] = self.headers[i][0]
     self.host = self.headers['host'].strip('/') + '/' + url
-    print self.host
     del self.headers['host']
   def seek(self, pos):
     self.headers['Range'] = 'block_num=' + str(pos)
@@ -124,8 +122,8 @@ class dl(Thread):
 
 class task(Thread):
   def init(self, opts):
+    self.mes = None
     self.Stop = False
-    self.download = mylib.Trigger()
     def_opts = {
       'url':          None,
       'refer':        '',
@@ -201,7 +199,6 @@ class task(Thread):
       cmd['hdi_ag'] = '1'
       url = cmd['host']
       del cmd['host']
-      print url, cmd
       if mylib.urlconnect(url, headers, 'POST', urlencode(cmd)):
         self.remote |= set(s[j:j+k])
         self.todo1 -= self.remote
@@ -224,7 +221,6 @@ class task(Thread):
       j.setup(dl_opts)
       self.jobs.append(j)
     self.todo = set(s)
-    print len(self.todo), len(self.remote)
     
   def run(self):
     self.dispatch()
@@ -273,7 +269,8 @@ class task(Thread):
       j.join()
     self.wr.sth_to_write.trigger()
     self.wr.join()
-    self.download.trigger()
+    if self.mes != None:
+      self.mes.trigger()
   def done(self, block_num, buf):
     self.wr.append(block_num, buf)
     if block_num in self.remote:
