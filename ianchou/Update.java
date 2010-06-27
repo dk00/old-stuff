@@ -7,6 +7,7 @@ import java.text.*;
 import java.util.*;
 
 public class Update extends Thread{
+	private static Object syncObject = new Object();  
 	private int select;
 	final int SINGLE = 0;
 	final int MULTI = 1;
@@ -32,7 +33,7 @@ public class Update extends Thread{
 				s = addr.substring(0, idx);
 				t = addr.substring(idx);
 			}
-			System.out.println(s + "_" + t);
+			System.out.println(s + " _ " + t);
 			BufferedInputStream input = new BufferedInputStream(
 					new URL("http", s, 80, t).openStream());
 			if (idx == -1){
@@ -41,7 +42,7 @@ public class Update extends Thread{
 				s = t.substring(t.lastIndexOf("/")+1);
 			}
 			BufferedOutputStream output = new BufferedOutputStream(
-					new FileOutputStream("tmp/" + s));
+					new FileOutputStream(s));
 			//r/w
 			while((count = input.read(data,0,1024))!=-1){
 				output.write(data,0,count);
@@ -58,9 +59,9 @@ public class Update extends Thread{
 		int check = 0;
 		String s, t;
 		BufferedReader in = new BufferedReader(
-								new FileReader("mydata"));
+								new FileReader("ianchou/mydata"));
 		BufferedWriter out = new BufferedWriter(
-								new FileWriter("tmp/mydata"));
+								new FileWriter("ianchou/mydata.tmp"));
 		while ( (s = in.readLine()) != null ) {
 			if ( s.compareTo(this.addr) == 0 || select == MULTI){
 				panel.message.append(s + " is found in the list.\n");
@@ -166,8 +167,11 @@ public class Update extends Thread{
 	}
 	public void run(){
 		try{
-			this.search();
-			Process p = Runtime.getRuntime().exec("mv tmp/mydata .");
+			panel.message.append(addr + " is(are) waiting for update.\n");
+			synchronized(syncObject){
+				this.search();
+				Process p = Runtime.getRuntime().exec("mv ianchou/mydata.tmp ianchou/mydata");
+			}
 		} catch (IOException e){
 			System.out.println("Error:"+e);
 		}

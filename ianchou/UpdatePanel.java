@@ -33,7 +33,7 @@ public class UpdatePanel extends JPanel{
 		});
 		allButton.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				String addr = linkField.getText();
+				String addr = "All links";
 				request(addr, 1);
 			}
 		});
