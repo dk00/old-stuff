@@ -28,6 +28,9 @@ def urlconnect(url, headers, method = 'GET', content = '', redirect = 8):
     host, path = s.group('host'), s.group('path')
     if host == None or path == None:
       return False
+    print method, host, path
+    print headers
+    print content
     c = HTTPConnection(host)
     c.request(method, path, content, headers)
     r = c.getresponse()
