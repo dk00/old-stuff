@@ -33,7 +33,7 @@ public class HDI extends JFrame{
 		jTabbedPane = new JTabbedPane();
 		this.add(jTabbedPane);
 		serverPanel = new ServerPanel();
-		downloadPanel = new DownloadPanel(serverPanel,"http://bsd4.csie.ntu.edu.tw:22222");
+		downloadPanel = new DownloadPanel(serverPanel,"http://cnl21.csie.org:22222");
 		jTabbedPane.add("Download", downloadPanel);
 		jTabbedPane.add("Youtube", new YoutubePanel(downloadPanel));
 		jTabbedPane.add("Image", new ImagePanel(downloadPanel));
