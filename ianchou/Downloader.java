@@ -30,10 +30,13 @@ public class Downloader extends Thread{
 		for(int i=0;i<coopServ.length;++i){
 			if(!coop.isEmpty())
 				coop = coop + "&";
-			coop = coop + "host="+URLEncoder.encode(coopServ[i])+"&cmd=download&req="+req;
+			coop = coop + "coop=" +
+			  URLEncoder.encode("host="+URLEncoder.encode(coopServ[i])+"&cmd=download&req="+req);
 		}
-		coop = URLEncoder.encode(coop);
-    String var = "cmd=download&url="+URLEncoder.encode(url)+"&path="+fname+"&coop="+coop;
+		System.out.println("@"+coop+"@");
+		//coop = URLEncoder.encode(coop);
+    String var = "cmd=download&url="+URLEncoder.encode(url)+"&path="+fname+coop;
+		System.out.println("@"+var+"@");
 		post.setRequestBody(var);
 	}
 	public void run(){
