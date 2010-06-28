@@ -85,7 +85,10 @@ class MyHTTPHandler(BaseHTTPRequestHandler):
         if i in data:
           opts[copy[i]] = data[i][0]
       if 'coop' in data:
-        opts['coop'] = data['coop']
+        opts['coop'] = []
+        for coop in data['coop']:
+            if 'host' in coop:
+                opts['coop'].append(coop)
       if 'req' in data:
         opts['req'] = data['req']
       print cmd, opts['url']
