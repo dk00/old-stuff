@@ -43,6 +43,7 @@ public class Downloader extends Thread{
 			InputStream in = post.getResponseBodyAsStream();
 			StringBuffer str = new StringBuffer();
 			int c;
+			boolean y = true;
 			while((c=in.read())!=-1){
 				if(c=='\n'){
 					String tmp = str.toString();
@@ -54,14 +55,17 @@ public class Downloader extends Thread{
 						int size = new Integer(tmp.substring(3));
 						downloadPanel.setGot(rid, size>>10);
 					}
-					else
+					else{
+						y=false;
 						downloadPanel.setStatus(rid, tmp);
+					}
 					str = new StringBuffer();
 				}
 				else
 					str.append((char)c);
-					
 			}
+			if(y)
+				downloadPanel.setStatus(rid,new String("complete"));
 		}catch(Exception e){
 			System.out.println(e);
 			downloadPanel.setStatus(rid,"failed");
