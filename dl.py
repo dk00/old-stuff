@@ -277,6 +277,8 @@ class task(Thread):
     if self.mes != None:
       self.mes.trigger('complete')
   def done(self, block_num, buf):
+    if (self.wr.stop == True):
+      return None
     self.wr.append(block_num, buf)
     if self.mes != None:
       self.mes.trigger('got' + str(len(buf)))
