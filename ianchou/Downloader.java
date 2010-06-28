@@ -33,7 +33,7 @@ public class Downloader extends Thread{
 			coop = coop + "host="+URLEncoder.encode(coopServ[i])+"&cmd=download&req="+req;
 		}
 		coop = URLEncoder.encode(coop);
-    String var = "cmd=download&url="+url+"&path="+fname+"&coop="+coop;
+    String var = "cmd=download&url="+URLEncoder.encode(url)+"&path="+fname+"&coop="+coop;
 		post.setRequestBody(var);
 	}
 	public void run(){

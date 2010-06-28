@@ -20,7 +20,7 @@ public class DownloadPanel extends JPanel{
 	private JTable jTable;
 	private JTextField urlField, fnameField;
 	private JScrollPane scrollPane;
-	private String hostUrl;
+	public String hostUrl;
 	public void request(String url, String fname){
 		int rid = jTable.getRowCount();
 		model.addRow(new Object[]{url,fname,0,0,"downloading"});
@@ -40,9 +40,9 @@ public class DownloadPanel extends JPanel{
 		else
 			jTable.setValueAt(now,rid,3);
 	}
-	public DownloadPanel(ServerPanel sp){
+	public DownloadPanel(ServerPanel sp, String hu){
 		serverPanel = sp;
-		hostUrl = new String("http://bsd4.csie.ntu.edu.tw:5555");
+		hostUrl = hu;
 		urlField = new JTextField();
 		fnameField = new JTextField();
 		jButton = new JButton("get");
