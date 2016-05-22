@@ -1,0 +1,56 @@
+package hw06.b96902120;
+import java.util.*;
+import java.io.File;
+import org.w3c.dom.*;
+import java.text.Collator;
+import javax.xml.parsers.DocumentBuilderFactory;
+public class Examination{
+    static String LIM="錄取名額",STU="考生",SUB="成績",EID="准考證",SN="編號";
+    int n,m;
+    HashMap<String,Student> s;
+    Student s0[];
+    public Examination(String filename){
+        try{
+            Document x=DocumentBuilderFactory.newInstance()
+            .newDocumentBuilder().parse(new File(filename));
+            n=Integer.parseInt(x.getChildNodes().item(0)
+                .getAttributes().getNamedItem(LIM).getNodeValue());
+            NodeList t=x.getElementsByTagName(SUB);
+            m=t.getLength();
+            NodeList u=x.getElementsByTagName(STU);
+            s=new HashMap<String,Student>();
+            s0=new Student[u.getLength()];
+            for(int i=0;i<u.getLength();i++)
+                s.put(u.item(i).getAttributes().getNamedItem(EID).getNodeValue()
+                ,s0[i]=new Student(u.item(i).getFirstChild().getNodeValue(),m));
+            for(int i=0;i<t.getLength();i++)
+            {
+                int k=Integer.parseInt(t.item(i).getAttributes().
+                getNamedItem(SN).getNodeValue());
+                NodeList v=t.item(i).getChildNodes();
+                for(int j=0;j<u.getLength();j++)
+                    if(u.item(i).hasAttributes())
+                        s.get(u.item(i).getAttributes().getNamedItem(EID)
+                        .getNodeValue()).score[k]=Integer.parseInt(
+                        u.item(i).getFirstChild().getNodeValue());
+            }
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+    public String listTop(){
+        Arrays.sort(s0);
+        int i,j;
+        
+        for(i=0;(i<n || (i>0 && s0[i].compareTo(s0[i-1])==0)) && i<s0.length;i++);
+        String list[]=new String[i];
+        for(j=0;j<i;j++)
+            list[i]=s0[i].name;
+        Arrays.sort(list,Collator.getInstance(new Locale("zh","TW", "")));
+        if(list.length<1)return "";
+        String result=list[0];
+        for(j=1;j<i;j++)
+            result=result+" "+list[j];
+        return result;
+    }
+}

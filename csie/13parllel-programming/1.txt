@@ -1,0 +1,19 @@
+Please describe the relation between T, the number of wave-fronts, and the following quantities in a dependency graph.
+
+The number of tasks, N.
+The number of processors, P.
+The length of the longest path L.
+The parallelism p, i.e., the maximum number of tasks in a wave-front.
+
+
+T <= L <= N
+
+T >= ceil(N/p) >= ceil(N/P)
+
+p <= N
+
+p <= P
+
+
+
+

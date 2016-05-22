@@ -1,0 +1,45 @@
+#include<stdio.h>
+long s[100][100],sum,max,min,msum,tal;
+main(){
+int i,j,k,n,t;
+scanf("%d",&t);
+while(t--){
+    scanf("%d",&n);
+    max=-2147483647;
+    for(i=1;i<=n;i++){
+        s[i][0]=s[0][i]=0;
+        scanf("%ld",&s[i][1]);
+        max>?=s[i][1];
+        for(j=2;j<=n;j++){
+            scanf("%ld",&s[i][j]);
+            max>?=s[i][j];
+            s[i][j]+=s[i][j-1];
+        }
+    }
+    if(max<=0 || n==1){printf("%ld\n",max);continue;}
+    if(!n){puts("0");continue;}
+    for(i=1;i<=n;i++){
+        for(j=i;j<=n;j++){
+            for(min=tal=msum=sum=0,k=1;k<=n;k++){
+                tal+=s[k][j]-s[k][i-1];
+                max>?=(sum+=s[k][j]-s[k][i-1]);
+                sum>?=0;
+                min<?=(msum+=s[k][j]-s[k][i-1]);
+                msum<?=0;
+            }
+            max>?=tal-min;
+        }
+        for(j=1;j<i;j++){
+            for(min=tal=msum=sum=0,k=1;k<=n;k++){
+                tal+=s[k][j]+s[k][n]-s[k][i-1];
+                max>?=(sum+=s[k][j]+s[k][n]-s[k][i-1]);
+                sum>?=0;
+                min<?=(msum+=s[k][j]+s[k][n]-s[k][i-1]);
+                msum<?=0;
+            }
+            max>?=tal-min;
+        }
+    }
+    printf("%ld\n",max);
+}
+}

@@ -1,0 +1,32 @@
+#include<stdio.h>
+main()
+{
+int i,j,l,p,q,n,k,man[101];
+    while(scanf("%d %d",&n,&k) && n+k)
+    {
+        if(n==1)
+        {
+            puts("1");
+            continue;
+        }
+		for(p=n,j=-1,l=i=0;i<n;i++)man[i]=i+1;
+		while(p>1)
+		{
+			q=k%p;
+			q+=(!q)*p;
+			while(q--)
+				for(j++,j%=n;man[j]<0;j++,j%=n);
+			man[j]=-1;
+			l=j;
+			q=k%--p;
+			q+=(!q)*p;
+			while(q--)
+				for(j++,j%=n;man[j]<0;j++,j%=n);
+			man[l]=man[j];
+			man[j]=-1;
+			j=l;
+        }
+        for(q=0;(man[l]+q)%n!=1;q++);
+        printf("%d\n",q+1);
+    }
+}

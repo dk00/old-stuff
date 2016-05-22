@@ -1,0 +1,36 @@
+<style>
+  .out {
+    clear: both;
+  }
+  .side {
+    float: left;
+    display: table-row;
+    height: 100%;
+  }
+  .list {
+    height: 600px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+  div {
+    border: 1px solid #040;
+  }
+  .frame {
+    display: inline-block;
+  }
+</style>
+  <div class="side">
+    <div class="list">
+      test<br/>
+      test
+    </div>
+  </div>
+<div>
+<div class="frame">
+I1
+</div>
+<div class="frame">
+I2
+</div>
+</div>

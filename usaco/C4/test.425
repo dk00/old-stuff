@@ -1,0 +1,44 @@
+A map is like this:
+.CCC....
+ECBCBB..
+DCBCDB..
+DCCC.B..
+D.B.ABAA
+D.BBBB.A
+DDDDAD.A
+E...AAAA
+EEEEEE..
+
+It's composed by many frames, each frame might cover other frame,
+but we can see at least one part of every side of every frame.
+The coner is part of two sides.
+
+Definition:
+    Finished frame: A frame is finished, it means
+    no other frames is on it.
+    Frame can be finished: A frame's place is all it's character or
+    empty after other one taken.
+    fit: To
+
+1.if a finished frame is found, then take it.
+2.See if any frame can be finished, fit it.
+3.repeat 1.,2. until the map is empty.
+
+#a: There might be more than one finished frame at 1.,
+    so this is a branch key to produce solutions.
+#b: The width,hight and plase of the frames can't be changed,
+    since the four sides is given(at least one part of every side),
+    consider two frames, if they used some place of other's,
+    there should be one frame that covered other one, so we can
+    finish the frames, and continue test one by one, that's
+    another branch key.
+#c: After any frame taken, there must be at least one frame can be
+    finished.
+
+The next thing to do is turn aboves into a execution:
+
+We can use a original map O and a result map R. First copy O to R,
+and we can do all operation on R, and finally call solving function
+recursivly with R as a sent value. Since there're at most 26 sort of
+frame character(A~Z),so we'll call recursive function at most 26
+layers, the space is enough to use.

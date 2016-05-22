@@ -1,0 +1,2 @@
+#!/bin/sh
+./DV_routing -p 5001 -d 0 -t 1.txt

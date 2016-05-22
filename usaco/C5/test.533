@@ -1,0 +1,83 @@
+  s      j   k           e
+  y  1   y   y  19       y
+sx+------+---------------+
+  |      |               |
+12|      |     B         |1
+  |  A   |               |
+jx|      +---+-----------+
+  |      |   |           |
+  |      |121|           |
+kx+------+---+           |
+  |          |   C       |
+8 |  D       |           |19
+  |          |           |
+ex+----------+-----------+
+    12          8
+(sx,sy) (ex,ey)
+ (1,1)  (21,21)
+
+(jx,jy) (kx,ky)
+ (2,2)  (12,12)
+
+A: (sx,sy) (kx,jy-1)
+	(1,1)  (12,1)
+B: (sx,jy) (jx-1,ey)
+	(1,2)     (1,21)
+C: (jx,ky+1) (ex,ey)
+	(2,13)   (21,21)
+D: (kx+1,sy) (ex,ky)
+	 (13,1)  (21,21)
+	for(i=0;i<rn;i++)use[i]=1;
+	ptr=bottom,rn=1;
+	rect[0].sx=ptr->sx,rect[0].sy=ptr->sy;
+	rect[0].ex=ptr->ex,rect[0].ey=ptr->ey;
+	while((ptr=ptr->next)!=NULL)
+		rect[rn].sx=ptr->sx;rect[rn].sy=ptr->sy;
+		rect[rn].ex=ptr->ex;rect[rn++].ey=ptr->ey;
+	    for(i=0;i<rn;i++){
+			if(!use[i])continue;
+//0
+			if(ptr->sx>rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey<rect[i].ey){
+			}
+//1S
+			if(ptr->sx>rect[i].sx && ptr->sy<rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey<rect[i].ey){
+			}
+			if(ptr->sx>rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey>rect[i].ey){
+			}
+			if(ptr->sx<rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey<rect[i].ey){
+			}
+			if(ptr->sx>rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex>rect[i].ex && ptr->ey<rect[i].ey){
+			}
+//2S
+			if(ptr->sx<rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex>rect[i].ex && ptr->ey<rect[i].ey){
+			}
+			if(ptr->sx>rect[i].sx && ptr->sy<rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey>rect[i].ey){
+			}
+//1C2S
+			if(ptr->sx<=rect[i].sx && ptr->sy<=rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey<rect[i].ey){
+			}
+			if(ptr->sx>rect[i].sx && ptr->sy<=rect[i].sy &&
+			   ptr->ex>=rect[i].ex && ptr->ey<rect[i].ey){
+			}
+			if(ptr->sx>rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex>=rect[i].sx && ptr->ey>=rect[i].ey){
+			}
+			if(ptr->sx<=rect[i].sx && ptr->sy>rect[i].sy &&
+			   ptr->ex<rect[i].ex && ptr->ey>=rect[i].ey){
+			}
+//2C3S
+
+//4C4S
+			if(ptr->sx<=rect[i].sx && ptr->sy<=rect[i].sy &&
+			   ptr->ex>=rect[i].ex && ptr->ey>=rect[i].ey){
+					use[i]=0;
+			}
+		}

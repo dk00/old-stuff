@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,CJK}
+\topmargin=0pt
+\headheight=0pt
+\headsep=0pt
+\textheight=750pt
+\footskip=0pt
+\voffset=-40pt
+\textwidth=520pt
+\marginparsep=0pt
+\marginparwidth=0pt
+\marginparpush=0pt
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\hoffset=-50pt
+\newcommand{\img}[1]{\includegraphics[scale=0.5]{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cl}[1]{\begin{description}#1\end{description}}
+\newcommand{\ol}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\ul}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\code}[1]{\begin{verbatim} #1 \end{verbatim}}
+
+
+\begin{document}
+\begin{CJK*}{Bg5}{bkai}
+\section*{DIP HW3}
+\section*{Problem 1: Digital Halftoning}
+\img{h1.png}
+\img{h2.png}
+\img{h3a.png}\\
+經過 Floyd-Steinberg dithering 轉換成雙色的圖，每個物體仍然清晰可辨識，
+在遠處看起來和原圖差距不大；灰色的部分轉換成 energy 總和近似的黑點及白點，
+這部份以及其他對比較低的細節(背景中淡色的線?)消失了。
+
+第三個圖顯示了\ Floyd-Steinberg dithering\ 對於互補的圖產生互補的結果。
+圖中的每個子區塊，轉換之後\ energy\ 幾乎不變，所以\ reverse image\ 轉換之後
+每個部分的的\ energy\ 就會是原圖\ energy\ 的\ reverse。結論：第三個圖不是巧合
+，換其他的圖做同樣的轉換也會得到同樣的結果。
+
+\newpage
+\end{CJK*}
+\end{document}

@@ -1,0 +1,27 @@
+# Comments are indicated with a pound sign(#)
+# Machines are specified first, one per line.
+# RemoteMachine <IP> <username> <expansionLocation> [WINDOWS|LINUX]
+# LocalMachine <IP> <expansionLocation> [WINDOWS|LINUX]
+# NOTE: In general, there are issues with using local machines,
+# namely that the server cannot tell which player is which
+# when they connect.
+LocalMachine 127.0.0.1 expansion/expansion1/ LINUX
+LocalMachine 127.0.0.1 expansion/expansion2/ LINUX
+
+# Then, tournaments are specified
+# Currently, only one tournament is supported.
+BEGIN_TOURNAMENT
+# The following is a HeadsUpLimitRoundRobin tournament header line.
+# It must be specified on one line.
+# The format is:
+# HeadsUpLimitRoundRobin <winnerdetermination> <name> <cardFileRoot> <numDuplicateHands> <IP>
+HeadsUpLimitRoundRobin INSTANTRUNOFFBANKROLL ai2008 ai2008 1 127.0.0.1
+
+# Finally, bots for the tournament are listed
+# BotTarFile <name> <tarfilelocation> <locationintarfile> <(WINDOWS|LINUX)> <(WINDOWS|LOCALWINDOWS|LINUX|LOCALLINUX) 
+BotTarFile AITA bots/aitaclient.tar AITAclient/ LINUX LOCALLINUX
+BotTarFile YOUR_ID bots/your_id.tar MyPokerClient/ LINUX LOCALLINUX
+END_TOURNAMENT
+
+
+

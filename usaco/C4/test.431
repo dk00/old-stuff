@@ -1,0 +1,46 @@
+(1)First we should pre-calculate the primes between 10000 and 99999.
+And consider (2)the left side and the upper side, they're the first
+digits of every row / column, so they shouldn't be 0.
+And the first digit is given, so we can (3)determinate upper side,
+left side and one diagonal, and then do DFS on other digits.
+And the other diagonal, (4)it has 3 digits that is determinated,
+so we can just try the remaining two.
+consider the last digits, if a number is prime, its (5)last digit
+shouldn't be even numbers, zero or five.
+
+Primes should be pre-calculated:
+    1.every digit is not zero(upper / left side),and first digit is the
+    given digit.
+    2.every digit is not zero, even num or five(lower / right side)
+
++---+---+---+---+---+
+| a | b | c | d | e |
++---+---+---+---+---+
+| f | g | h | i | j |
++---+---+---+---+---+
+| k | l | m | n | o |
++---+---+---+---+---+
+| p | q | r | s | t |
++---+---+---+---+---+
+| u | v | w | x | y |
++---+---+---+---+---+
+
+1.abcde, afkpu, agmsy.
+2.uqmie.
+3.fghij, bglqv.
+
+method:
+    1.a is determinated,so we determinate abcde, afkpu and agmsy first.
+    the primes that is used here should be pre-calculated. choose 3
+    prime and check ume, bg, fg, cm, km, ds, ps, ey and uy, if all they
+    are not bigger than the given sum, do next.
+    
+    2.Find uqmie. i and q should sum to something, change one and other
+    will be changed, too. So we just use a loop to test all.
+    We also check if it's bigger than the sum,if not do next.
+    
+    3.Find ejoty and uvwxy. the prime should be pre-calcued, too.
+    and just fit it, do the same check as above.
+    
+    4.Finally there are four digits remained, it's easy to calculate,
+    just fill it and do the check.

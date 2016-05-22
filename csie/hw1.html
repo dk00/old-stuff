@@ -1,0 +1,332 @@
+<title>ACP2009 HW1</title>
+<style type="text/css">
+<!--
+.Comment { color: #0000ff; }
+.Special { color: #6a5acd; }
+.Statement { color: #804040; font-weight: bold; }
+.PreProc { color: #a020f0; }
+.Constant { color: #ff00ff; }
+.Type { color: #2e8b57; font-weight: bold; }
+.code {font-family:monospace;}
+h2,.Info{text-align: center;}
+h2,h3{font-family:Segoe UI ;}
+-->
+</style>
+<h2>Advanced Computer Programming Homework 1</h2>
+<h3>Original Program</h3>
+<pre>
+<span class="PreProc">#include</span><span class="Constant">&lt;stdio.h&gt;</span>
+<span class="PreProc">#include</span><span class="Constant">&lt;stdlib.h&gt;</span>
+<span class="Type">struct</span> pos{
+    <span class="Type">int</span> x,y;
+    <span class="Type">void</span> get(){scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;x,&amp;y);x--,y--;}
+}r[<span class="Constant">120</span>],g[<span class="Constant">120</span>],u,ta[<span class="Constant">250</span>];
+<span class="Type">struct</span> Q{
+    <span class="Type">int</span> x,y,d,s;
+}q[<span class="Constant">2</span>][<span class="Constant">100000</span>],q2[<span class="Constant">100000</span>];
+<span class="Type">int</span> n,m,num,max,map[<span class="Constant">100</span>][<span class="Constant">100</span>],tmp1[<span class="Constant">100</span>][<span class="Constant">100</span>],tmp2[<span class="Constant">100</span>][<span class="Constant">100</span>];
+<span class="Type">void</span> go(<span class="Type">int</span> to[<span class="Constant">100</span>][<span class="Constant">100</span>],<span class="Type">int</span> x,<span class="Type">int</span> y,<span class="Type">int</span> d){
+    <span class="Type">int</span> i,j,s,p;
+    <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+        <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++)
+            tmp1[i][j]=tmp2[i][j]=<span class="Constant">1</span>;
+    q[<span class="Constant">0</span>][<span class="Constant">0</span>]=(Q){x,y,d,<span class="Constant">0</span>};
+    <span class="Statement">for</span>(i=<span class="Constant">1</span>,j=p=<span class="Constant">0</span>;i;i=j,j=<span class="Constant">0</span>,p=!p)
+        <span class="Statement">while</span>(i--){
+            x=q[p][i].x,y=q[p][i].y,d=q[p][i].d,s=q[p][i].s;
+            to[x][y]&lt;?=s;
+            tmp1[x][y]=<span class="Constant">0</span>;
+            <span class="Statement">if</span>(x &amp;&amp; tmp1[x-<span class="Constant">1</span>][y]){
+                <span class="Statement">if</span>(map[x][y]*d&lt;=map[x-<span class="Constant">1</span>][y]*d){
+                    tmp1[x-<span class="Constant">1</span>][y]=<span class="Constant">0</span>;
+                    q[p][i++]=(Q){x-<span class="Constant">1</span>,y,d,s};
+                }
+                <span class="Statement">else</span> <span class="Statement">if</span>(tmp2[x-<span class="Constant">1</span>][y]){
+                    q[!p][j++]=(Q){x-<span class="Constant">1</span>,y,-d,s+<span class="Constant">1</span>};
+                    tmp2[x-<span class="Constant">1</span>][y]=<span class="Constant">0</span>;
+                }
+            }
+            <span class="Statement">if</span>(y &amp;&amp; tmp1[x][y-<span class="Constant">1</span>]){
+                <span class="Statement">if</span>(map[x][y]*d&lt;=map[x][y-<span class="Constant">1</span>]*d){
+                    tmp1[x][y-<span class="Constant">1</span>]=<span class="Constant">0</span>;
+                    q[p][i++]=(Q){x,y-<span class="Constant">1</span>,d,s};
+                }
+                <span class="Statement">else</span> <span class="Statement">if</span>(tmp2[x][y-<span class="Constant">1</span>]){
+                    q[!p][j++]=(Q){x,y-<span class="Constant">1</span>,-d,s+<span class="Constant">1</span>};
+                    tmp2[x][y-<span class="Constant">1</span>]=<span class="Constant">0</span>;
+                }
+            }
+            <span class="Statement">if</span>(x+<span class="Constant">1</span>&lt;n &amp;&amp; tmp1[x+<span class="Constant">1</span>][y]){
+                <span class="Statement">if</span>(map[x][y]*d&lt;=map[x+<span class="Constant">1</span>][y]*d){
+                    tmp1[x+<span class="Constant">1</span>][y]=<span class="Constant">0</span>;
+                    q[p][i++]=(Q){x+<span class="Constant">1</span>,y,d,s};
+                }
+                <span class="Statement">else</span> <span class="Statement">if</span>(tmp2[x+<span class="Constant">1</span>][y]){
+                    q[!p][j++]=(Q){x+<span class="Constant">1</span>,y,-d,s+<span class="Constant">1</span>};
+                    tmp2[x+<span class="Constant">1</span>][y]=<span class="Constant">0</span>;
+                }
+            }
+            <span class="Statement">if</span>(y+<span class="Constant">1</span>&lt;m &amp;&amp; tmp1[x][y+<span class="Constant">1</span>]){
+                <span class="Statement">if</span>(map[x][y]*d&lt;=map[x][y+<span class="Constant">1</span>]*d){
+                    tmp1[x][y+<span class="Constant">1</span>]=<span class="Constant">0</span>;
+                    q[p][i++]=(Q){x,y+<span class="Constant">1</span>,d,s};
+                }
+                <span class="Statement">else</span> <span class="Statement">if</span>(tmp2[x][y+<span class="Constant">1</span>]){
+                    q[!p][j++]=(Q){x,y+<span class="Constant">1</span>,-d,s+<span class="Constant">1</span>};
+                    tmp2[x][y+<span class="Constant">1</span>]=<span class="Constant">0</span>;
+                }
+            }
+        }
+}
+<span class="Type">int</span> sink,use[<span class="Constant">300</span>],o[<span class="Constant">300</span>][<span class="Constant">300</span>],c[<span class="Constant">300</span>][<span class="Constant">300</span>],step[<span class="Constant">100</span>][<span class="Constant">100</span>][<span class="Constant">100</span>];
+<span class="Type">int</span> findpath(<span class="Type">int</span> v){
+    use[v]=<span class="Constant">0</span>;
+    <span class="Statement">if</span>(v==sink)<span class="Statement">return</span> <span class="Constant">1</span>;
+    <span class="Statement">for</span>(<span class="Type">int</span> i=<span class="Constant">1</span>;i&lt;=sink;i++)
+        <span class="Statement">if</span>(use[i] &amp;&amp; c[v][i]){
+            c[v][i]--;
+            <span class="Statement">if</span>(findpath(i)){
+                c[i][v]++;
+                <span class="Statement">return</span> <span class="Constant">1</span>;
+            }
+            c[v][i]++;
+        }
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+<span class="Type">int</span> flow(){
+    <span class="Type">int</span> i,j,f=<span class="Constant">0</span>;
+    <span class="Statement">while</span>(<span class="Constant">1</span>){
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)use[i]=<span class="Constant">1</span>;
+        <span class="Statement">if</span>(findpath(<span class="Constant">0</span>))f++;
+        <span class="Statement">else</span> <span class="Statement">return</span> f;
+    }
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+main(){
+    <span class="Type">int</span> i,j,k,p,t,tt,magic,cn[<span class="Constant">100</span>];
+    <span class="Comment">/*</span><span class="Comment">freopen(&quot;10418.in&quot;,&quot;r&quot;,stdin);</span>
+<span class="Comment">      freopen(&quot;10418.out&quot;,&quot;w&quot;,stdout);</span><span class="Comment">*/</span>
+    scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;tt);
+    <span class="Statement">while</span>(tt--){
+        scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;n,&amp;m,&amp;k,&amp;t);
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;k;i++)r[i].get();
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;k;i++)g[i].get();
+        u.get();
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;t;i++){
+            ta[i].get();
+            scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;cn[i]);
+        }
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++){
+                scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;map[i][j]);
+                <span class="Statement">for</span>(p=<span class="Constant">0</span>;p&lt;k*<span class="Constant">2</span>;p++)
+                    step[p][i][j]=<span class="Constant">100000</span>;
+            }
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;k;i++){
+            go(step[i],r[i].x,r[i].y,<span class="Constant">1</span>);
+            <span class="Comment">/*</span><span class="Comment">for(j=0;j&lt;n;j++){</span>
+<span class="Comment">              for(p=0;p&lt;m;p++)</span>
+<span class="Comment">              printf(&quot;%3d&quot;,step[i][j][p]);</span>
+<span class="Comment">              puts(&quot;&quot;);</span>
+<span class="Comment">              }</span>
+<span class="Comment">              puts(&quot;&quot;);</span><span class="Comment">*/</span>
+        }
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;k;i++){
+            go(step[i+k],g[i].x,g[i].y,-<span class="Constant">1</span>);
+            <span class="Comment">/*</span><span class="Comment">for(j=0;j&lt;n;j++){</span>
+<span class="Comment">              for(p=0;p&lt;m;p++)</span>
+<span class="Comment">              printf(&quot;%3d&quot;,step[i+k][j][p]);</span>
+<span class="Comment">              puts(&quot;&quot;);</span>
+<span class="Comment">              }</span>
+<span class="Comment">              puts(&quot;&quot;);</span><span class="Comment">*/</span>
+        }
+        sink=<span class="Constant">2</span>*k+t+<span class="Constant">1</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;=sink;j++)
+                o[i][j]=<span class="Constant">0</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;k;i++)
+            o[<span class="Constant">0</span>][i+<span class="Constant">1</span>]=o[<span class="Constant">0</span>][i+k+<span class="Constant">1</span>]=<span class="Constant">1</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;t;i++)
+            o[<span class="Constant">2</span>*k+<span class="Constant">1</span>+i][sink]=cn[i];
+        <span class="Statement">for</span>(magic=<span class="Constant">0</span>;;magic++){
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)
+                <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;=sink;j++)
+                    c[i][j]=o[i][j];
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;k;i++)
+                <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;t;j++){
+                    <span class="Statement">if</span>(step[i][ta[j].x][ta[j].y]&lt;=magic)
+                        c[i+<span class="Constant">1</span>][j+<span class="Constant">2</span>*k+<span class="Constant">1</span>]=<span class="Constant">1</span>;
+                    <span class="Statement">if</span>(step[i+k][ta[j].x][ta[j].y]&lt;=magic)
+                        c[i+k+<span class="Constant">1</span>][j+<span class="Constant">2</span>*k+<span class="Constant">1</span>]=<span class="Constant">1</span>;
+                }
+            <span class="Statement">if</span>(magic+flow()&gt;=<span class="Constant">2</span>*k)<span class="Statement">break</span>;
+        }
+        printf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Special">\n</span><span class="Constant">&quot;</span>,magic);
+    }
+}
+</pre>
+<br/><br/><br/><br/><br/><br/><br/>
+<h3>Revised Program</h3>
+<pre>
+<span class="PreProc">#include</span><span class="Constant">&lt;stack&gt;</span>
+<span class="PreProc">#include</span><span class="Constant">&lt;cstdio&gt;</span>
+<span class="Statement">using</span> <span class="Type">namespace</span> std;
+
+<span class="Type">struct</span> pos{
+    <span class="Type">int</span> x,y,d;
+    <span class="Type">void</span> get(){
+        scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;x,&amp;y);x--,y--;
+    }
+    pos <span class="Statement">operator</span>+(pos a){
+        <span class="Statement">return</span> (pos){x+a.x,y+a.y};
+    }
+};
+
+<span class="Type">const</span> <span class="Type">int</span> Inf=<span class="Constant">99999</span>,Maxn=<span class="Constant">101</span>,Maxm=<span class="Constant">101</span>,Maxk=<span class="Constant">51</span>,Maxt=<span class="Constant">101</span>;
+<span class="Type">const</span> pos ds[]={{<span class="Constant">1</span>,<span class="Constant">0</span>},{<span class="Constant">0</span>,<span class="Constant">1</span>},{-<span class="Constant">1</span>,<span class="Constant">0</span>},{<span class="Constant">0</span>,-<span class="Constant">1</span>}};
+<span class="Type">int</span> n,m,hi[Maxn][Maxm],num[Maxk*<span class="Constant">2</span>][Maxt];
+
+<span class="Type">inline</span> <span class="Type">bool</span> valid(pos p){
+    <span class="Statement">return</span> (p.x&gt;=<span class="Constant">0</span> &amp;&amp; p.x&lt;n &amp;&amp; p.y&gt;=<span class="Constant">0</span> &amp;&amp; p.y&lt;m);
+}
+
+<span class="Comment">//Calculate how many color changes it needs to go from one position to others</span>
+<span class="Comment">//Input: postion x,y, direction d(1:up, -1:down)</span>
+<span class="Comment">//Output: num[Maxn][Maxm](# color change)</span>
+<span class="Type">void</span> calc_change(<span class="Type">int</span> num[Maxn][Maxm],<span class="Type">int</span> x,<span class="Type">int</span> y,<span class="Type">int</span> d)
+{
+    <span class="Type">int</span> i,j;
+    <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+        <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++)
+            num[i][j]=Inf;
+    stack&lt;pos&gt; st[<span class="Constant">2</span>];
+    pos cur={x,y,d};
+    st[<span class="Constant">0</span>].push(cur);
+    <span class="Statement">for</span>(<span class="Type">int</span> round=<span class="Constant">0</span>;!st[<span class="Constant">0</span>].empty() || !st[<span class="Constant">1</span>].empty();round=<span class="Constant">1</span>-round){
+        stack&lt;pos&gt; &amp;st0=st[round],&amp;st1=st[<span class="Constant">1</span>-round];
+        <span class="Statement">while</span>(!st0.empty()){
+            cur=st0.top();
+            st0.pop();
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">4</span>;i++){
+                pos next=cur+ds[i];
+                <span class="Statement">if</span>(!valid(next) || num[next.x][next.y]&lt;Inf)
+                    <span class="Statement">continue</span>;
+                <span class="Statement">if</span>((hi[cur.x][cur.y]-hi[next.x][next.y])*cur.d&gt;<span class="Constant">0</span>){
+                    num[next.x][next.y]=num[cur.x][cur.y];
+                    st0.push(next);
+                }<span class="Statement">else</span> <span class="Statement">if</span>(num[cur.x][cur.y]+<span class="Constant">1</span>&lt;num[next.x][next.y]){
+                    next.d*=-<span class="Constant">1</span>;
+                    num[next.x][next.y]=num[cur.x][cur.y]+<span class="Constant">1</span>;
+                    st1.push(next);
+                }
+            }
+        }
+    }
+}
+
+
+<span class="Type">const</span> <span class="Type">int</span> Nnode=Maxk*<span class="Constant">2</span>+Maxt+<span class="Constant">3</span>;
+<span class="Type">int</span> sink,used[Nnode],ori[Nnode][Nnode],cap[Nnode][Nnode];
+
+<span class="Comment">//find an augmenting path, returns 1 if there is one, returns 0 otherwise</span>
+<span class="Type">int</span> findpath(<span class="Type">int</span> node)
+{
+    <span class="Statement">if</span>(used[node])<span class="Statement">return</span> <span class="Constant">0</span>;
+    used[node]=<span class="Constant">1</span>;
+    <span class="Statement">if</span>(node==sink)<span class="Statement">return</span> <span class="Constant">1</span>;
+    <span class="Statement">for</span>(<span class="Type">int</span> i=<span class="Constant">1</span>;i&lt;=sink;i++)
+        <span class="Statement">if</span>(cap[node][i]-- &amp;&amp; findpath(i))
+        {
+            cap[i][node]++;
+            <span class="Statement">return</span> <span class="Constant">1</span>;
+        }
+        <span class="Statement">else</span>
+            cap[node][i]++;
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+
+<span class="Comment">//Calculate max-flow</span>
+<span class="Type">int</span> flow(){
+    <span class="Type">int</span> i,f=<span class="Constant">0</span>;
+    <span class="Statement">while</span>(<span class="Constant">1</span>){
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)used[i]=<span class="Constant">0</span>;
+        <span class="Statement">if</span>(findpath(<span class="Constant">0</span>))f++;
+        <span class="Statement">else</span> <span class="Statement">return</span> f;
+    }
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+
+<span class="Type">int</span> main()
+{
+    <span class="Type">int</span> T;
+    scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;T);
+    <span class="Statement">while</span>(T--){
+        <span class="Type">int</span> i,j,k,t,magic;
+        pos spos[Maxk*<span class="Constant">2</span>+<span class="Constant">1</span>],goal[Maxt];
+
+        scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;n,&amp;m,&amp;k,&amp;t);
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=<span class="Constant">2</span>*k+<span class="Constant">1</span>;i++)
+            scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;spos[i].x,&amp;spos[i].y);
+        sink=<span class="Constant">2</span>*k+t+<span class="Constant">1</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;=sink;j++)
+                ori[i][j]=<span class="Constant">0</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">1</span>;i&lt;=<span class="Constant">2</span>*k;i++)
+            ori[<span class="Constant">0</span>][i]=<span class="Constant">1</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;t;i++){
+            goal[i].get();
+            scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;ori[<span class="Constant">2</span>*k+<span class="Constant">1</span>+i][sink]);
+        }
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++)
+                scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;hi[i][j]);
+
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">2</span>*k;i++)
+        {
+            <span class="Type">int</span> tmp[Maxn][Maxm];
+            calc_change(tmp,spos[i].x,spos[i].y,i&gt;=k?<span class="Constant">1</span>:-<span class="Constant">1</span>);
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;t;j++)
+                num[i][j]=tmp[goal[j].x][goal[j].y];
+        }
+
+        <span class="Statement">for</span>(magic=<span class="Constant">0</span>;;magic++){
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)
+                <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;=sink;j++)
+                    cap[i][j]=ori[i][j];
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">2</span>*k;i++)
+                <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;t;j++)
+                    <span class="Statement">if</span>(num[i][j]&lt;=magic)
+                        cap[i+<span class="Constant">1</span>][j+<span class="Constant">2</span>*k+<span class="Constant">1</span>]=<span class="Constant">1</span>;
+            <span class="Statement">if</span>(magic+flow()&gt;=<span class="Constant">2</span>*k)<span class="Statement">break</span>;
+        }
+        printf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Special">\n</span><span class="Constant">&quot;</span>,magic);
+    }
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+
+</pre>
+<h3>Summary of the Revision</h3>
+<b>Constants:</b> 所有的常數都改用常數變數，一個常數變數名字會比一個數字更容易理解，而且修改時只需改一個地方。
+<br/>
+<b>Variable Declaration: </b>減少 Global variable 的使用，也把其他的往裡面拉，盡量在要使用前才宣告。如此在讀 code 時很快就可以找到每個 variable 的 type，避免 variables 在其他地方被誤用，debug 時也更容易縮小範圍。
+<br/>
+<b>Variable Names, Type Names and Function Names: </b>把一些變數名稱改得更貼近它們實際意義。
+<span class="code">Q</span> 和 <span class="code">pos</span> 在這個 program 中的意義是類似的，所以合併。
+<ul>
+	<li><span class="code">c[][] → cap[][]:</span>
+	flow 的 edge <b>cap</b>acity</li>
+	<li><span class="code">o[][] → ori[][]:</span>
+   	<b>ori</b>ginal capacity</li>
+	<li><span class="code">map[][] → hi[][]:</span>
+   	<b>h</b>e<b>i</b>ght</li>
+	<li><span class="code">v → node:</span>
+	</li>
+	<li><span class="code">ta[] → goal[]</span>
+	</li>
+	<li><span class="code">r[], g[], u</span> 都是表示 soldiers，在處理上很相似，所以合併成一個 array。
+	<span class="code">spos:</span> <b>Pos</b>tion of <b>S</b>oldiers
+	</li>
+</ul>
+<b>Function </b><span class="code">calc_change()</span>: 這個 function 內圈有四段很接近的 code，這部份改成一個 loop，code 短了一些，更容易讀或改。另外內圈其實是把 <span class="code">q</span> 當做兩個 stack 操作，所以改用 STL 的 stack，這樣一看就知道是在操作 stack，而且用 STL 通常也比自己寫還要來得可靠。
+
+<b>Comments: </b>重要的 function 前加了簡短的注解，幫助閱讀。

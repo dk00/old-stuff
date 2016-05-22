@@ -1,0 +1,31 @@
+body {
+}
+form {
+  margin: auto;
+  text-align: center;
+}
+textarea {
+  resize: none;
+}
+table {
+  margin: auto;
+  border-collapse: separate;
+  empty-cells: show;
+  background-color: #222;
+  border-spacing: 1px;
+}
+table td {
+  background-color: #fff;
+  padding: 3px;
+}
+.side {
+  float: left;
+}
+.list {
+  height: 600px;
+  display: table-cell;  
+  vertical-align: middle;
+}
+.list, .frame {
+  text-align: center;
+}

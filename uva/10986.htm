@@ -1,0 +1,67 @@
+<title>Sending email</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+</style>
+<div class="Title">Q10986: Sending email</div>
+有 <b>n</b> 個用網路線接起來的 SMTP server，<b>m</b> 條網路線都連接兩台電腦而且傳送 email 訊息時有數微秒延遲。從 server <b>S</b> 透過一連串的網路線送一個訊息到 server <b>T</b> 最少需要多少時間呢? 假設這些 server 都不會造成 delay。
+
+<div class="IOFormat"><b>Input</b></div>
+
+輸入第一行給測資數量 <b>N</b>。接下來有 <b>N</b> 組測資。每組都由一行包含
+<b>n</b> (2&lt;=<b>n</b>&lt;20000), <b>m</b> (0&lt;=<b>m</b>&lt;50000),
+<b>S</b> (0&lt;=<b>S</b>&lt;<b>n</b>) and <b>T</b> 
+(0&lt;=<b>T</b>&lt;<b>n</b>)開始。<b>S</b>!=<b>T</b>。接下來 <b>m</b> 行都包含三個整數: 2 個不同的 server (範圍 [0, <b>n</b>-1]) 
+以雙向的網路線連接，有 <b>w</b> 微秒的延遲，(0&lt;=<b>w</b>&lt;=10000)。
+
+<div class="IOFormat"><b>Output</b></div>
+對每組測資，輸出一行 "Case #<b>x</b>:"；接下來是從 <b>S</b> 送一個訊息到
+<b>T</b> 需要多少微秒。如果沒有從 <b>S</b> 到
+<b>T</b> 的路徑，印出 "unreachable"。
+
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" ><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" ><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <pre><font face="courier new">3
+2 1 0 1
+0 1 100
+3 3 2 0
+0 1 100
+0 2 200
+1 2 50
+2 0 0 1</font></pre>
+    </td>
+    <td width="50%" valign="top">
+      <pre><font face="courier new">Case #1: 100
+Case #2: 150
+Case #3: unreachable</font></pre>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

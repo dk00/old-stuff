@@ -1,0 +1,8 @@
+TaskName: zoo
+Name: Zoo
+TestCase: 20
+Time: 2000
+InFile: *num*.in
+OutFile: *num*.out
+Compare: 0
+Score: 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5

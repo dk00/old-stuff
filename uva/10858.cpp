@@ -1,0 +1,64 @@
+#include<stdio.h>
+bool notp[1500];
+int nn,prime[1000],num[1000],use[1000],path[1000];
+void dfs(int d,int n,int i,int min)
+{
+    if(n<=1)
+    {
+        printf("%d",path[--d]);
+        while(d--)
+            printf(" %d",path[d]);
+        puts("");
+        return;
+    }
+    for(;i<nn;i++)
+        if(use[i])
+        {
+            use[i]--;
+            path[d]*=num[i];
+            if(path[d]>=min)
+                dfs(d+1,n/path[d],0,path[d]);
+            dfs(d,n,i,min);
+            path[d]/=num[i];
+            use[i]++;
+        }
+}
+main()
+{
+    int i,j,k,p,n;
+    prime[0]=2;
+    for(p=1,i=3;i<1500;i++,i++)
+        if(!notp[i])
+        {
+            prime[p++]=i;
+            for(j=i*3;j<1500;j+=i*2)
+                notp[j]=1;
+        }
+    while(1)
+    {
+        scanf("%d",&n);
+        if(n==0)
+            break;
+        for(i=nn=0;prime[i]<=n/prime[i];i++)
+        {
+            if(n%prime[i]==0)
+            {
+                use[nn]=0;
+                while(n%prime[i]==0)
+                    n/=prime[i],use[nn]++;
+                num[nn++]=prime[i];
+            }
+        }
+        if(n>1)
+            num[nn]=n,use[nn++]=n;
+        if(nn==0)
+        {
+            puts("0");
+            continue;
+        }
+        for(i=0,j=1;i<nn;i++)
+            j*=use[i]+1;
+        printf("%d\n",j);
+        dfs(0,n,0,1);
+    }
+}

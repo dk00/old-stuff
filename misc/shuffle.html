@@ -1,0 +1,19 @@
+<script>
+function go()
+{
+	var t=document.getElementById('text').value.split(/\n/);
+	for(i=0;i<t.length;i++)
+		alert(t[i]);
+	return false;
+}
+function click()
+{
+	alert('click');
+	return false;
+}
+</script>
+<textarea rows="25" cols="99" id="text">
+
+</textarea><br />
+<input type="submit" value="Go"onclick="return go();" />
+<a href="http://www.google.com" onclick="return click();">test</a>

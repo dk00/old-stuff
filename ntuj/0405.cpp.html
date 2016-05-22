@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<title>d:\A\NTUJ\0405.cpp.html</title>
+<style type="text/css">
+<!--
+.Type { color: #2e8b57; font-weight: bold; }
+.Special { color: #6a5acd; }
+pre { font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+.PreProc { color: #a020f0; }
+.Constant { color: #ff00ff; }
+.Statement { color: #804040; font-weight: bold; }
+-->
+</style>
+<pre>
+<span class="PreProc">#include</span><span class="Constant">&lt;map&gt;</span>
+<span class="PreProc">#include</span><span class="Constant">&lt;cstdio&gt;</span>
+<span class="PreProc">#include</span><span class="Constant">&lt;string&gt;</span>
+<span class="Statement">using</span> <span class="Type">namespace</span> std;
+<span class="Type">const</span> <span class="Type">int</span> N=<span class="Constant">128</span>,M=<span class="Constant">128</span>,dx[]={<span class="Constant">0</span>,<span class="Constant">1</span>,<span class="Constant">0</span>,<span class="Constant">1</span>},dy[]={<span class="Constant">0</span>,<span class="Constant">0</span>,<span class="Constant">1</span>,<span class="Constant">1</span>};
+<span class="Type">char</span> s[<span class="Constant">9</span>][N+<span class="Constant">1</span>][N+<span class="Constant">1</span>];
+map&lt;string,<span class="Type">int</span>&gt; h;
+<span class="Type">int</span> go(<span class="Type">int</span> x,<span class="Type">int</span> y,<span class="Type">int</span> n)
+{
+    <span class="Statement">if</span>(!n)
+        <span class="Statement">return</span> <span class="Constant">1</span>;
+    <span class="Type">int</span> i,j,d=(<span class="Constant">1</span>&lt;&lt;(n-<span class="Constant">1</span>)),sum=<span class="Constant">1</span>;
+    <span class="Statement">for</span>(i=j=<span class="Constant">0</span>;i&lt;<span class="Constant">4</span>;i++)
+    {
+        sum+=go(x+d*dx[i],y+d*dy[i],n-<span class="Constant">1</span>);
+        <span class="Statement">if</span>(i &amp;&amp; s[n-<span class="Constant">1</span>][x+d*dx[i]][y+d*dy[i]]!=
+        s[n-<span class="Constant">1</span>][x+d*dx[i-<span class="Constant">1</span>]][y+d*dy[i-<span class="Constant">1</span>]])j=<span class="Constant">1</span>;
+    }
+    <span class="Statement">if</span>(s[n-<span class="Constant">1</span>][x][y]!=<span class="Constant">3</span> &amp;&amp; !j)
+    {
+        s[n][x][y]=s[n-<span class="Constant">1</span>][x][y];
+        <span class="Statement">return</span> <span class="Constant">1</span>;
+    }
+    s[n][x][y]=<span class="Constant">3</span>;
+    <span class="Statement">return</span> sum;
+}
+string t[<span class="Constant">9</span>][N][N];
+<span class="Type">int</span> gos(<span class="Type">int</span> x,<span class="Type">int</span> y,<span class="Type">int</span> n)
+{
+    <span class="Statement">if</span>(s[n][x][y]!=<span class="Constant">3</span>)<span class="Statement">return</span> <span class="Constant">1</span>;
+    <span class="Type">int</span> i,nx,ny,sum=<span class="Constant">1</span>,d=(<span class="Constant">1</span>&lt;&lt;(n-<span class="Constant">1</span>));
+    string &amp;cur=t[n][x][y];
+    cur=<span class="Constant">&quot;&quot;</span>;
+    <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">4</span>;i++)
+    {
+        nx=x+d*dx[i];
+        ny=y+d*dy[i];
+        <span class="Statement">if</span>(s[n-<span class="Constant">1</span>][nx][ny]!=<span class="Constant">3</span>)
+            sum++,cur+=(s[n-<span class="Constant">1</span>][nx][ny]+<span class="Constant">'0'</span>);
+        <span class="Statement">else</span>
+            sum+=gos(nx,ny,n-<span class="Constant">1</span>),cur+=<span class="Constant">&quot;(&quot;</span>+t[n-<span class="Constant">1</span>][nx][ny]+<span class="Constant">&quot;)&quot;</span>;
+    }
+    <span class="Statement">if</span>(h[cur])sum=<span class="Constant">0</span>;
+    <span class="Statement">else</span> h[cur]=<span class="Constant">1</span>;
+    <span class="Statement">return</span> sum;
+}
+main()
+{
+    <span class="Type">int</span> i,j,n,m;
+    <span class="Statement">while</span>(~scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;n,&amp;m) &amp;&amp; n+m)
+    {
+        h.clear();
+        <span class="Statement">for</span>(<span class="Type">int</span> k=<span class="Constant">0</span>;k&lt;<span class="Constant">9</span>;k++)
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;N;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;M;j++)
+                s[k][i][j]=<span class="Constant">0</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+        {
+            scanf(<span class="Constant">&quot;</span><span class="Special">%s</span><span class="Constant">&quot;</span>,s[<span class="Constant">0</span>][i]);
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++)
+                s[<span class="Constant">0</span>][i][j]-=<span class="Constant">'0'</span>;
+        }
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;(<span class="Constant">1</span>&lt;&lt;i)&lt;n || (<span class="Constant">1</span>&lt;&lt;i)&lt;m;i++);
+        j=go(<span class="Constant">0</span>,<span class="Constant">0</span>,i);
+        printf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Special">\n</span><span class="Constant">&quot;</span>,j,gos(<span class="Constant">0</span>,<span class="Constant">0</span>,i));
+    }
+}
+</pre>
+

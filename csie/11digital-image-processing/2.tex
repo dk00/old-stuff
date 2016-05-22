@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,CJK}
+\topmargin=0pt
+\headheight=0pt
+\headsep=0pt
+\textheight=750pt
+\footskip=0pt
+\voffset=-40pt
+\textwidth=520pt
+\marginparsep=0pt
+\marginparwidth=0pt
+\marginparpush=0pt
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\hoffset=-50pt
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cl}[1]{\begin{description}#1\end{description}}
+\newcommand{\ol}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\ul}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\code}[1]{\begin{verbatim} #1 \end{verbatim}}
+
+
+\begin{document}
+\begin{CJK*}{Bg5}{bkai}
+\section*{DIP HW2}
+
+\subsection*{Problem 1}
+(A)\\
+\includegraphics[scale=0.5]{corridor_bc.png}
+\includegraphics[scale=0.5]{corridor_nc.png}\\
+1(b) 含有\ impulse\ noise\ ，可先用\ median filter\ 處理。\\
+1(a) 如果用 low pass filter 處理，就和接下來要做的事相反，所以不用。\\
+\\
+(B)\\
+\includegraphics[scale=0.5]{corridor_e1.png}
+\\
+兩個圖在做\ edge crispening\ 之後，圖中的 edge 都更清楚，
+所以可以建出更好的\ edge\ map\ ，當然 1(b) 的\ noise\ 也要先消除；
+這裡的\ edge\ crispening\ 因為中間的結果不是最後需要的，可以用讓圖更銳利的參數。
+\\
+取\ threshold\ 之前，grey\ scale\ 的\ edge\ map\ 也可以做類似\ edge\ crispening
+的處理。threshold 在測試過各種結果之後，取最好的 48。
+
+\includegraphics[scale=0.5]{histogram.png}
+\includegraphics[scale=0.5]{corridor_e2.png}
+\\
+左圖為 Laplacian transform 之後 histogram。\\
+
+Transform 之後的值先分組，得出每一組的數量；數量較少的部分依原本的數值設為 1 或
+-1，其他為 0。之後就找 zero-crossing。\\
+
+可能是因為\ implementation\ 的關係，2nd-order 的結果看起來較差。\\
+
+
+\subsection*{Problem 2}
+(A)\\
+\includegraphics[scale=0.5]{candy.png}
+\\
+
+Polynomial\ Warping\ 似乎不容易做出最理想的形狀，所以這裡每塊圖都是用個別的
+方法來達成指定的形狀\\
+橢圓的處理方式是，將圖分為多層長方形，將橢圓每一層對應到的長方形填入橢圓上；
+圓形也是用同樣的方法處理。\\
+
+三角形的部分是分上下兩邊，長度由左到右遞增(減)，上下垂直方向則依長度收縮。\\
+(B)\\
+\includegraphics[scale=0.5]{icassp.png}
+
+ 以到中點的距離判斷點是不是在圓上，再用三角函數計算點的轉換。
+\newpage
+\end{CJK*}
+\end{document}

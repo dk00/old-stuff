@@ -1,0 +1,42 @@
+.import java.io.*
+.class test
+.method void <init>()
+	aload #0
+	invokespecial void <init>() @ Object
+	return
+.method public static void main(String[])
+;new frame
+;var a(0)
+;var b(1)
+;var c(2)
+;var d(3)
+;var e(4)
+;var f(5)
+	ldc 30
+	istore #0
+	ldc 40
+	istore #1
+	iload #0
+	iload #1
+	iload #2
+	imul
+	iadd
+	iload #3
+	iadd
+	istore #2
+	iload #0
+	iload #1
+	iadd
+	iload #2
+	iload #3
+	iadd
+	imul
+	istore #2
+	getstatic PrintStream out @ System
+	iload #0
+	invokevirtual void println(int) @ PrintStream
+	getstatic PrintStream out @ System
+	iload #1
+	invokevirtual void println(int) @ PrintStream
+;frame end
+	return

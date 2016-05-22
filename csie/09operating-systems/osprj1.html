@@ -1,0 +1,440 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<style>
+    body {
+	font-family: Segoe UI;
+    }
+    h2, .info {
+	text-align: center;
+    }
+    h2,h3{
+	margin-bottom: 5pt;
+    }
+    ul{
+	margin-top: 3pt;
+    }
+    .info{
+	font-size: 80%;
+    }
+    .linenum {
+    }
+    .codebox {
+	width: 100%;
+    }
+    .codebox, .linenum {
+	display: table-cell;
+	font-size: 75%;
+	border: 1px groove;
+	border-color: #808080;
+    }
+</style>
+<title>Operating Systems Project 1 Report</title>
+<h2>Operating Systems Project 1 Report</h2>
+<h3>Adding System calls</h3>
+<ul>
+    <li>/code/test/start.S</li>
+    加進新 System calls 的 stubs。
+    <pre class="linenum"> 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+...
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
+    <pre class="codebox">
++        .globl  SimplePrint
++        .ent    SimplePrint
++SimplePrint:
++        addiu $2,$0,SC_SimplePrint
++        syscall
++        j       $31
++        .end SimplePrint
+
++        .globl CreateThreads 
++        .ent   CreateThreads
++CreateThreads:
++        addiu $2, $0, SC_CreateThreads
++        syscall
++        j       $31
++        .end CreateThreads
++
++        .globl SetPriority
++        .ent   SetPriority
++SetPriority:
++        addiu $2, $0, SC_SetPriority
++        syscall
++        j       $31
++        .end SetPriority</pre>
+    <li>/code/userprog/syscall.h</li>
+    加入新 System calls 的號碼和 function prototypes。
+    <pre class="linenum"> 39
+ 40
+ 41
+...
+ 64
+ 65
+ 66
+ 67
+ 68
+...
+185
+186
+187
+188
+189</pre>
+    <pre class="codebox">
++#define SC_SimplePrint  43
++#define SC_CreateThreads 44 
++#define SC_SetPriority  45
+
++/*
++ * Simple print function, parse only first %d
++ */
++
++void SimplePrint(char *msg,int value);
+
++// Create a simple thread in the kernal and return its id.
++int CreateThreads();
++
++// Set the priority of a thread (0 stands for the highest priority).
++void SetPriority(int id,int prio);</pre>
+
+    <li>/code/userprog/exception.cc</li>
+    加入處理新 System calls 的部份。讓 program counter 指向下一個 instruction 的 code 因為大部分的
+    System calls 都會用到，所以抽出來寫成一個 funciton。
+    <pre class="linenum"> 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+...
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106</pre>
+    <pre class="codebox">
++void IncPC(){
++    /* Modify return point */
++    /* set previous programm counter (debugging only)*/
++    kernel-&gt;machine-&gt;WriteRegister(PrevPCReg, kernel-&gt;machine-&gt;ReadRegister(PCReg));
++
++    /* set programm counter to next instruction (all Instructions are 4 byte wide)*/
++    kernel-&gt;machine-&gt;WriteRegister(PCReg, kernel-&gt;machine-&gt;ReadRegister(PCReg) + 4);
++
++    /* set next programm counter for brach execution */
++    kernel-&gt;machine-&gt;WriteRegister(NextPCReg, kernel-&gt;machine-&gt;ReadRegister(PCReg)+4);
++    return;
++}
+
++                case SC_SimplePrint:
++                    SysSimplePrint();
++                    IncPC();
++                    return;
++                    ASSERTNOTREACHED();
++                    break;
++                case SC_CreateThreads:
++                    SysCreateThreads();
++                    IncPC();
++                    return;
++                    ASSERTNOTREACHED();
++                    break;
++                case SC_SetPriority:
++                    SysSetPriority();
++                    IncPC();
++                    return;
++                    ASSERTNOTREACHED();
++                    break;</pre>
+
+    <li>/code/userprog/ksyscall.h</li>
+	實際處理 system call 的部份。<br/>
+	SimplePrint 從 register 讀出 string 的 address 和數字，並依要求印出結果。
+	CreateThreads 建立一個新的 Thread 並分配一個獨特的 tid 給那個 thread，只有 
+	user 可以控制的 thread 會有 tid。SetPriority 改變指定 thread 的 priority，
+	並視情況把 CPU 使用權交給 priority 較高的 thread。
+    <pre class="linenum"> 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87</pre>
+    <pre class="codebox">
++inline void SysSimplePrint()
++{
++    int i,d,tmp,tmp1;
++    i=kernel-&gt;machine-&gt;ReadRegister(4);
++    d=kernel-&gt;machine-&gt;ReadRegister(5);
++    for(;kernel-&gt;machine-&gt;ReadMem(i,1,&amp;tmp) &amp;&amp; tmp;i++){
++        kernel-&gt;machine-&gt;ReadMem(i+1,1,&amp;tmp1);
++        if(tmp=='%' &amp;&amp; tmp1=='d'){
++            cout &lt;&lt; d;
++            i+=2;
++            break;
++        }
++        else
++            cout &lt;&lt;(char)tmp;
++    }
++    for(;kernel-&gt;machine-&gt;ReadMem(i,1,&amp;tmp) &amp;&amp; tmp;i++)
++        cout &lt;&lt;(char)tmp;
++}
+
++static void verySimpleThread(int tid){
++    cout&lt;&lt;"This is thread "&lt;&lt;tid&lt;&lt;" (prio="&lt;&lt;kernel-&gt;tidTable[tid]-&gt;prio&lt;&lt;")"&lt;&lt;endl;
++}
+ 
++inline void SysCreateThreads(){
++    Thread *thread = new Thread("new thread");
++    thread-&gt;tid=kernel-&gt;idDistribution(thread);
++	 thread-&gt;prio=kernel-&gt;currentThread-&gt;prio+1;
++    kernel-&gt;machine-&gt;WriteRegister(2,thread-&gt;tid);
++    if(thread-&gt;tid&lt;0){
++        delete thread;
++        return;
++    }
++    thread-&gt;Fork((VoidFunctionPtr) verySimpleThread, (void *) thread-&gt;tid);
++}
+ 
++inline void SysSetPriority(){
++    int tid = kernel-&gt;machine-&gt;ReadRegister(4);
++    int prio = kernel-&gt;machine-&gt;ReadRegister(5);
++    if(tid&lt;0 || tid&gt;=kernel-&gt;tidTable.size()){
++        cerr &lt;&lt; "Invalid tid: " &lt;&lt; tid &lt;&lt; endl;
++        return;
++    }
++    Thread* thread = kernel-&gt;tidTable[tid];
++    if(thread==NULL){
++        cerr &lt;&lt; "Thread " &lt;&lt; tid &lt;&lt; " does not exist.\n";
++        return;
++    }
++    SortedList&lt;Thread*&gt;* readyList = kernel-&gt;scheduler-&gt;readyList;
++    thread-&gt;prio=prio;
++    if(readyList-&gt;IsEmpty())
++        return;
++    if(readyList-&gt;IsInList(thread))
++        readyList-&gt;Remove(thread);
++    if(thread!=kernel-&gt;currentThread &amp;&amp; !readyList-&gt;IsInList(thread))
++        readyList-&gt;Insert(thread);
++    if(readyList-&gt;Front()-&gt;prio &lt; kernel-&gt;currentThread-&gt;prio)
++        kernel-&gt;currentThread-&gt;Yield();
++}</pre>
+
+	<li>/code/threads/thread.h</li>
+	Thread 增加了給 user 辨識用的 tid，還有優先順序。
+    <pre class="linenum"> 83
+...
+115</pre>
+    <pre class="codebox">
++    int tid,prio;
+
++    const static int default_prio=10;</pre>
+
+	<li>/code/threads/thread.cc</li>
+	建立新的 thread 時，給予預設的 priority。<br/>
+	Thread 被消滅時，如果有 tid，就歸還 tid。
+    <pre class="linenum"> 39
+ 40
+...
+ 67</pre>
+    <pre class="codebox">
++    tid = -1;
++    prio = default_prio;
+
++    if(tid&gt;=0)kernel-&gt;tidTable[tid]=NULL;</pre>
+
+
+    <li>/code/threads/kernel.h</li>
+    <pre class="linenum"> 21
+...
+ 45
+...
+ 63</pre>
+    <pre class="codebox">
++#include &lt;vector&gt;
+
++    int idDistribution(Thread* thread);
+
++    vector&lt;Thread* &gt; tidTable;</pre>
+
+	<li>/code/threads/kernel.cc</li>
+	給 Main thread 一個 tid，因為這個 thread 是第一個去拿 tid 的，所以一定會拿到 0 號。</br>
+	關掉 alarm 避免一些非預期的效果。
+	idDistribution 分配 tid 給指定的 thread 供 user 辨識。
+    <pre class="linenum"> 94
+ 95
+...
+
+101
+...
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</pre>
+    <pre class="codebox">
++    currentThread-&gt;tid=kernel-&gt;idDistribution(currentThread);
++    currentThread-&gt;prio=0;
+
+-    alarm = new Alarm(randomSlice);     // start up time slicing
++    //alarm = new Alarm(randomSlice);   // start up time slicing
+
++int Kernel::idDistribution(Thread* thread){
++  for(int i=0;i&lt;tidTable.size();++i)
++    if(tidTable[i]==NULL){
++      tidTable[i]=thread;
++      return i;
++    }
++  try{
++  tidTable.push_back(thread);
++  }catch(int e){
++    return -1;
++  }
++  return tidTable.size()-1;
++}</pre>
+
+
+
+</ul>
+<h3>Implementation of the Priority-based schduler</h3>
+<ul>
+	<li>/code/threads/schduler.h</li>
+	原本的 list 換成了以 priority 排序的 list，值較小的 thread 先執行。
+    <pre class="linenum"> 
+ 40</pre>
+    <pre class="codebox">
+-    List&lt;Thread *&gt; *readyList;
++        SortedList&lt;Thread *&gt; *readyList;</pre>
+    <li>/code/threads/scheduler.cc</li>
+    <pre class="linenum"> 
+ 35
+...
+
+ 63
+...
+178
+179
+180
+181
+182
+183
+184
+185</pre>
+    <pre class="codebox">
+-    readyList = new List&lt;Thread *&gt;; 
++    readyList = new SortedList&lt;Thread*&gt;(&amp;compare);
+
+-    readyList-&gt;Append(thread);
++    readyList-&gt;Insert(thread);
+
++int compare(Thread* ob1,Thread* ob2){
++    if(ob1-&gt;prio &lt; ob2-&gt;prio)
++     return -1;
++    else if(ob1-&gt;prio == ob2-&gt;prio)
++      return 0;
++    else
++      return 1;
++}</pre>
+</ul>
+<h3>Notes</h3>
+<ul>
+	<li>Nachos 是在實際的 machine 上跑的，user program 才是真的在 MIPS 模擬程式上跑。
+	所以 SimplePrint 給的 pointer 是 MIPS 模擬程式的 pointer。</li>
+	<li>CreateThreads 建立的 Thread 是 kernel level thread，在這次的 project 中只執行 
+	verySimpleThread，這個完全是在 kernel 層跑的，不過他也可以執行 user program。</li>
+	<li>因為 threads 會在實際的 machine 執行，SWITCH 才需要以 assembly 為不同的 machine 各寫
+	一個版本；如果連系統本身都在 MIPS 模擬程式上跑，那就可以不用這樣寫了。</li>
+</ul>

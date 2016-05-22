@@ -1,0 +1,161 @@
+<title>Nuts 'n' Bolts</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+    .IODescription{
+        line-height: 15pt;
+        font-family:Courier New
+    }
+    .note{
+        font-color: #ffff00;
+        background: #000000;
+    }
+<!--
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+-->
+</style>
+<div class="Title">Q11138: Nuts 'n' Bolts</div>
+某天下午，你的手機響了。是你的表弟 Jimmy。<br>
+"Hi Cuz," 他說 "我需要你幫忙，而且要盡快。我正在進行一場程式設計比賽，而且不管我怎麼試，我都不能讓那個問題在兩秒的時間內完成。"<br>
+"嘎... 呱...，那不是有點違法嗎？" 你試著要跟他說，但是他喋喋不休。<br>
+"我剛溜出比賽的房間，然後想辦法把我的 code 和範例 I/O 用 email 傳給你"，他繼續說 "我一個小時之內會再來看我的 mail，所以請幫我把他改好"。<br>
+"那問題的敘述呢？" 你問。<br>
+"辦不到" 他說 "裁判老大 Zoroman 已經跟在我後面了。所以我要走了；Bye, 還有...，呃，謝謝。"<p>
+
+你會幫他嗎？
+<div class="IOFormat"><b>Jimmy's Code</b></div>
+<table><tbody><tr><td class="code">
+#include&nbsp;&lt;stdio.h&gt;<br>
+&nbsp;<br>
+#define&nbsp;MAX_BOLTS&nbsp;500<br>
+#define&nbsp;MAX_NUTS&nbsp;&nbsp;500<br>
+
+&nbsp;<br>
+/*&nbsp;global&nbsp;copy&nbsp;of&nbsp;the&nbsp;input&nbsp;data&nbsp;*/<br>
+int&nbsp;nuts,bolts;<br>
+int&nbsp;fits[MAX_BOLTS][MAX_NUTS];<br>
+<br>
+
+void&nbsp;read_input_data(void){<br>
+&nbsp;&nbsp;&nbsp;int&nbsp;n,b;<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;scanf("%d%d",&amp;bolts,&amp;nuts);<br>
+&nbsp;&nbsp;&nbsp;for(b=0;b&lt;bolts;b++){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(n=0;n&lt;nuts;n++){<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%d",&amp;fits[b][n]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;}<br>
+<br>
+/*&nbsp;data&nbsp;used&nbsp;to&nbsp;match&nbsp;nuts&nbsp;with&nbsp;bolts&nbsp;*/<br>
+
+int&nbsp;nut_used[MAX_NUTS];<br>
+int&nbsp;bestmatched;<br>
+<br>
+void&nbsp;init_match(void){<br>
+&nbsp;&nbsp;&nbsp;int&nbsp;n;<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;bestmatched=0;<br>
+&nbsp;&nbsp;&nbsp;for(n=0;n&lt;nuts;n++)&nbsp;nut_used[n]=0;<br>
+
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;<br>
+void&nbsp;match_bolt(int&nbsp;boltno,&nbsp;int&nbsp;matched){<br>
+&nbsp;&nbsp;&nbsp;int&nbsp;n;<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;if(boltno==bolts){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(matched&gt;bestmatched)&nbsp;bestmatched=matched;<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;/*&nbsp;don't&nbsp;match&nbsp;this&nbsp;bolt&nbsp;*/<br>
+&nbsp;&nbsp;&nbsp;match_bolt(boltno+1,matched);<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;/*&nbsp;match&nbsp;with&nbsp;all&nbsp;unused&nbsp;nuts&nbsp;that&nbsp;fit&nbsp;this&nbsp;bolt&nbsp;*/<br>
+
+&nbsp;&nbsp;&nbsp;for(n=0;n&lt;nuts;n++)&nbsp;if(!nut_used[n]&nbsp;&amp;&amp;&nbsp;fits[boltno][n]){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nut_used[n]=1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match_bolt(boltno+1,matched+1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nut_used[n]=0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;<br>
+int&nbsp;main(){<br>
+
+&nbsp;&nbsp;&nbsp;int&nbsp;cases,caseno;<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;scanf("%d",&amp;cases);<br>
+&nbsp;&nbsp;&nbsp;for(caseno=1;caseno&lt;=cases;caseno++){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;read_input_data();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;init_match();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;match_bolt(0,0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("Case&nbsp;%d:&nbsp;",caseno);<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("a&nbsp;maximum&nbsp;of&nbsp;%d&nbsp;nuts&nbsp;and&nbsp;bolts&nbsp;",bestmatched);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("can&nbsp;be&nbsp;fitted&nbsp;together\n");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+
+&nbsp;&nbsp;&nbsp;return&nbsp;0;<br>
+&nbsp;&nbsp;&nbsp;}<br>
+<br></td></tr></tbody></table>
+<br>
+
+
+
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>2
+3 4
+0 0 1 0
+1 1 0 1
+0 0 1 0
+5 5
+1 0 0 1 1
+1 1 0 0 0
+1 0 0 0 0
+0 1 1 0 0
+0 0 0 0 1</pre></div>
+    </td>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>Case 1: a maximum of 2 nuts and bolts can be fitted together
+Case 2: a maximum of 5 nuts and bolts can be fitted together</pre></div>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

@@ -1,0 +1,19 @@
+# DIP Homework Assignment #2
+# ID: B96902120
+# email: b96120@csie.ntu.edu.tw
+# compiled on linux with g++
+# to compile: make -f README
+
+CXX=g++
+LN=g++
+
+SOURCE=high.cpp mid.cpp high1.cpp th0.cpp grad.cpp grad2.cpp th.cpp circ.cpp tri.cpp elli.cpp rotate.cpp
+BIN=high mid high1 grad grad2 th0 th circ tri elli rotate 
+all: high mid high1 grad grad2 th0 th circ tri elli rotate 
+	@echo "usage: use 2.1.sh for problem 1, 2.2.sh for problem 2"
+
+%:	%.cpp io.h
+	$(CXX) $< -o $@
+
+clean:
+	rm -f $(BIN)

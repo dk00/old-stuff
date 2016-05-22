@@ -1,0 +1,32 @@
+// size 32
+// export 5
+// A 0x00
+// B 0x01
+// C 0x02
+// main 0x10
+// mul3 0x16
+// literal 2 20 23 
+// lines 19
+00: 0003
+01: 0004
+02: 0005
+10: 8A00
+11: 8B01
+12: 8C02
+13: FF16
+14: 9DFF
+15: 0000
+16: FE00
+17: 7D00
+18: 1DC0
+19: FF00
+1A: 1AC0
+1B: 1BD0
+1C: FF00
+1D: 1DC0
+1E: FE00
+1F: EF00
+// import 3
+// push 1 0x16 
+// mul 2 0x19 0x1C 
+// pop 1 0x1E 

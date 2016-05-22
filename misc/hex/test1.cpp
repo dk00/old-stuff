@@ -1,0 +1,63 @@
+#include"game.h"
+#include<cstdio>
+int s[13][13];
+//int adj1[61][7],adj2[61][13];
+main()
+{
+    int i,j,k;
+    for(i=0;i<5;i++)
+        for(j=0;j<i+5;j++)
+            printf("{%d,%d},",i,j);
+    for(;i<9;i++)
+        for(j=i-4;j<9;j++)
+            printf("{%d,%d},",i,j);
+    puts("");
+    for(i=0;i<13;i++)
+        for(j=0;j<13;j++)
+            s[i][j]=-1;
+    for(i=0;i<61;i++)
+        s[pos[i].x+2][pos[i].y+2]=i;
+    for(i=0;i<13;i++)
+    {
+        printf("{");
+        for(j=0;j<13;j++)
+            printf("%2d,",s[i][j]);
+        puts("}");
+    }
+   /*for(i=0;i<61;i++)
+    {
+        for(j=1,k=0;j<=6;j++)
+        {
+            adj1[i][k]=num0(pos[i]+d[j]);
+            if(adj1[i][k]>=0)k++;
+        }
+        adj1[i][k]=-1;
+        for(k=0;j<=18;j++)
+        {
+            adj2[i][k]=num0(pos[i]+d[j]);
+            if(adj2[i][k]>=0)k++;
+        }
+        adj2[i][k]=-1;
+    }
+    for(i=0;i<61;i++)
+    {
+        printf("{");
+        for(j=0;j<=6;j++)
+        {
+            printf("%d",adj1[i][j]);
+            if(j<6)printf(",");
+        }
+        puts("},");
+    }
+    for(i=0;i<61;i++)
+    {
+        printf("{");
+        for(j=0;j<=12;j++)
+        {
+            printf("%d",adj2[i][j]);
+            if(j<12)printf(",");
+        }
+        puts("},");
+    }*/
+    scanf(" ");
+}

@@ -1,0 +1,5 @@
+clock(): 0
+cudaAPI: 0.072192
+
+strides
+0 0.057792

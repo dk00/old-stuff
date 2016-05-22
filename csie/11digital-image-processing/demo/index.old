@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<title>DIP | Demonstration</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script>
+		!window.jQuery && document.write('<script src="jquery-1.4.3.min.js"><\/script>');
+	</script>
+	<script type="text/javascript" src="./fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="./fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="./fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+ 	<link rel="stylesheet" href="style.css" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("a[rel=main]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="content">
+	<h1>DIP Final Project <span> team 20</span></h1>
+	<p>
+	B96902120, B97902115, B98902116
+	</p>
+
+  <form id="upload" enctype="multipart/form-data" action="." method="POST">
+  	<input name="pass" type="password" />
+  	<input name="upload" type="file"/>
+	  <input type="submit" value="Upload"/><br/>
+  </form>
+	<br/>
+	<hr />
+	<p>
+	Image Gallery <br />
+	<a rel="example_group" href="./example/1_b.jpg" title="sample1.jpg"><img alt="" src="./example/1_s.jpg" /></a>
+	<a rel="example_group" href="./example/2_b.jpg" title="sample2.jpg"><img alt="" src="./example/2_s.jpg" /></a>
+	<a rel="example_group" href="./example/3_b.jpg" title="sample3.jpg"><img alt="" src="./example/3_s.jpg" /></a>
+	<a rel="example_group" href="./example/4_b.jpg" title="sample4.jpg"><img alt="" src="./example/4_s.jpg" /></a>
+	<a rel="example_group" href="./example/5_b.jpg" title="sample5.jpg"><img alt="" src="./example/5_s.jpg" /></a>
+	<a rel="example_group" href="./example/6_b.jpg" title="sample6.jpg"><img alt="" src="./example/6_s.jpg" /></a>
+	<a rel="example_group" href="./example/7_b.jpg" title="sample7.jpg"><img alt="" src="./example/7_s.jpg" /></a>
+	<a rel="example_group" href="./example/8_b.jpg" title="sample8.jpg"><img alt="" src="./example/8_s.jpg" /></a>
+	<a rel="example_group" href="./example/9_b.jpg" title="sample9.jpg"><img alt="" src="./example/9_s.jpg" /></a>
+	<a rel="example_group" href="./example/10_b.jpg" title="sample10.jpg"><img alt="" src="./example/10_s.jpg" /></a>
+	<a rel="example_group" href="./example/11_b.jpg" title="sample11.jpg"><img alt="" src="./example/11_s.jpg" /></a>
+	<a rel="example_group" href="./example/big.jpg" title="big.jpg"><img alt="" src="./example/big.jpg" width="75" height="75" /></a>
+	<a rel="example_group" href="./example/12_b.jpg" title="sample12.jpg"><img class="last" alt="" src="./example/12_s.jpg" /></a>
+	</p>
+</div>
+</body>
+</html>

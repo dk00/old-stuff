@@ -1,0 +1,19 @@
+# DIP Homework Assignment #1
+# ID: B96902120
+# email: b96120@csie.ntu.edu.tw
+# compiled on linux with g++
+
+CXX=g++
+LN=g++
+
+SOURCE=linear.cpp eq.cpp quan.cpp cat.cpp med.cpp mean.cpp
+BIN=linear eq quan cat med mean
+all: linear eq quan cat med mean
+	@echo "usage: use 1.sh for problem 1, 2.sh for problem 2"
+
+%:	%.cpp io.h
+	$(CXX) $< -o $@
+
+clean:
+	rm -f linear eq quan cat med mean
+

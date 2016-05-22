@@ -1,0 +1,22 @@
+#include<cstdio>
+main()
+{
+    int i,n,T,s[11];
+    scanf("%d",&T);
+    while(T--)
+    {
+        scanf("%d",&n);
+        if(n==1)putchar('1');
+        for(i=0;i<10;i++)s[i]=0;
+        for(i=9;i>1;i--)
+            while(n%i==0)n/=i,s[i]++;
+        if(n>1)
+        {
+            puts("-1");
+            continue;
+        }
+        for(i=2;i<=9;i++)
+            while(s[i]--)putchar(i+'0');
+        puts("");
+    }
+}

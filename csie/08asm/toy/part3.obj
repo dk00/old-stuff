@@ -1,0 +1,25 @@
+// size 47
+// export 3
+// s 0x00
+// s0 0x23
+// s1 0x28
+// literal 3 34 35 45 
+// lines 15
+10: C021
+21: 7C00
+22: 7101
+23: 82ff
+24: C228
+25: B20C
+26: 1CC1
+27: C023
+28: 7A00
+29: 2CCA
+2A: FF00
+2B: 1A0B
+2C: FF00
+2D: 9Bff
+2E: 0000
+// import 2
+// cnt0 1 0x2A 
+// bcd 1 0x2C 

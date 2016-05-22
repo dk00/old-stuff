@@ -1,0 +1,3 @@
+不用 Strategy Pattern 時，code 有很多重複的地方，而且要改變相同的行為時，每個
+地方都要改一次。例如覺得用 Quack 表示鴨子的叫聲不好，想改用別的，就要改 MallardDuck, RedHeadDuck 以及 ModelDuck 的 quack。要改這麼多個東西，很容易不小心露掉一個，或是改錯。另外一個是，如果之後想加一種可以用熱氣球飛的鴨子，就要改 fly 裡的
+東西，然後 Duck 裡面也要多一個 usingBalloon 之類的 varible；如果用 Strategy Pattern，就不用這麼麻煩。

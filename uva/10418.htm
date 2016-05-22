@@ -1,0 +1,90 @@
+<title>Hyper Toy Soldiers</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+    .IODescription{
+        line-height: 15pt;
+        font-family:Courier New
+    }
+    .note{
+        font-color: #ffff00;
+        background: #000000;
+    }
+</style>
+<div class="Title">Q10418: Hyper Toy Soldiers</div>
+<p>
+Alan 的爸爸買了一盒玩具士兵給他，有 <b>k</b> 個紅士兵，<b>k</b> 個綠士兵，還有一個金士兵。有一個 <b>m</b> x <b>n</b> 的 board，每個格子都有一個高度 <b>h<sub>i,j</sub></b>，而且所有的格子都大到可以把所有的士兵放進去。一開始，每個士兵都被放在一個格子（沒有必要完全不同），而且選了 <b>t</b> 個終點格，每個都指定了一個"重要值" <b>r<sub>i</sub></b>。目標是把士兵移進這 <b>t</b> 個格子，使得第 <b>i</b> 個格子裡有剛好 <b>r<sub>i</sub></b> 個士兵，每個士兵都必須在 <b>t</b> 個格子的其中一個，所以所有 <b>r<sub>i</sub></b> 的總和保證等於 <b>2k+1</b>。<p>
+任何時間，一個士兵可以往相鄰（東，西，南或北）的格子移動，但是不能移出 board。紅士兵只能往上爬，所以他只能往不比目前低的格子移動；綠士兵只能往下跳，所以他只能往不比目前高的格子移動。金色的士兵可以自由的在 board 上移動。<p>
+因為目標有可能無法達成，所以 Alan 被允許使用一種魔法。每一次使用這個魔法，他都可以重排所有的士兵（就是說，他可以交換任意次，可是不能移動任一個士兵）。<p>
+
+幫 Alan 用最少次魔法達到目標。
+<div class="IOFormat"><b>Input</b></div>
+輸入的第一行包含測資組數 <b>t</b>(<b>1</b><=<b>t</b><=<b>10</b>)。每一組測資第一行有四個整數 <b>m</b>,<b>n</b>,<b>k</b>,<b>t</b>(<b>2</b><=<b>m</b>,<b>n</b><=<b>100</b>, <b>1</b><=<b>k</b><=<b>50</b>,<b>1</b><=<b>t</b><=<b>2k</b>+<b>1</b>)。
+第二行包含 <b>2k</b>+<b>1</b> 對整數(<b>x<sub>i</sub></b>,<b>y<sub>i</sub></b>)，表示士兵的起始位置。前 <b>k</b> 個是紅士兵，再來 <b>k</b>個是綠士兵，最後一個是金士兵。第三行有 <b>t</b> 個 triple(<b>x<sub>i</sub></b>,<b>y<sub>i</sub></b>,<b>r<sub>i</sub></b>)，表示每個終點格的位置和重要值。接下來有 <b>n</b> 行，每行有 <b>m</b> 個整數，表示每個格子的高度。第 <b>i</b> 行的第 <b>j</b> 個數字是(<b>x<sub>i</sub></b>,<b>y<sub>i</sub></b>)的高度。高度都是 <b>0</b> 和 <b>100</b> 之間的整數。
+<div class="IOFormat"><b>Output</b></div>
+對每組測資，輸出一行最少需要幾次魔法。
+</div>
+<table class="sample" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>3
+4 6 2 5
+1 1 1 5 4 1 4 5 3 3
+1 2 1 2 6 1 3 2 1 3 6 1 4 3 1
+3 2 6 1 3 5
+2 1 7 4 4 6
+2 3 1 4 3 4
+4 3 4 3 2 3
+4 3 3 7
+1 1 1 2 1 3 4 1 4 2 4 3 1 1
+1 1 1 2 1 1 2 2 1 2 3 1 3 1 1 3 2 1 3 3 1
+1 1 1
+2 2 2
+3 3 3
+4 4 4
+8 11 3 7
+1 1 1 5 1 9 8 1 8 5 8 9 4 5
+1 3 1 1 7 1 1 11 1 4 5 1 8 3 1 8 7 1 8 11 1
+9 2 3 1 9 2 3 1 9 2 3
+1 1 1 1 1 1 1 1 1 1 1
+9 9 9 9 9 9 9 9 9 9 9
+1 1 1 1 1 1 1 1 1 1 1
+9 9 9 9 9 9 9 9 9 9 9
+1 1 1 1 1 1 1 1 1 1 1
+9 9 9 9 9 9 9 9 9 9 9
+1 8 7 9 1 8 7 9 1 8 7</pre></div>
+    </td>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>1
+0
+2</pre></div>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

@@ -1,0 +1,86 @@
+{
+  file '20.mp4'
+  title 'コードギアス 反逆のルルーシュ 20話'
+}
+{
+  file '0.mp3'
+  title '君の知らない物語'
+  artist 'nagi'
+} music
+{
+  file 'Brave Song.mp3'
+  title 'Brave Song'
+  artist '多田葵'
+} music
+{
+  file 'Secret of my heart.mp3'
+  title 'Secret of my heart'
+  artist '倉木麻衣'
+} music
+{
+  file '%.m4a'
+  title '君ノ記憶'
+  artist 'mao'
+} music
+{
+  file 'Tsukishirube.mp3'
+  title '月導-Tsukishirube-'
+  artist '南里侑香'
+} music
+{
+  file 'kazenouta.mp3'
+  title '風のうた'
+} music
+{
+  file 'staple stable.m4a'
+  title 'staple stable'
+  artist '戦場ヶ原ひたぎ'
+} music
+{
+  file 'ETERNAL BLAZE.m4a'
+  title 'ETERNAL BLAZE'
+  artist '水樹奈々'
+} music
+{
+  file 'My Soul, Your Beats!.mp4'
+  title 'My Soul, Your Beats!'
+  artist 'Lia'
+} music
+{
+  file 'innocence.mp3'
+  title 'innocence'
+  artist '橋本みゆき'
+} music
+{
+  file 'you.mp3'
+  title 'you'
+  artist '雪野五月'
+} music
+{
+  file 'only my railgun.m4a'
+  title 'Only my railgun'
+  artist 'fripSide'    
+} music
+{
+  file 'LEVEL5-judgelight-.mp3'
+  title 'LEVEL5-judgelight-'
+  artist 'fripSide'
+} music
+{
+  file 'Kimi ga Iru Kara.m4a'
+  title '君がいるから'
+  artist '下川みくに'
+} music
+{
+  file 'FRIENDS.mp3'
+  title 'FRIENDS'
+  artist '米倉千尋'
+} music
+{
+  file 'kiminokoe.m4a'
+  title 'きみのこえ'
+  artist '♥'
+} music
+list 'All Music' {
+  item music
+}

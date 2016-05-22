@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<title>e:\A\10418r.cpp.html</title>
+<style type="text/css">
+<!--
+.Type { color: #2e8b57; font-weight: bold; }
+.Special { color: #6a5acd; }
+.Comment { color: #0000ff; }
+pre { font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+.PreProc { color: #a020f0; }
+.Constant { color: #ff00ff; }
+.Statement { color: #804040; font-weight: bold; }
+-->
+</style>
+<pre>
+<span class="PreProc">#include</span><span class="Constant">&lt;stack&gt;</span>
+<span class="PreProc">#include</span><span class="Constant">&lt;cstdio&gt;</span>
+<span class="Statement">using</span> <span class="Type">namespace</span> std;
+
+<span class="Type">struct</span> pos{
+    <span class="Type">int</span> x,y,d;
+    <span class="Type">void</span> get(){
+        scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;x,&amp;y);x--,y--;
+    }
+    pos <span class="Statement">operator</span>+(pos a){
+        <span class="Statement">return</span> (pos){x+a.x,y+a.y};
+    }
+};
+
+<span class="Type">const</span> <span class="Type">int</span> Inf=<span class="Constant">99999</span>,Maxn=<span class="Constant">101</span>,Maxm=<span class="Constant">101</span>,Maxk=<span class="Constant">51</span>,Maxt=<span class="Constant">101</span>;
+<span class="Type">const</span> pos ds[]={{<span class="Constant">1</span>,<span class="Constant">0</span>},{<span class="Constant">0</span>,<span class="Constant">1</span>},{-<span class="Constant">1</span>,<span class="Constant">0</span>},{<span class="Constant">0</span>,-<span class="Constant">1</span>}};
+<span class="Type">int</span> n,m,hi[Maxn][Maxm],num[Maxk*<span class="Constant">2</span>][Maxt];
+
+<span class="Type">inline</span> <span class="Type">bool</span> valid(pos p){
+    <span class="Statement">return</span> (p.x&gt;=<span class="Constant">0</span> &amp;&amp; p.x&lt;n &amp;&amp; p.y&gt;=<span class="Constant">0</span> &amp;&amp; p.y&lt;m);
+}
+
+<span class="Comment">//Calculate how many color changes it needs to go from one position to others</span>
+<span class="Comment">//Input: postion x,y, direction d(1:up, -1:down)</span>
+<span class="Comment">//Output: num[Maxn][Maxm](# color change)</span>
+<span class="Type">void</span> go(<span class="Type">int</span> num[Maxn][Maxm],<span class="Type">int</span> x,<span class="Type">int</span> y,<span class="Type">int</span> d)
+{
+    <span class="Type">int</span> i,j;
+    <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+        <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++)
+            num[i][j]=Inf;
+    stack&lt;pos&gt; st[<span class="Constant">2</span>];
+    pos cur={x,y,d};
+    st[<span class="Constant">0</span>].push(cur);
+    <span class="Statement">for</span>(<span class="Type">int</span> round=<span class="Constant">0</span>;!st[<span class="Constant">0</span>].empty() || !st[<span class="Constant">1</span>].empty();round=<span class="Constant">1</span>-round){
+        stack&lt;pos&gt; &amp;st0=st[round],&amp;st1=st[<span class="Constant">1</span>-round];
+        <span class="Statement">while</span>(!st0.empty()){
+            cur=st0.top();
+            st0.pop();
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">4</span>;i++){
+                pos next=cur+ds[i];
+                <span class="Statement">if</span>(!valid(next) || num[next.x][next.y]&lt;Inf)
+                    <span class="Statement">continue</span>;
+                <span class="Statement">if</span>((hi[cur.x][cur.y]-hi[next.x][next.y])*cur.d&gt;<span class="Constant">0</span>){
+                    num[next.x][next.y]=num[cur.x][cur.y];
+                    st0.push(next);
+                }<span class="Statement">else</span> <span class="Statement">if</span>(num[cur.x][cur.y]+<span class="Constant">1</span>&lt;num[next.x][next.y]){
+                    next.d*=-<span class="Constant">1</span>;
+                    num[next.x][next.y]=num[cur.x][cur.y]+<span class="Constant">1</span>;
+                    st1.push(next);
+                }
+            }
+        }
+    }
+}
+
+
+<span class="Type">const</span> <span class="Type">int</span> Nnode=Maxk*<span class="Constant">2</span>+Maxt+<span class="Constant">3</span>;
+<span class="Type">int</span> sink,used[Nnode],ori[Nnode][Nnode],cap[Nnode][Nnode];
+
+<span class="Comment">//find an augmenting path, returns 1 if there is one, returns 0 otherwise</span>
+<span class="Type">int</span> findpath(<span class="Type">int</span> v)
+{
+    <span class="Statement">if</span>(used[v])<span class="Statement">return</span> <span class="Constant">0</span>;
+    used[v]=<span class="Constant">1</span>;
+    <span class="Statement">if</span>(v==sink)<span class="Statement">return</span> <span class="Constant">1</span>;
+    <span class="Statement">for</span>(<span class="Type">int</span> i=<span class="Constant">1</span>;i&lt;=sink;i++)
+        <span class="Statement">if</span>(cap[v][i]-- &amp;&amp; findpath(i))
+        {
+            cap[i][v]++;
+            <span class="Statement">return</span> <span class="Constant">1</span>;
+        }
+        <span class="Statement">else</span>
+            cap[v][i]++;
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+
+<span class="Comment">//Calculate max-flow</span>
+<span class="Type">int</span> flow(){
+    <span class="Type">int</span> i,f=<span class="Constant">0</span>;
+    <span class="Statement">while</span>(<span class="Constant">1</span>){
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)used[i]=<span class="Constant">0</span>;
+        <span class="Statement">if</span>(findpath(<span class="Constant">0</span>))f++;
+        <span class="Statement">else</span> <span class="Statement">return</span> f;
+    }
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+
+<span class="Type">int</span> main()
+{
+    <span class="Type">int</span> T;
+    scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;T);
+    <span class="Statement">while</span>(T--){
+        <span class="Type">int</span> i,j,k,t,magic;
+        pos spos[Maxk*<span class="Constant">2</span>+<span class="Constant">1</span>],goal[Maxt];
+
+        scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;n,&amp;m,&amp;k,&amp;t);
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=<span class="Constant">2</span>*k+<span class="Constant">1</span>;i++)
+            scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant"> </span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;spos[i].x,&amp;spos[i].y);
+        sink=<span class="Constant">2</span>*k+t+<span class="Constant">1</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;=sink;j++)
+                ori[i][j]=<span class="Constant">0</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">1</span>;i&lt;=<span class="Constant">2</span>*k;i++)
+            ori[<span class="Constant">0</span>][i]=<span class="Constant">1</span>;
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;t;i++){
+            goal[i].get();
+            scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;ori[<span class="Constant">2</span>*k+<span class="Constant">1</span>+i][sink]);
+        }
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;n;i++)
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;m;j++)
+                scanf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Constant">&quot;</span>,&amp;hi[i][j]);
+
+        <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">2</span>*k;i++)
+        {
+            <span class="Type">int</span> tmp[Maxn][Maxm];
+            go(tmp,spos[i].x,spos[i].y,i&gt;=k?<span class="Constant">1</span>:-<span class="Constant">1</span>);
+            <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;t;j++)
+                num[i][j]=tmp[goal[j].x][goal[j].y];
+        }
+
+        <span class="Statement">for</span>(magic=<span class="Constant">0</span>;;magic++){
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;=sink;i++)
+                <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;=sink;j++)
+                    cap[i][j]=ori[i][j];
+            <span class="Statement">for</span>(i=<span class="Constant">0</span>;i&lt;<span class="Constant">2</span>*k;i++)
+                <span class="Statement">for</span>(j=<span class="Constant">0</span>;j&lt;t;j++)
+                    <span class="Statement">if</span>(num[i][j]&lt;=magic)
+                        cap[i+<span class="Constant">1</span>][j+<span class="Constant">2</span>*k+<span class="Constant">1</span>]=<span class="Constant">1</span>;
+            <span class="Statement">if</span>(magic+flow()&gt;=<span class="Constant">2</span>*k)<span class="Statement">break</span>;
+        }
+        printf(<span class="Constant">&quot;</span><span class="Special">%d</span><span class="Special">\n</span><span class="Constant">&quot;</span>,magic);
+    }
+    <span class="Statement">return</span> <span class="Constant">0</span>;
+}
+
+</pre>
+

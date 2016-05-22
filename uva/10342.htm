@@ -1,0 +1,127 @@
+<title>Always Late</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+</style>
+<div class="Title">Q10342: Always Late</div>
+
+<table><tbody><tr>
+<td valign="top">Ajmat:</td><td align="justify" valign="top">
+你注意到 team 13 的其中一個成員幾乎每次比賽都遲到了嗎?
+</td></tr>
+
+<tr><td valign="top">Nejhum:&nbsp;&nbsp;</td><td align="justify" valign="top">
+你是指 Mahbub, Moazzem 和 Yeamin 那隊嗎? 他們出了什麼問題?
+</td></tr>
+
+<tr><td valign="top">Ajmat:</td><td align="justify" valign="top">
+他們都住在離 BUET 很遠的地方，而且他們總是避開到 BUET 的最短路徑。
+</td></tr>
+
+<tr><td valign="top">Nejhum:</td><td align="justify" valign="top">
+
+他們瘋了嗎? 為什麼要這樣做? 一個學 Computer Science 的人不會做這種事。
+
+</td></tr>
+
+<tr><td valign="top">Ajmat:</td><td align="justify" valign="top">
+他們 <b>總是</b> 避開最短路徑。他們相信他們總是會在他們到 BUET 的最短路徑上面對最糟糕的交通堵塞。
+</td></tr>
+
+<tr><td valign="top">Nejhum:</td><td align="justify" valign="top">
+這聽起來很瘋狂!
+</td></tr>
+
+<tr><td valign="top">Ajmat:</td><td align="justify" valign="top">
+
+他們比你想像中還要瘋狂。他們總是試著用比除了最短路徑之外的所有路徑短或一樣的路徑去 BUET。為了這個，他們有的時候還會走過同一個十字路口超過一次。
+</td></tr>
+
+<tr><td valign="top">Nejhum:</td><td align="justify" valign="top">
+但是他們不是用最長的路徑。為什麼他們幾乎每天遲到?
+
+</td></tr>
+
+<tr><td valign="top">Ajmat:</td><td align="justify" valign="top">
+因為他們花了很多時間去找一條符合他們標準的路徑。或許他們不知道如何找第二短的路徑。
+</td></tr>
+
+<tr><td valign="top">Nejhum:</td><td align="justify" valign="top">
+我想我們應該在今天的比賽解決這個 <b>真的</b> 問題，而不是解決想像中的問題。
+
+</td></tr>
+
+<tr><td valign="top">Ajmat:</td><td align="justify" valign="top">
+Let's try.
+</td></tr>
+
+</tbody></table>
+
+<div class="IOFormat"><b>Input</b></div>
+每組測資的第一行包含兩個整數: n 是交叉點的數量，r 是雙向路的數量，交叉點的是 0,1,...,n-1。接下來的 r 行，每行都有 3 個數字: 兩個交叉點，和這條路的長度。接下來有一個整數 q，表示問題的數量，接下來 q 行每行包含兩個交叉點號碼。再 q 個問題之後會有一空白行。兩個交叉點之間最多只會有一條路。一條路總是連接兩個不同的交叉點。路的長度在 1~100 之間。
+<p>
+輸入以 EOF 結束。
+
+<div class="IOFormat"><b>Output</b></div>
+對每組輸出，輸出測資號碼，接下來 q 行，每個問題一行，包含對應的兩點第二短的路徑長。對無解的問題輸出一個 '?'。
+
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" ><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" ><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <pre><font face="courier new">4 3
+0 1 12
+0 2 20
+1 2 15
+3
+0 1
+0 2
+0 3
+
+4 3
+0 1 11
+0 2 20
+1 2 15
+3
+0 1
+0 2
+0 3</font></pre>
+    </td>
+    <td width="50%" valign="top">
+      <pre><font face="courier new">Set #1
+35
+27
+?
+Set #2
+33
+26
+?</font></pre>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

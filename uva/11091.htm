@@ -1,0 +1,67 @@
+﻿<title>How many Knight Placing?</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+    .IODescription{
+        line-height: 15pt;
+        font-family:Courier New
+    }
+    .note{
+        font-color: #ffff00;
+        background: #000000;
+    }
+</style>
+<div class="Title">Q11091: How many Knight Placing?</div>
+給你一個 6*n 的棋盤。這並不是一個標準的棋盤，這個棋盤的列數是可變的。你必須在每一列放剛好兩個騎士，所以你總共要放 2*n 個騎士；你要計算有幾種放置方式是合法的。如果任兩個騎士不能互相攻擊，那種放置方式就是合法的。
+(在(x,y)的騎士可以攻擊在 (x±2,y±1) 和在 (x±1,y±2)的騎士。)
+<div class="IOFormat"><b>Input</b></div>
+第一行有一個數字 T(T ≤ 15)表示測資有幾組。每個測資都包含一個整數 n(1 ≤ n < 1000000000)。
+
+<div class="IOFormat"><b>Output</b></div>
+對每組測資輸出合法的放置方式有幾種。答案可能會非常大，所以輸出答案%10007 就好。
+
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>4
+1
+10
+100
+1000</pre></div>
+    </td>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>15
+178
+30
+8141</pre></div>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

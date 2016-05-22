@@ -1,0 +1,171 @@
+.import java.io.*
+.class c0
+.method void <init>()
+	aload #0
+	invokespecial void <init>() @ Object
+	return
+.method public static void main(String[])
+	ldc 3
+	ldc 999
+;var s(0)
+	multianewarray int[][] 2
+	astore #0
+;var i(1)
+;var j(2)
+;var k(3)
+;var n(4)
+	new BufferedReader
+	dup
+	new InputStreamReader
+	dup
+	getstatic InputStream in @ System
+	invokespecial void <init>(InputStream) @ InputStreamReader
+	invokespecial void <init>(Reader) @ BufferedReader
+	invokevirtual String readLine() @ BufferedReader
+	invokestatic int parseInt(String) @ Integer
+	istore #4
+	ldc 0
+	istore #1
+L2:
+	iload #1
+	ldc 1
+	swap
+	iload #4
+	if_icmplt L5
+	dup
+	isub
+L5:
+	ifeq L3
+	aload #0
+	ldc 1
+	aaload
+	iload #1
+	new BufferedReader
+	dup
+	new InputStreamReader
+	dup
+	getstatic InputStream in @ System
+	invokespecial void <init>(InputStream) @ InputStreamReader
+	invokespecial void <init>(Reader) @ BufferedReader
+	invokevirtual String readLine() @ BufferedReader
+	invokestatic int parseInt(String) @ Integer
+	iastore
+	iload #1
+	ldc 1
+	iadd
+	istore #1
+	goto L2
+L3:
+	getstatic PrintStream out @ System
+	iload #4
+	invokevirtual void println(int) @ PrintStream
+	ldc 0
+	istore #1
+L6:
+	iload #1
+	ldc 1
+	swap
+	iload #4
+	if_icmplt L9
+	dup
+	isub
+L9:
+	ifeq L7
+	ldc 1
+	istore #2
+L10:
+	iload #2
+	ldc 1
+	swap
+	iload #4
+	if_icmplt L13
+	dup
+	isub
+L13:
+	ifeq L11
+	aload #0
+	ldc 1
+	aaload
+	iload #2
+	iaload
+	ldc 1
+	swap
+	aload #0
+	ldc 1
+	aaload
+	iload #2
+	ldc 1
+	isub
+	iaload
+	if_icmplt L15
+	dup
+	isub
+L15:
+	ifeq L19
+	aload #0
+	ldc 1
+	aaload
+	iload #2
+	iaload
+	istore #3
+	aload #0
+	ldc 1
+	aaload
+	iload #2
+	aload #0
+	ldc 1
+	aaload
+	iload #2
+	ldc 1
+	isub
+	iaload
+	iastore
+	aload #0
+	ldc 1
+	aaload
+	iload #2
+	ldc 1
+	isub
+	iload #3
+	iastore
+	goto L17
+L19:
+L17:
+	iload #2
+	ldc 1
+	iadd
+	istore #2
+	goto L10
+L11:
+	iload #1
+	ldc 1
+	iadd
+	istore #1
+	goto L6
+L7:
+	ldc 0
+	istore #1
+L20:
+	iload #1
+	ldc 1
+	swap
+	iload #4
+	if_icmplt L23
+	dup
+	isub
+L23:
+	ifeq L21
+	getstatic PrintStream out @ System
+	aload #0
+	ldc 1
+	aaload
+	iload #1
+	iaload
+	invokevirtual void println(int) @ PrintStream
+	iload #1
+	ldc 1
+	iadd
+	istore #1
+	goto L20
+L21:
+	return

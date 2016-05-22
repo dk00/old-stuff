@@ -1,0 +1,21 @@
+# DIP Homework Assignment #3
+# ID: B96902120
+# email: b96120@csie.ntu.edu.tw
+# compiled on linux with g++
+# to compile: make -f README
+
+CXX=g++
+LN=g++
+
+SOURCE=fs.cpp rev.cpp or.cpp
+BIN=fs rev or
+all: fs rev or 
+	@echo "usage: use 3.sh for problem 1"
+	@echo "input: bear.raw"
+	@echo "output: h1.raw, h2.raw, h3.raw"
+
+%:	%.cpp io.h
+	$(CXX) $< -o $@
+
+clean:
+	rm -f $(BIN)

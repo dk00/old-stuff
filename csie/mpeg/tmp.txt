@@ -1,0 +1,17 @@
+i.m1v 
+320 x 240
+Pic type 1 / ref 0 / vbv delay 47034
+Pic type 1 / ref 0 / vbv delay 49657
+Pic type 1 / ref 0 / vbv delay 52068
+Pic type 1 / ref 0 / vbv delay 54480
+Pic type 1 / ref 0 / vbv delay 54241
+Pic type 1 / ref 0 / vbv delay 54002
+Pic type 1 / ref 0 / vbv delay 53753
+Pic type 1 / ref 0 / vbv delay 53503
+Pic type 1 / ref 0 / vbv delay 53203
+Pic type 1 / ref 0 / vbv delay 52902
+Pic type 1 / ref 0 / vbv delay 52625
+Pic type 1 / ref 0 / vbv delay 52348
+Pic type 1 / ref 0 / vbv delay 52096
+Pic type 1 / ref 0 / vbv delay 51843
+Pic type 1 / ref 0 / vbv delay 51594

@@ -1,0 +1,90 @@
+Refresh 1: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	4
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	23	1
+
+0 0
+Send routing message to server 0.
+1 0
+2 0
+Send routing message to server 2.
+3 0
+Refresh 2: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	4
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	5	1
+
+Refresh 3: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	3
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	5	0
+
+0 0
+Send routing message to server 0.
+1 0
+2 0
+Send routing message to server 2.
+3 0
+Refresh 4: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	203
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	5	200
+
+0 0
+Send routing message to server 0.
+1 0
+2 0
+Send routing message to server 2.
+3 0
+Refresh 5: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	203
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	5	200
+
+0 1
+Send routing message to server 0.
+1 0
+2 1
+Send routing message to server 2.
+3 0
+Refresh 6: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	203
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	5	200
+

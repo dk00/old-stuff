@@ -1,0 +1,39 @@
+
+
+1. Write a sequential program that computes the square root from 
+0 to 999999999 and assign the value to a variable v. 
+Observe its timing. 
+We can use  omp_get_wtime() to get the wal clock time. 
+The return value is double. (L)
+
+16.936 s
+
+2. Now write two parallel versions of the previous program -- 
+one declare v as global and one declare v as private, 
+then observe the timing.
+
+global: 11.720 s
+private: 2.013 s
+
+3.
+
+4. 
+  0.028 s
+
+
+5. Write a parallel version by adding parallel for only. 
+Is the answer correct? (L)
+
+0.4131472803
+
+6.
+ 0.299 s
+
+7.
+ 0.355 s
+
+8.
+ 0.010 s
+
+9.
+

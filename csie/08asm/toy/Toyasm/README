@@ -1,0 +1,49 @@
+This file explains syntax for TOY assembly.
+
+* Comments begin with semicolons.
+
+* Only support decimal literals or hexadecimal literals. Hexadecimal
+  literals must begin with 0x
+
+* Two assembly directives for data declararion
+  DUP for declaring array
+  DW for defining a number
+  Examples:
+  A	DUP	5	; define an array of five words
+  B	DW	10	; declare a variable B, initialized with 10
+
+* Labels must start with a letter. It can contain letters and numbers.
+  No colons after labels.
+
+* It is case-insensitive.
+
+* Program will start from the first instruction that the assembler meets
+
+* Instructions
+  0 hlt	
+  1 add	RD, RS, ST
+  2 sub	RD, RS, ST
+  3 and	RD, RS, ST
+  4 xor	RD, RS, ST
+  5 shl	RD, RS, ST
+  6 shr	RD, RS, ST
+  7 lda	RD, addr
+  8 ld	RD, addr
+  9 st	RD, addr
+  A ldi	RD, RT
+  B sti	RD, RT
+  C bz	RD, addr
+  D bp	RD, addr
+  E jr	RD
+  F jl	RD, addr
+
+* To use assembler
+  toyasm < reverse.asm > reverse.toy
+
+* To generate an object file
+  toyasm -o < mul.asm > mul.obj
+
+* To link several object files together to make an executable file
+  toylink multest.obj mul.obj stack.obj > multest.toy
+  
+  Program will start from the first instruction of the first object file.

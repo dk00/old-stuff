@@ -1,0 +1,8 @@
+MPEG1 decoder with display
+I frame only
+
+Execute:
+  dec.exe video.m1v
+
+
+

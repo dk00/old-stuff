@@ -1,0 +1,3 @@
+void Init(node *db) {
+  
+}

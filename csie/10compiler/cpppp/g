@@ -1,0 +1,4 @@
+#!/bin/sh
+./main 000A27001D4BD7DA db1.txt
+cp iTunesDB ~/htdocs/ -f
+chmod o+r ~/htdocs/iTunesDB

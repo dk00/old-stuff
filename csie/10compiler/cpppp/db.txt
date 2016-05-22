@@ -1,0 +1,24 @@
+{
+  file '20.mp4'
+  title 'コードギアス 反逆のルルーシュ 20話'
+}
+{
+  file '0.mp3'
+  title '君の知らない物語'
+  artist 'nagi'
+}
+{
+  file 'Brave Song.mp3'
+  title 'Brave Song'
+  artist '多田葵'
+}
+{
+  file 'Secret of my heart.mp3'
+  title 'Secret of my heart'
+  artist '倉木麻衣'
+}
+{
+  file '%.m4a'
+  title '君ノ記憶'
+  artist 'mao'
+}

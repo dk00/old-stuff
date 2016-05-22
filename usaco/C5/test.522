@@ -1,0 +1,1 @@
+s[i][j]=max(s[i][k]+s[k][j]) k!=i,j

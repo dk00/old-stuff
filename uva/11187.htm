@@ -1,0 +1,72 @@
+<title>Water Crisis</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+    .IODescription{
+        line-height: 15pt;
+        font-family:Courier New
+    }
+    .note{
+        font-color: #ffff00;
+        background: #000000;
+    }
+</style>
+<div class="Title">Q11187: Water Crisis</div>
+Bangladesh 首都 Dhaka 的水荒是一個很嚴重的問題，特別在夏天，水荒是無法忍受的。WASA (Water and Sewerage Authority)在夏天時以水箱卡車在數個地區供水。但是 由於不斷提升的需求，WASA 在滿足這些需求的時候遭遇了困難。為了設計一個解決方案，WASA 正在找一些有才幹的電腦科學家幫他們找出最佳的策略。WASA 工程師已經把水荒問題轉成以下形式並呈現給這些電腦科學家。
+<p>
+Dhaka 是連通的，而且可以分成 N (N&lt=20)個供水區。Dhaka 的道路網非常好，從任一個區到另外一區最多只要 100 分鐘。點的編號是 1~N，WASA 的編號是 1。每一天的總需求最多 K(K&lt=200)，但是個別的需求(以卡車數量表示)可以和其他的不同。就像其他的政府組織，WASA 也缺乏資源，而且只有 3 台可以運作的卡車。為了簡化問題，假設裝水 倒水的時間是 0。WASA 希望他的資源得到最有效率的利用，所以他需要在最短的時間內把水送到所有的區域，而且所有的卡車都要回到 WASA 辦公室。
+除此之外，WASA 可能沒辦法在一天內把水送到所有的區域。如果是這樣，你應該回報 "Too few trucks"。
+<p>
+
+
+<div class="IOFormat"><b>Input</b></div>
+
+輸入開始是一個整數 T (T&lt=15)，表示測資數量。每組測資開始是一個整數 N，接著有 N-1 個整數，表示每個區域(從 2 到 N)的需求，區域一沒有需求。接下來幾行包含 Dhaka 城的道路網。每條路都是雙向的，以 &lt u v t&gt 形式表示，u, v 是端點，t 是走過這條路需要的時間(分)。道路網以三個 0 結束。
+<div class="IOFormat"><b>Output</b></div>
+對每組測資，輸出應該由一行 "Test Case #: T" 開始，T 是測資編號。下一行包含最少的運送時間。如果超過 20 小時，你應該輸出 "Too few trucks"。
+
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <pre>1
+4
+7 10 3
+1 2 8
+1 3 4
+1 4 1
+0 0 0</pre></div>
+    </td>
+    <td width="50%" valign="top">
+      <pre>Test Case #: 1
+66 mins</pre></div>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

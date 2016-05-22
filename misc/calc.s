@@ -1,0 +1,4 @@
+.data
+.text
+.global main
+

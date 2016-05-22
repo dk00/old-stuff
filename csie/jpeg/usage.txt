@@ -1,0 +1,9 @@
+JPEG Decoder: decode baseline jpeg image and convert to bitmap.
+
+Usage:
+  dec.exe <input jpeg file> <output bitmap file>
+
+Build (use Makefile):
+  make
+
+

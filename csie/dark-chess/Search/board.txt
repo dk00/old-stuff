@@ -1,0 +1,19 @@
+* 8:9am January 17, 2013
+* Player1 vs Player2
+* 1 2 2 2 2 2 5 1 2 2 2 2 2 5
+* X X X X
+* X X X X
+* X X X X
+* X X X X
+* X X X X
+* X X X X
+* X X X X
+* X X X X
+* first 0
+* time 15
+* 1. c6(G) c3(g)
+* 2. c4(c)
+* Comment 0 0
+0. 1358381350
+1. 1358381357
+2. 1358381364

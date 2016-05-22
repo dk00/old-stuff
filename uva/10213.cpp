@@ -1,0 +1,36 @@
+#include"bigint1.h"
+bigint a,b,c,d;
+main(){
+int s,n;
+scanf("%d",&s);
+while(s--){
+    scanf("%d",&n);
+    if(n==1){
+        puts("1");
+        continue;
+    }
+    if(n==2){
+        puts("2");
+        continue;
+    }
+    if(n==3){
+        puts("4");
+        continue;
+    }
+    if(n==4){
+        puts("8");
+        continue;
+    }
+    a=1;
+    b=n;
+    b*=(n-1);
+    b/=2;
+    c=b;
+    c*=(n-2);
+    c*=(n-3);
+    c/=12;
+    a+=b;
+    a+=c;
+    a.show();
+}
+}

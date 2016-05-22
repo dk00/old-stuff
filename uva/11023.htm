@@ -1,0 +1,96 @@
+<title>Multisets and Sequences</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+    .IODescription{
+        line-height: 15pt;
+        font-family:Courier New
+    }
+    .note{
+        font-color: #ffff00;
+        background: #000000;
+    }
+</style>
+<div class="Title">Q11023: Multisets and Sequences</div>
+在這個問題中，我們要處裡 Multisets 和 Sequences。這裡給的定義可能和你知道的或大家認定的(稍微)不一樣，所以請仔細閱讀以下敘述。<p>
+Multiset 是一個由一系列自然數(有可能會重複)為元素組成的集合。表示法是以非遞減順序列出所有元素，用逗號(,)隔開，兩邊用圓括號
+括起來。multiset 裡的元素數量稱為他的 size。multiset 的 size 可以是 0，表示這個 multiset 是空的。可能的 multiset
+有: (), (1), (-18,-17,-16) 和 (1,3,3,3,4,5,5,6)。<p>
+Sequence 是元素有特定順序的 multiset。表示法是以特定順序列出所有元素，用逗號(,)隔開，兩邊用大括號括起來。跟 multiset 一樣，sequence 也可以是空的。可能的 sequence 有: {}, {1}, {1,2,3}, {2,3,1} 和 {25,-18,25,25,7}。<p>
+
+有些  sequence 可以互相比較。如果兩個 sequence 的 size 一樣而且所有的元素一樣，順序一樣，我們可以說他們<b>相等</b>。
+如果兩個 sequence 的 size 一樣而且組成元素一樣，但是順序可能不一樣，我們可以說他們是<b>相似</b>的。
+如果兩個 sequence 的 size 一樣但可能包含了不同的元素，我們就說他們是<b>可比較</b>的。我們也可以用<b>不相等</b>，<b>不相似</b>和<b>不可比較</b>來表示相反的特性。{1,2,2,3}和{1,2,2,3}和是相等的，相似的而且可比較；{6,3,1,1} 和 {1,3,1,6} 不相等，但是相似而且可比較；{1,2,3} 和 {-988,7,-10} 不相等，不相似但是可以比較。Size 不同的兩個 sequence不相等，不相似而且不能比較。<p>
+
+可比較的兩個 sequence 可以分大小。從左到右直到找到一個兩個 sequence 不同的元素，如果不同的那個元素在一個 sequence 比另外一個小，那個 sequence 就比另一個小。我們可以以此排序可以比較的數個 sequence，然後決定一個特定 sequence 在同一組的 rank。最小的 sequence 的 rank 是 0，再來是 1，以此類推。下面一組的 sequence:{7,-1,8},{1,1,1},{-9,0,-3},{1,1,0} 可以排序:{-9,0,-3},{1,1,0},{1,1,1},{7,-1,8}。所以{-9,0,-3}的 rank 是 0，{1,1,0} 的 rank 是 1，以此類推..<p>
+
+我們考慮下列 5 種關於 multiset 和 sequence 的指令:<br>
+
+1.我們可以把一個 sequence <b>degrade</b> 成一個有同樣元素的 multiset。<br>
+ degrade 一個 sequence 的指令是:"degrade sequence"。例如:"degrade {6,3,-1,4,-1}" 得到 "(-1,-1,3,4,6)"。<p>
+2. 我們可以把一個 multiset <b>promote</b> 成一個 sequence。因為一個 multiset 可以造出一系列相似的 sequence，所以我們也需要我們想要的 rank。<br>
+ promote 一個 multiset 的指令是:"promote multiset rank"。例如: "promote (4,6,8) 3" 得到 "{6,8,4}"。<p>
+
+3.我們可以求出一個 sequence 在從同一個 multiset promote 出來的 sequences
+中的 <b>rank</b>。<br>
+rank 一個 sequence 的指令是:"rank sequence"。例如:"rank {8,6,9,6}" 得到 "7"。<p>
+
+4.我們可以從一個 multiset <b>derive</b> 出一個特定 size 的 sequence，那個 size 不超過 multiset 的 size。因為一個 multiset 可以 derive 出很多種可比較的 sequence，我們也需要我們想要的 rank。<br>
+從 multiset derive 出一個 sequemce 的指令是:"derive multiset size rank"。例如:"derive (1,1,2,2,3) 3 15" 得到 "{3,1,2}"<p>
+5.最後我們可以 <b>find</b> 一個 sequence 在從一個 multiset derive 出來的 sequences 中的 rank。<br>
+find 一個 sequence 的指令是:"find sequence multiset"。例如:"find {5,8} (0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)" 得到 "58"。注意指令並沒有明確的給出 size，因為 size 已經隱含在 sequence 參數中了。
+
+
+<div class="IOFormat"><b>Input</b></div>
+Input 包含了一系列以上定義的指令，每行一個，不包含引號。Multisets 和 sequences 最少有 0 個，最多有 20 個元素。元素都是 32 位元有號整數，所有的指令都是有效的。指令和參數之間會用一個空白隔開，但是 multisets 或 sequences 裡面和前後都不會有任何的空白。指令名稱都是小寫字母。Input 結尾是一行 "end"。
+
+<div class="IOFormat"><b>Output</b></div>
+對每個指定印出結果，可能是一行數字，multiset 或 sequence 如上定義。
+Output 不該包含任何的空白字元。Multiset 中的元素應該要以非遞減順序印出。
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>degrade {6,3,-1,4,-1}
+promote (4,6,8) 3
+rank {8,6,9,6}
+derive (1,1,2,2,3) 3 15
+find {5,8} (0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9)
+end</pre></div>
+    </td>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>(-1,-1,3,4,6)
+{6,8,4}
+7
+{3,1,2}
+58</pre></div>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

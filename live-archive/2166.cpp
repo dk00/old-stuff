@@ -1,0 +1,20 @@
+#include<cstdio>
+main()
+{
+    while(1)
+    {
+        for(i=0;i<3;i++)
+            scanf("%d",&max[i]);
+        for(j=0;j<3;j++)
+            scanf("%d",&p[j]);
+        for(i=0;i<3;i++)
+            scanf("%d",&q[i]);
+        if(q[0]==0)break;
+        sum=p[0]+p[1]+p[2];
+        q[0]=(P){p[0],p[1]};
+        for(i=0,j=1;i<j;i++)
+        {
+            nx
+        }
+    }
+}

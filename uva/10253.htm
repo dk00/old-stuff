@@ -1,0 +1,76 @@
+<title>Series-Parallel Networks</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+    .IODescription{
+        line-height: 15pt;
+        font-family:Courier New
+    }
+    .note{
+        font-color: #ffff00;
+        background: #000000;
+    }
+</style>
+<div class="Title">Q10253: Series-Parallel Networks</div>
+在這個問題中，你要計算<b> two-terminal series-parallel network</b> 的數量。這些東西在排列或幾何上可以視為電氣網路，就是說，不考慮關於這些連接元素的電氣特性。兩端點的其中一端可以視為頭(source)，另外一端是尾(sink)。<p>
+一個兩端點網路如果可以在以下條件產生的話，那他就是兩端點 系列-平行網路：<br>
+ ] 一條邊是two-terminal series-parallel network。<br>
+ ] 如果 G<sub>1</sub> 和 G<sub>2</sub> 都是兩端點 系列-平行網路，則把G<sub>1</sub> 和 G<sub>2</sub> 頭對頭，尾對尾接在一起，產生的東西也是(平行組成)。<br>
+ ]　如果 G<sub>1</sub> 和 G<sub>2</sub> 都是兩端點 系列-平行網路，則把G<sub>1</sub> 的頭和 G<sub>2</sub> 的尾接在一起也是(系列組成)。<p>
+
+注意在系列-平行網路中，兩個點可以被很多條邊連接。而且，除了幾何上，如果可以交換系列間的元素使得兩個網路一致，這樣也視為相等。換句話說，系列間的交換並不會影響網路間的相等。以下三個網路是相等的：
+<p class="MsoNormal" style="text-align: center;" align="center"><img  src="http://acm.uva.es/p/v102/p10253a.gif" height="24" width="480"></p>
+平行的交換也不影響相等。以下三個網路也是相等的：
+<p class="MsoNormal" style="text-align: center;" align="center"><img  src="http://acm.uva.es/p/v102/p10253b.gif" height="56" width="390"></p>
+現在，給你 N，你要計算 N 條邊的 two-terminal series-parallel network 有幾種。例如 N = 4 時，有以下 10 個 series-parallel network：
+<p class="MsoBodyTextIndent" style="text-align: center; text-indent: 0in;" align="center"><img src="http://acm.uva.es/p/v102/p10253c.gif" height="149" width="456"></p>
+
+<p class="MsoNormal" style="text-align: justify;">
+<div class="IOFormat"><b>Input</b></div>
+每行都有一個整數 N (1<=N<=30)，表示網路的邊數。<br>
+N = 0 表示輸入結束。
+<div class="IOFormat"><b>Output</b></div>
+對每個 N 輸出由 N 條邊構成的網路有幾種。
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" height="1"><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>1
+4
+15
+0</pre></div>
+    </td>
+    <td width="50%" valign="top">
+      <div class="IODescription"><pre>1
+10
+1399068</pre></div>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

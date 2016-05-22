@@ -1,0 +1,10 @@
+<title>Design Pattern HW5</title>
+<br/>
+<p>DocumentBuilderFactory 是用來產生 DocumentBuilder 的 Factory。不同的地方是，
+除了直接 new 其中一個 Implementation 之外，還有 newInstance 這個 static method
+，讓我們以參數選擇要用哪個 Factory；這裡的 newDocumentBuilder method 就是定義
+中的 Factory Method。</p>
+
+<p>DocumentBuilder 的角色是 Builder，而 Document 就是這個 Builder 的 Product。
+DocumentBuilder 會幫我們檢查 XML 檔是不是正確的，並且把 data 以容易使用的格式
+放進 memory。</p>

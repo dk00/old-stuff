@@ -1,0 +1,34 @@
+                Problem 1: Priority-Driven Realtime Scheduler
+
+1.  Implementation
+   
+   以 C++ 實作(模擬) RMS 及 EDF 兩種 scheduling algorithm，細節如下：
+
+1.1  Data Structure
+
+   每個 Task 以 id，執行時間(run_time)，period，剩餘執行時間
+   (remaining)，deadline，開始時間(start)，是否就緒(ready) 表示。
+   演算法所需的 priority queue 都用 STL 的 priority_queue。
+
+1.2  Algorithm
+
+   用 ready queue 及 waiting queue 進行模擬，ready queue 存放已可執行的
+   task，其他的放在 waiting queue。ready queue 以 deadline 或 period 
+   排序，waiting queue 以下次開始時間排序。主要流程為，一開始將 waiting
+   queue 中已經可執行的 task 移到 ready queue，之後依 task 執行狀況進行
+   相應操作，已經結束的 task 移到 waiting queue 等下一輪執行，更高 
+   priority 的 task 就緒時就換上，最後計算距離下個操作的時間。
+   不需 display 時，以 Idle 的出現以及最長的 period 內狀態判定是否可排；
+   過程中如果超過 deadline 則一定不可排，直接結束模擬。
+
+1.3  計時
+
+   以 clock_gettime() 進行計時，實際上準確度和硬體及 OS 有關。
+
+2.  Efficiency
+
+   每次 loop 最多有一個 task 完成或是暫停，另一個 task 開始，操作 queue
+   需時 O(lg n)，n 為 task 數量；除了 queue 操作之外，loop 內其他運算皆為
+   常數次。Loop 執行次數和 task 組有關，上限為 hyperperiod 次，但目前尚未
+   發生這種情況，loop 次數都在最大 period 兩倍之內。
+

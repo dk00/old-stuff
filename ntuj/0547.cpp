@@ -1,0 +1,26 @@
+#include<cstdio>
+main()
+{
+	while(scanf("%d %d %d",&n,&m,&x)==3){
+		for(i=0;i<2*x;i++)s[i]=inf;
+		s[0][0]=0;
+		for(i=sum=0;i<m;i++){
+			scanf("%d",&s+i);
+			sum+=s[i];
+			if(s[i]>=x){
+				for(j=0;j<x;j++){
+					s[i+1][2*x+1]<?=s[i][j]+l;
+					s[i+1][j]<?=s[i][j];
+				}
+			}
+			else
+				for(j=0;j<x;j++){
+					if(s[i][j]>=inf)continue;
+					s[i+1][j+l]<?=s[i][j]+l;
+					s[i+1][j]<?=s[i][j];
+				}
+		}
+		for(j=0;j<=x;j++)
+			s[m][j]=s[m][j+x];
+	}
+}

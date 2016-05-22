@@ -1,0 +1,25 @@
+// size 29
+// export 4
+// SIXTEEN 0x00
+// mul 0x10
+// m_loop 0x14
+// m_end 0x1A
+// literal 2 17 18 
+// lines 14
+00: 0010
+10: FE00
+11: 7C00
+12: 7101
+13: 8200
+14: 2221
+15: 53A2
+16: 64B2
+17: 3441
+18: C41A
+19: 1CC3
+1A: D214
+1B: FE00
+1C: EF00
+// import 2
+// push 1 0x10 
+// pop 1 0x1B 

@@ -1,0 +1,7 @@
+Description:
+1. 用 5 號 syscall 讀進第一個數字，並移到 s0
+2. 用 8 號 syscall 以字串的方式把 operator 讀進 stack
+3. 用 5 號 syscall 讀進第二個數字
+4. 以讀到的 operator 決定要做哪一種運算(jump table)
+5. 執行指定的運算
+6. 印出結果

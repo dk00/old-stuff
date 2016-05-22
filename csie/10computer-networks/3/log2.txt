@@ -1,0 +1,20 @@
+Refresh 0: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	23
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	23	20
+Refresh 1: Receive DV from Server 0
+Destination	Next hop	Link cost
+===========================================
+Server 0	Server 0	3
+Server 2	Server 2	2
+Server 3	Server 0	6
+===========================================
+DV of Neighbors:
+		to 0	to 1	to 2	to 3
+Server 0	0	3	3	3

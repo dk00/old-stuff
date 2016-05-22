@@ -1,0 +1,212 @@
+**********************************************************************
+                           SILVER PROBLEMS
+**********************************************************************
+                  Three problems numbered 6 through 8
+**********************************************************************
+
+Problem 6: Cow Traffic [Percy Liang, 2007]
+
+The bovine population boom down on the farm has caused serious
+congestion on the cow trails leading to the barn. Farmer John has
+decided to conduct a study to find the bottlenecks in order to
+relieve the 'traffic jams' at milking time.
+
+The pasture contains a network of M (1 <= M <= 50,000) one-way
+trails, each of which connects exactly two different intersections
+from the set of N (1 <= N <= 5,000) intersections conveniently
+numbered 1..N; the barn is at intersection number N.  Each trail
+connects one intersection point to another intersection point with
+a higher number.  As a result, there are no cycles and, as they say
+on the farm, all trails lead to the barn. A pair of intersection
+points might be connected by more than one trail.
+
+During milking time rush hour, the cows start from their respective
+grazing locations and head to the barn.  The grazing locations are
+exactly those intersection points with no trails connecting into
+them. Each cow traverses a 'path', which is defined as a sequence
+of trails from a grazing location to the barn.
+
+Help FJ finding the busiest trail(s) by computing the largest number
+of possible paths that contain any one trail.  The answer is
+guaranteed to fit in a signed 32-bit integer.
+
+PROBLEM NAME: traffic
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M.
+
+* Lines 2..M+1: Two space-separated intersection points.
+
+SAMPLE INPUT (file traffic.in):
+
+7 7
+1 3
+3 4
+3 5
+4 6
+2 3
+5 6
+6 7
+
+INPUT DETAILS:
+
+     1   4
+      \ / \
+       3   6 -- 7
+      / \ /
+     2   5
+
+OUTPUT FORMAT:
+
+* Line 1: The maximum number of paths passing through any one trail.
+
+SAMPLE OUTPUT (file traffic.out):
+
+4
+
+OUTPUT DETAILS:
+
+Here are the four possible paths that lead to the barn:
+         1 3 4 6 7
+         1 3 5 6 7
+         2 3 4 6 7
+         2 3 5 6 7
+
+**********************************************************************
+
+Problem 7: Balanced lineup [Brian Dean, 2007]
+
+Farmer John has decided to take a family portrait of some (maybe
+all) of the cows. In order to take the portrait, FJ has arranged
+all N (1 <= N <= 50,000) cows in a straight line. Each cow is labeled
+with its x coordinate (range: 0..1,000,000,000) on the line as well
+as its breed (0 or 1).
+
+Over the years, FJ has done some crazy things, and this activity
+is no exception. He will only photograph one group of cows, and
+that group must be "balanced". A contiguous group of cows is
+"balanced" if it contains the same number of cows from each of the
+two breeds.
+
+Determine the widest expanse of cows that might have to fit in one
+photograph. The length of a balanced group is the difference in x
+values between the left-most and right-most cows in the group.
+
+At least one cow of each breed appears in the input, and no two
+cows share the same x coordinate.
+
+PROBLEM NAME: balance
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Each line contains two space-separated integers that
+        describe a single cow containing respectively: a breed ID and
+        an x coordinate
+
+SAMPLE INPUT (file balance.in):
+
+7
+0 11
+1 10
+1 25
+1 12
+1 4
+0 13
+1 22
+
+INPUT DETAILS:
+
+There are 7 cows, five of breed 1 and two of breed 0 arranged like
+this:
+            1                 1  0  1  0                          1        1
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer specifying the size of the largest
+        contiguous balanced group of cows.
+
+SAMPLE OUTPUT (file balance.out):
+
+11
+
+OUTPUT DETAILS:
+
+Cows #1 (at 11), #4 (at 12), #6 (at 13), and #7 (at 22) form a
+contiguous balanced group occupying 22-11=11 units of length on the
+number line:
+
+                                 <-------- balanced group -------->
+            1                 1  0  1  0                          1        1
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+
+**********************************************************************
+
+Problem 8: Monthly Expense [Jeffrey Wang, 2007]
+
+Farmer John is an astounding accounting wizard and has realized he
+might run out of money to run the farm. He has already calculated
+and recorded the exact amount of money (1 <= money_i <= 10,000)
+that he will need to spend each day over the next N (1 <= N <=
+100,000) days.
+
+FJ wants to create a budget for a sequential set of exactly M (1
+<= M <= N) fiscal periods called "fajomonths". Each of these
+fajomonths contains a set of 1 or more consecutive days. Every day
+is contained in exactly one fajomonth.
+
+FJ's goal is to arrange the fajomonths so as to minimize the expenses
+of the fajomonth with the highest spending and thus determine his
+monthly spending limit.
+
+PROBLEM NAME: expense
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M
+
+* Lines 2..N+1: Line i+1 contains the number of dollars Farmer John
+        spends on the ith day
+
+SAMPLE INPUT (file expense.in):
+
+7 5
+100
+400
+300
+100
+500
+101
+400
+
+INPUT DETAILS:
+
+There are 7 days to be spread across 5 fajomonths. He spends $100,
+$400, $300, $100, $500, $101, and $400 on sequential days.
+
+OUTPUT FORMAT:
+
+* Line 1: The smallest possible monthly limit Farmer John can afford
+        to live with.
+
+SAMPLE OUTPUT (file expense.out):
+
+500
+
+OUTPUT DETAILS:
+
+If Farmer John schedules the months so that the first two days are
+a month, the third and fourth are a month, and the last three are
+their own months, he spends at most $500 in any month. Any other
+method of scheduling gives a larger minimum monthly limit.
+
+100 400   300 100   500   101   400   Daily spending
+---1---   ---2---   -3-   -4-   -5-   Month Number
+  500       400     500   101   400   Monthly spending
+
+**********************************************************************

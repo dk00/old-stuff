@@ -1,0 +1,5 @@
+#!/bin/sh
+toyasm -o < 1.asm > 1.obj
+toyasm -o < part1.asm > part1.obj
+toylink 1.obj part1.obj > part1.toy
+toyvm part1.toy < 1.in

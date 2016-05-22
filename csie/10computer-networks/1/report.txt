@@ -1,0 +1,14 @@
+Start Server  ->  Wait for a client request ->  Process request -+
+                            ^                                    |
+                            | <----------------- Send responce <-+
+
+1. Start Server
+  Open socket and listen to specific port.
+
+2. Wait for a client request
+
+3. Process request
+  Determine request type, check required file.
+
+4. Send responce
+  Get required file information and send responce header, content.

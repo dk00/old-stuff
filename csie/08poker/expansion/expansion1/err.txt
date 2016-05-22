@@ -1,0 +1,7 @@
+java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+	at java.lang.String.charAt(String.java:687)
+	at MyPokerClient.takeAction(MyPokerClient.java:50)
+	at MyPokerClient.handleStateChange(MyPokerClient.java:37)
+	at ca.ualberta.cs.poker.free.client.PokerClient.run(PokerClient.java:165)
+	at MyPokerClient.main(MyPokerClient.java:75)
+java.lang.StringIndexOutOfBoundsException: String index out of range: 0

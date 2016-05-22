@@ -1,0 +1,56 @@
+1
+o x     o-1
+ ox     x+2
+xo      o-1
+x o
+2
+oo xx   o-1 2
+o oxx   x+2 4
+oxo x   x+1 5
+oxox    o-2 3
+ox xo   o-2 1
+ xoxo   x+1 2
+x oxo   x+2 4
+xxo o   o-1 3
+xx oo
+3
+ooo xxx o-1 3
+oo oxxx x+2 5
+ooxo xx x+1 6
+ooxox x o-2 4
+oox xox o-2 2
+o xoxox o-1 1
+ oxoxox x+2 3
+xo oxox x+2 5
+xoxo ox x+2 7
+xoxoxo  o-1 6
+xoxox o o-2 4
+xox xoo o-2 2
+x xoxoo x+1 3
+xx oxoo x+2 5
+xxxo oo o-1 4
+xxx ooo
+-1  4
++2  6
++1  7
+-2  5
+-2  3
+-1  2
++2  4
++2  6
++2  8
++1  9
+-2  7
+-2  5
+-2  3
+-2  1
++1  2
++2  4
++2  6
++2  8
+-1  7
+-2  5
+-2  3
++1  4
++2  6
+-1  5

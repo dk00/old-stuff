@@ -1,0 +1,15 @@
+1. 用 5 號 syscall 讀 n，並存到 s0
+
+2. 以遞迴的方式把問題分成子問題解決：把 n 個 disks 從 A 以 B 為暫存移到 C =>
+   a. 把 A 上面 n-1 個 disks 從 A 以 C 為暫存移到 B
+   b. 把最大的 disk 從 A 移到 C
+   c. 將 B 的 n-1 個 disks 以 A 為暫存移到 C
+
+3. s0 表示目前處理的子問題有幾個 disks, s1 表示起始的柱子，s2 表示暫存的柱子，
+   s3 表示目標柱子。
+
+4. return address 在進入 recursive call 之後存進 stack。
+
+5. output 的第一個數字因為最多會有兩位數，所以用 print_int(1)；剩下用 
+   print_string(4), 做必要的修改之後 print 預先存進 memory 的 string，
+   

@@ -1,0 +1,1480 @@
+織田信長
+0 筒騎大將 LV 38.02 HP 616 SP 255
+Atk 255 Def 203 Int 245 Hit 255 Dex 245 Luk 255
+1 野風 南蠻十二兩筒 鬼兜紺絲絨具足 全恢復藥 恢復米 千鳥槍 x x 
+避雨 支援 速射 亂射 落石 威嚇射擊 激勵 快移 
+後方支援 攻擊指南 集中 痊癒 南蠻砲術 放棄 撥開 x 
+74 2 240 0 2 0 80 1 
+
+柴田勝家
+25 槍騎大將 LV 32.18 HP 465 SP 141
+Atk 255 Def 162 Int  54 Hit 166 Dex 137 Luk 127
+0 三角穗大朱槍 鬼兜紺絲絨具足 恢復米 x 阿修羅像 白楯 x x 
+突擊 大暴亂 熊 二重刺殺 三重刺殺 激勵 補給 活力的歌 
+鐵壁 攻擊指南 吆喝 身手 放棄 撥開 奮鬥 x 
+3 2 191 0 3 0 81 1 
+
+丹羽長秀
+25 砲大將 LV 35.85 HP 467 SP 186
+Atk 246 Def 132 Int 133 Hit 146 Dex 136 Luk 117
+2 鬼兜紺絲絨具足 恢復豆 西洋砲 x x 星崎 x x 
+自爆 倒木 落石 補給 大補給 安魂的歌 團結一致 支援 
+草原戰術 渡河戰術 鐵壁 集中 痊癒 南蠻砲術 彈道眼 x 
+211 1 186 0 5 0 21 0 
+
+羽柴秀吉
+25 軍師 LV 31.68 HP 429 SP 255
+Atk 194 Def 119 Int 236 Hit 183 Dex 152 Luk 219
+2 星崎 鬼兜紺絲絨具足 軍略法軍扇 恢復米 野風 x x x 
+火攻 水攻 倒木 落石 馬止 補給 全補給 大補給 
+城塞戰術 鐵壁 後方支援 集中 鎮靜 幸運 持久戰術 x 
+173 1 255 0 7 0 83 0 
+
+瀧川一溢
+25 上忍 LV 38.26 HP 380 SP 238
+Atk 226 Def 140 Int 211 Hit 255 Dex 255 Luk 191
+0 無名火 白絲絨桶側具足 恢復麥 恢復米 全恢復藥 x x x 
+不殺的大刀 犧牲 火災 惑亂 撒菱 盜策 治療 快移 
+海戰戰術 集中 放棄 痊癒 遠見 煙霧彈 壞天專長 x 
+124 1 238 0 6 0 82 0 
+
+明智光秀
+25 洋槍大將 LV 38.00 HP 452 SP 255
+Atk 255 Def 179 Int 255 Hit 228 Dex 185 Luk  92
+0 界拾兩筒 明王赤絲絨具足 鐵楯 x x x x x 
+火攻 補給 x x x x x x 
+後方支援 充實 x x x x x x 
+20 2 255 0 9 0 34 0 
+
+林秀貞
+24 軍監督 LV 35.00 HP 283 SP 255
+Atk 174 Def  90 Int 255 Hit 137 Dex 123 Luk 155
+0 軍扇 x x x x x x x 
+火攻 補給 x x x x x x 
+草原戰術 後方支援 x x x x x x 
+27 1 255 0 10 0 30 1 
+
+佐久間信盛
+0 槍騎兵 LV 35.00 HP 415 SP 135
+Atk 255 Def 130 Int 125 Hit 137 Dex 135 Luk  80
+0 短槍 x 恢復豆 不動破碎藥 x x x x 
+望鄉之歌 x x x x x x x 
+治癒力 身手 x x x x x x 
+159 1 135 0 12 0 22 1 
+
+前田利家
+25 槍騎大將 LV 34.10 HP 441 SP 182
+Atk 247 Def 134 Int 129 Hit 171 Dex 137 Luk 229
+0 三角穗大朱槍 鬼兜紺絲絨具足 x x 黑楯 x x x 
+突擊 大暴亂 二重刺殺 三重刺殺 妖媚的舞 惑亂 補給 掠奪 
+草原戰術 攻擊指南 充實 身手 放棄 持久戰術 x x 
+245 1 182 0 13 0 30 0 
+
+佐佐成政
+25 洋槍騎兵 LV 33.32 HP 348 SP 146
+Atk 227 Def 111 Int  78 Hit 187 Dex 153 Luk 142
+0 南蠻十二兩筒 鬼兜紺絲絨具足 紅楯 黑毛馬 白楯 x x x 
+避雨 速射 亂射 水攻 安魂的歌 治療 團結一致 x 
+城塞戰術 巷戰戰術 解禁 南蠻砲術 放棄 彈道眼 x x 
+162 1 146 0 14 0 32 0 
+
+池田恆興
+25 弓騎大將 LV 32.68 HP 348 SP 174
+Atk 195 Def 120 Int  93 Hit 163 Dex 162 Luk 123
+2 恢復麥 鬼兜紺絲絨具足 南蠻連弩 大型芝十砲 x x x x 
+毒箭 火箭 連射 妖媚的舞 補給 安魂的歌 團結一致 支援 
+草原戰術 森林戰術 休養 遠見 撥開 奮鬥 x x 
+92 1 174 0 15 0 29 0 
+
+細川藤孝
+25 軍師 LV 31.98 HP 328 SP 255
+Atk 188 Def  94 Int 242 Hit 131 Dex 144 Luk 181
+3 x 鬼兜紺絲絨具足 星崎 軍略法軍扇 恢復米 x x x 
+火攻 水攻 倒木 落石 技能妨礙 盜策 全補給 大補給 
+草原戰術 鐵壁 後方支援 休養 集中 痊癒 x x 
+72 1 255 0 16 0 28 0 
+
+河尻秀隆
+25 槍騎大將 LV 32.08 HP 383 SP 142
+Atk 229 Def 125 Int  89 Hit 193 Dex 193 Luk 124
+2 x 鬼兜紺絲絨具足 三角穗大朱槍 恢復米 白楯 x x x 
+突擊 二重刺殺 三重刺殺 馬止 補給 鼓舞的歌 團結一致 x 
+山岳戰術 鐵壁 解禁 身手 放棄 奮鬥 x x 
+177 1 142 0 17 0 28 1 
+
+森可成
+25 槍騎大將 LV 28.13 HP 359 SP 124
+Atk 203 Def 110 Int  73 Hit 114 Dex 113 Luk  75
+255 x x x x x x x x 
+突擊 二重刺殺 三重刺殺 望鄉之歌 補給 x x x 
+草原戰術 渡河戰術 休養 治癒力 身手 放棄 x x 
+103 1 124 0 18 0 31 1 
+
+森長可
+25 槍騎大將 LV 32.04 HP 399 SP 134
+Atk 233 Def 125 Int  78 Hit 129 Dex 128 Luk  90
+0 三角穗大朱槍 鬼兜紺絲絨具足 恢復米 革張楯 x x x x 
+突擊 大暴亂 二重刺殺 三重刺殺 望鄉之歌 補給 x x 
+草原戰術 渡河戰術 休養 治癒力 身手 放棄 x x 
+183 1 134 0 19 0 28 0 
+
+蜂屋賴隆
+25 刀兵 LV 20.02 HP 222 SP  88
+Atk 115 Def  50 Int  50 Hit  94 Dex  96 Luk  67
+255 x x x x x x x x 
+不殺的大刀 飛舞大刀 倒木 馬止 x x x x 
+山岳戰術 休養 治癒力 壞天專長 持久戰術 x x x 
+222 0 88 0 20 0 29 0 
+
+不破光治
+25 弓騎大將 LV 31.08 HP 340 SP 137
+Atk 187 Def  89 Int  90 Hit 129 Dex 155 Luk  88
+0 南蠻連弩 x 鬼兜紺絲絨具足 恢復米 x x x x 
+毒箭 倒木 落石 連射 馬止 治療 x x 
+山岳戰術 海戰戰術 城塞戰術 吆喝 解禁 撥開 x x 
+84 1 137 0 21 0 34 0 
+
+金森長近
+25 槍兵 LV 31.52 HP 290 SP 134
+Atk 198 Def  74 Int 101 Hit 139 Dex 113 Luk 102
+255 x x x x x x x x 
+技能妨礙 馬止 封印的術 x x x x x 
+草原戰術 鐵壁 充實 身手 南蠻砲術 彈道眼 x x 
+34 1 134 0 22 0 40 0 
+
+蜂須賀正勝
+25 上忍 LV 32.27 HP 385 SP 205
+Atk 255 Def  97 Int 182 Hit 224 Dex 193 Luk 191
+0 無名火 白絲絨桶側具足 恢復米 佛藥丸藥 x x x x 
+犧牲 火災 倒木 撒菱 狩獵 掠奪 快移 x 
+鐵壁 集中 撥開 放棄 彈道眼 煙霧彈 x x 
+129 1 205 0 23 0 27 0 
+
+九鬼嘉隆
+25 刀騎大將 LV 33.12 HP 397 SP 148
+Atk 207 Def 125 Int 125 Hit 128 Dex 127 Luk 156
+5 鬼兜紺絲絨具足 菊池槍 恢復米 木楯 x 魂霧 x x 
+不殺的大刀 飛舞大刀 旋風斬 水攻 補給 掠奪 x x 
+海戰戰術 鐵壁 休養 南蠻砲術 彈道眼 奮鬥 x x 
+171 1 148 0 24 0 26 0 
+
+筒井順慶
+25 槍兵 LV 26.00 HP 252 SP  88
+Atk 143 Def  60 Int  60 Hit 116 Dex  93 Luk  62
+255 恢復米 x x x x x x x 
+突擊 二重刺殺 三重刺殺 馬止 望鄉之歌 安魂的歌 x x 
+草原戰術 山岳戰術 森林戰術 休養 解禁 身手 x x 
+252 0 88 0 25 0 28 1 
+
+蒲生氏鄉
+25 刀騎大將 LV 32.20 HP 424 SP 144
+Atk 235 Def 126 Int 126 Hit 132 Dex 162 Luk 123
+0 村雨 白絲絨桶側具足 革張楯 恢復豆 x x x x 
+不殺的大刀 擊碎 飛舞大刀 旋風斬 火攻 水攻 激勵 補給 
+草原戰術 治癒力 身手 遠見 撥開 奮鬥 x x 
+208 1 144 0 11 0 4 0 
+
+織田信忠
+0 槍兵 LV 28.00 HP 262 SP 119
+Atk 130 Def  66 Int 113 Hit  97 Dex 100 Luk  89
+255 恢復米 x x x x x x x 
+突擊 二重刺殺 馬止 補給 團結一致 x x x 
+草原戰術 渡河戰術 休養 治癒力 身手 x x x 
+6 1 119 0 8 0 42 0 
+
+平手政秀
+24 軍監督 LV  5.00 HP 127 SP  48
+Atk  40 Def  22 Int  43 Hit  34 Dex  18 Luk  13
+0 軍扇 輕鎧 x x x x x x 
+火攻 水攻 補給 團結一致 技能妨礙 盜策 x x 
+後方支援 痊癒 x x x x x x 
+127 0 48 0 4 0 79 0 
+
+木下藤吉郎
+25 軍師 LV 26.00 HP 422 SP 255
+Atk 189 Def 116 Int 229 Hit 178 Dex 148 Luk 213
+255 x x x x x x x x 
+火攻 水攻 倒木 落石 馬止 補給 全補給 大補給 
+城塞戰術 鐵壁 後方支援 集中 鎮靜 幸運 持久戰術 x 
+166 1 255 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 27 0 30 0 
+
+織田信行
+25 刀兵 LV 11.00 HP 191 SP  70
+Atk  87 Def  39 Int  40 Hit  76 Dex  73 Luk  43
+0 大刀 輕鎧 x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+191 0 70 0 99 0 29 0 
+
+織田信興
+25 槍兵 LV  1.00 HP 120 SP  23
+Atk  33 Def  21 Int  17 Hit  34 Dex  33 Luk   8
+0 短槍 x x x x x x x 
+馬止 x x x x x x x 
+城塞戰術 x x x x x x x 
+120 0 23 0 100 0 29 0 
+
+織田信廣
+25 刀兵 LV  1.00 HP 120 SP  22
+Atk  31 Def  16 Int  15 Hit  27 Dex  27 Luk  12
+0 大刀 x x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+120 0 22 0 101 0 31 1 
+
+織田信光
+25 刀騎兵 LV  3.00 HP 178 SP  40
+Atk  69 Def  34 Int  24 Hit  42 Dex  43 Luk  19
+0 大刀 輕鎧 x x x x x x 
+二重刺殺 x x x x x x x 
+草原戰術 撥開 x x x x x x 
+178 0 40 0 96 0 29 0 
+
+織田信雄
+25 槍兵 LV  1.00 HP 126 SP  25
+Atk  30 Def  18 Int  18 Hit  32 Dex  30 Luk  21
+0 短槍 x x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+126 0 25 0 97 0 32 0 
+
+織田信孝
+25 刀兵 LV  1.00 HP 131 SP  30
+Atk  32 Def  21 Int  22 Hit  35 Dex  36 Luk  19
+0 大刀 x x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+131 0 30 0 98 0 44 0 
+
+森蘭丸
+25 弓兵 LV  1.00 HP 133 SP  28
+Atk  40 Def  22 Int  24 Hit  35 Dex  38 Luk  16
+0 小型竹弓 x x x x x x x 
+犧牲 馬止 x x x x x x 
+鐵壁 撥開 x x x x x x 
+133 0 28 0 28 0 13 1 
+
+松平元康
+25 刀騎兵 LV 12.00 HP 248 SP  71
+Atk 126 Def  63 Int  40 Hit  72 Dex  67 Luk  59
+0 名品大刀 輕鎧 x x x x x x 
+技能妨礙 二重刺殺 x x x x x x 
+休養 幸運 x x x x x x 
+248 0 71 0 28 0 14 1 
+
+德川家康
+25 洋槍騎兵 LV 26.00 HP 360 SP 113
+Atk 210 Def 105 Int  54 Hit 114 Dex 109 Luk  87
+0 拾兩筒 南蠻胴具足 x x x x x x 
+技能妨礙 二重刺殺 x x x x x x 
+休養 幸運 x x x x x x 
+104 1 113 0 76 0 29 0 
+
+酒井忠次
+25 槍兵 LV 26.00 HP 296 SP 136
+Atk 175 Def  77 Int  78 Hit 142 Dex 141 Luk 106
+0 十字槍 南蠻胴具足 x x x x x x 
+突擊 馬止 x x x x x x 
+巷戰戰術 身手 x x x x x x 
+40 1 136 0 77 0 29 0 
+
+石川數正
+25 洋槍兵 LV 26.00 HP 288 SP 140
+Atk 171 Def  72 Int  79 Hit 138 Dex 139 Luk 107
+0 中筒 南蠻胴具足 x x x x x x 
+避雨 火攻 x x x x x x 
+城塞戰術 集中 x x x x x x 
+32 1 140 0 78 0 36 0 
+
+服部半藏
+25 下忍 LV  1.00 HP 118 SP  35
+Atk  44 Def  25 Int  26 Hit  46 Dex  48 Luk  38
+0 手投箭 x x x x x x x 
+火災 快移 x x x x x x 
+鍛鍊 煙霧彈 x x x x x x 
+118 0 35 0 79 0 33 1 
+
+神原康政
+25 洋槍騎兵 LV 26.00 HP 358 SP 102
+Atk 207 Def 104 Int  41 Hit 109 Dex 111 Luk  76
+0 中筒 南蠻胴具足 x x x x x x 
+避雨 二重刺殺 x x x x x x 
+草原戰術 南蠻砲術 x x x x x x 
+102 1 102 0 80 0 31 1 
+
+本多忠勝
+25 槍騎兵 LV 26.00 HP 370 SP 100
+Atk 214 Def 108 Int  36 Hit 109 Dex 112 Luk  73
+0 單鎌槍 南蠻胴具足 x x x x x x 
+突擊 二重刺殺 x x x x x x 
+攻擊指南 奮鬥 x x x x x x 
+114 1 100 0 81 0 32 0 
+
+鳥居元忠
+25 刀兵 LV 26.00 HP 297 SP 132
+Atk 177 Def  78 Int  71 Hit 139 Dex 143 Luk  96
+0 大身大刀 南蠻胴具足 x x x x x x 
+不殺的大刀 突擊 x x x x x x 
+鐵壁 放棄 x x x x x x 
+41 1 132 0 118 0 31 1 
+
+井伊直政
+25 槍騎兵 LV  1.00 HP 154 SP  25
+Atk  51 Def  28 Int  20 Hit  30 Dex  32 Luk  17
+0 短槍 x x x x x x x 
+突擊 二重刺殺 x x x x x x 
+身手 奮鬥 x x x x x x 
+154 0 25 0 119 0 32 0 
+
+大久保忠世
+25 洋槍兵 LV 26.00 HP 294 SP 134
+Atk 174 Def  76 Int  77 Hit 140 Dex 141 Luk  97
+0 中筒 南蠻胴具足 x x x x x x 
+避雨 馬止 x x x x x x 
+城塞戰術 鎮靜 x x x x x x 
+38 1 134 0 120 0 32 0 
+
+奧平信昌
+25 刀兵 LV  1.00 HP 136 SP  26
+Atk  38 Def  22 Int  18 Hit  38 Dex  36 Luk  24
+0 大刀 x x x x x x x 
+不殺的大刀 馬止 x x x x x x 
+城塞戰術 鐵壁 x x x x x x 
+136 0 26 0 121 0 32 0 
+
+渡邊守綱
+25 槍兵 LV  1.00 HP 141 SP  26
+Atk  44 Def  22 Int  16 Hit  35 Dex  38 Luk  32
+0 短槍 x x x x x x x 
+突擊 馬止 x x x x x x 
+草原戰術 身手 x x x x x x 
+141 0 26 0 122 0 26 0 
+
+以心崇傳
+25 僧兵 LV  1.00 HP 102 SP  47
+Atk  31 Def  16 Int  36 Hit  28 Dex  24 Luk  26
+0 軍扇 x x x x x x x 
+火攻 補給 x x x x x x 
+後方支援 休養 x x x x x x 
+102 0 47 0 123 0 28 0 
+
+德川信康
+25 洋槍兵 LV  1.00 HP 137 SP  32
+Atk  42 Def  23 Int  23 Hit  35 Dex  35 Luk   8
+0 細筒 x x x x x x x 
+避雨 突擊 x x x x x x 
+草原戰術 鐵壁 x x x x x x 
+137 0 32 0 124 0 28 0 
+
+德川秀康
+25 槍兵 LV  1.00 HP 134 SP  30
+Atk  41 Def  21 Int  22 Hit  37 Dex  33 Luk  22
+0 短槍 x x x x x x x 
+突擊 馬止 x x x x x x 
+草原戰術 放棄 x x x x x x 
+134 0 30 0 110 0 29 0 
+
+羽柴秀長
+25 槍兵 LV 31.00 HP 324 SP 162
+Atk 195 Def  84 Int  93 Hit 163 Dex 160 Luk 122
+0 鉤鎌槍 青絲絨桶側具足 x x x x x x 
+突擊 補給 x x x x x x 
+山岳戰術 解禁 x x x x x x 
+68 1 162 0 111 0 28 0 
+
+竹中半兵衛
+25 軍監督 LV  1.00 HP 106 SP  48
+Atk  34 Def  18 Int  40 Hit  38 Dex  18 Luk  16
+0 軍扇 x x x x x x x 
+火攻 全補給 x x x x x x 
+後方支援 集中 x x x x x x 
+106 0 48 0 112 0 44 0 
+
+石田三成
+25 刀兵 LV 31.00 HP 300 SP 142
+Atk 181 Def  78 Int  74 Hit 150 Dex 162 Luk 102
+0 典太 青絲絨桶側具足 x x x x x x 
+馬止 盜策 x x x x x x 
+休養 x x x x x x x 
+44 1 142 0 113 0 72 0 
+
+黑田官兵衛
+25 軍監督 LV 31.00 HP 283 SP 232
+Atk 161 Def  53 Int 132 Hit 129 Dex 121 Luk 150
+0 方刻易軍扇 青絲絨桶側具足 x x x x x x 
+水攻 全補給 x x x x x x 
+後方支援 痊癒 x x x x x x 
+27 1 232 0 88 0 29 0 
+
+明智秀滿
+25 刀大將 LV 36.00 HP 336 SP 167
+Atk 218 Def  93 Int  88 Hit 176 Dex 174 Luk 119
+0 村正 明王赤絲絨具足 鐵楯 x x x x x 
+不殺的大刀 馬止 x x x x x x 
+草原戰術 城塞戰術 x x x x x x 
+160 1 167 0 89 0 33 0 
+
+齋藤利三
+25 槍大將 LV 36.00 HP 348 SP 174
+Atk 221 Def  92 Int  92 Hit 180 Dex 182 Luk 124
+0 斬月 明王赤絲絨具足 鐵楯 x x x x x 
+馬止 團結一致 x x x x x x 
+城塞戰術 放棄 x x x x x x 
+172 1 174 0 148 0 30 0 
+
+佐久間盛政
+25 槍兵 LV  1.00 HP 134 SP  28
+Atk  40 Def  22 Int  17 Hit  33 Dex  37 Luk  10
+0 短槍 x x x x x x x 
+馬止 突擊 x x x x x x 
+山岳戰術 彈道眼 x x x x x x 
+134 0 28 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 1 0 5 3 
+
+?
+25 刀兵 LV  1.00 HP 100 SP  10
+Atk  10 Def  10 Int  10 Hit  10 Dex  10 Luk  10
+255 x x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+100 0 10 0 102 0 29 0 
+
+織田信友
+25 槍兵 LV  5.00 HP 132 SP  34
+Atk  57 Def  24 Int  26 Hit  35 Dex  38 Luk  23
+0 短槍 輕鎧 革張楯 x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+172 0 34 0 103 0 28 0 
+
+織田信賢
+25 槍兵 LV 12.00 HP 172 SP  60
+Atk  90 Def  36 Int  38 Hit  61 Dex  62 Luk  41
+0 短槍 輕鎧 x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+172 0 60 0 104 0 29 0 
+
+織田信清
+25 槍兵 LV  1.00 HP  98 SP  11
+Atk  28 Def  13 Int  12 Hit  11 Dex  13 Luk   6
+0 短槍 x x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+98 0 11 0 105 0 35 1 
+
+阪井大膳
+25 弓騎兵 LV  5.00 HP 163 SP  30
+Atk  63 Def  35 Int  18 Hit  37 Dex  33 Luk  17
+0 小型竹弓 輕鎧 x x x x x x 
+毒箭 x x x x x x x 
+x x x x x x x x 
+163 0 30 0 33 0 86 1 
+
+上杉謙信
+25 槍騎大將 LV 31.00 HP 418 SP 125
+Atk 245 Def 125 Int  51 Hit 134 Dex 139 Luk  90
+0 斬月 黑絲絨南蠻具足 黑楯 x x x x x 
+突擊 三重刺殺 x x x x x x 
+攻擊指南 吆喝 放棄 x x x x x 
+222 1 125 0 47 0 30 1 
+
+上杉景勝
+25 刀騎大將 LV 29.00 HP 388 SP 115
+Atk 225 Def 112 Int  48 Hit 124 Dex 127 Luk  78
+0 大身大刀 赤絲絨南蠻輕鎧 黑楯 x x x x x 
+突擊 團結一致 x x x x x x 
+草原戰術 放棄 x x x x x x 
+192 1 115 0 48 0 32 1 
+
+宇佐美定滿
+25 槍騎兵 LV  1.00 HP  38 SP  38
+Atk  55 Def  29 Int  31 Hit  38 Dex  42 Luk  18
+0 短槍 x x x x x x x 
+突擊 補給 x x x x x x 
+鐵壁 奮鬥 x x x x x x 
+38 0 38 0 49 0 34 0 
+
+直江景綱
+25 槍兵 LV  1.00 HP 142 SP  33
+Atk  49 Def  26 Int  27 Hit  34 Dex  38 Luk  22
+0 短槍 x x x x x x x 
+馬止 補給 x x x x x x 
+城塞戰術 身手 x x x x x x 
+142 0 33 0 50 0 31 1 
+
+柿崎景家
+25 刀騎兵 LV  1.00 HP 166 SP  24
+Atk  57 Def  30 Int   9 Hit  39 Dex  43 Luk  25
+0 大刀 x x x x x x x 
+突擊 二重刺殺 x x x x x x 
+吆喝 奮鬥 x x x x x x 
+166 0 24 0 51 0 32 1 
+
+齋藤朝信
+25 槍騎大將 LV 29.00 HP 392 SP 113
+Atk 227 Def 115 Int  54 Hit 125 Dex 121 Luk  89
+0 十字槍 赤絲絨南蠻輕鎧 黑楯 x x x x x 
+突擊 封印的術 x x x x x x 
+巷戰戰術 鐵壁 x x x x x x 
+196 1 113 0 115 0 30 0 
+
+直江兼續
+25 槍兵 LV  1.00 HP 138 SP  32
+Atk  47 Def  25 Int  26 Hit  38 Dex  36 Luk  24
+0 短槍 x x x x x x x 
+馬止 補給 x x x x x x 
+城塞戰術 身手 x x x x x x 
+138 0 32 0 116 0 28 0 
+
+上杉景信
+25 槍大將 LV 29.00 HP 306 SP 146
+Atk 187 Def  79 Int  80 Hit 152 Dex 149 Luk  99
+0 十字槍 赤絲絨南蠻輕鎧 黑楯 x x x x x 
+突擊 馬止 x x x x x x 
+森林戰術 治癒力 x x x x x x 
+110 1 146 0 142 0 29 1 
+
+上條政繁
+25 槍騎兵 LV  1.00 HP 152 SP  25
+Atk  50 Def  26 Int  16 Hit  32 Dex  29 Luk  25
+0 短槍 x x x x x x x 
+不殺的大刀 突擊 x x x x x x 
+草原戰術 撥開 x x x x x x 
+152 0 25 0 143 0 29 1 
+
+北條高廣
+25 槍騎兵 LV  1.00 HP 156 SP  25
+Atk  54 Def  28 Int  24 Hit  30 Dex  35 Luk  28
+0 短槍 x x x x x x x 
+突擊 二重刺殺 x x x x x x 
+草原戰術 身手 x x x x x x 
+156 0 25 0 144 0 29 1 
+
+本莊繁長
+25 刀騎兵 LV  1.00 HP 157 SP  16
+Atk  54 Def  27 Int  13 Hit  28 Dex  32 Luk  16
+0 大刀 x x x x x x x 
+不殺的大刀 突擊 x x x x x x 
+解禁 放棄 x x x x x x 
+157 0 16 0 145 0 29 0 
+
+小島職鎮
+25 刀兵 LV  1.00 HP 135 SP  31
+Atk  44 Def  22 Int  25 Hit  38 Dex  34 Luk  12
+0 大刀 x x x x x x x 
+馬止 望鄉之歌 x x x x x x 
+草原戰術 城塞戰術 x x x x x x 
+135 0 31 0 146 0 29 0 
+
+神保長注
+25 弓兵 LV  1.00 HP 131 SP  30
+Atk  40 Def  20 Int  21 Hit  32 Dex  28 Luk  10
+0 小型竹弓 x x x x x x x 
+馬止 x x x x x x x 
+休養 x x x x x x x 
+131 0 30 0 52 0 34 0 
+
+北條氏康
+25 槍兵 LV  1.00 HP 139 SP  38
+Atk  51 Def  30 Int  38 Hit  35 Dex  40 Luk  23
+0 短槍 x x x x x x x 
+突擊 補給 x x x x x x 
+吆喝 集中 x x x x x x 
+139 0 38 0 53 0 30 1 
+
+北條氏政
+25 刀騎兵 LV  1.00 HP 154 SP  26
+Atk  50 Def  26 Int  21 Hit  26 Dex  30 Luk  15
+0 大刀 x x x x x x x 
+不殺的大刀 鼓舞的歌 x x x x x x 
+草原戰術 x x x x x x x 
+154 0 26 0 136 0 32 1 
+
+北條氏照
+25 槍騎兵 LV  1.00 HP 158 SP  30
+Atk  53 Def  28 Int  26 Hit  38 Dex  36 Luk  22
+0 短槍 x x x x x x x 
+突擊 活力的歌 x x x x x x 
+巷戰戰術 放棄 x x x x x x 
+158 0 30 0 137 0 29 1 
+
+北條氏邦
+25 槍騎兵 LV  1.00 HP 156 SP  27
+Atk  52 Def  27 Int  25 Hit  32 Dex  35 Luk  21
+0 短槍 x x x x x x x 
+突擊 技能妨礙 x x x x x x 
+奮鬥 x x x x x x x 
+156 0 27 0 138 0 29 0 
+
+北條氏規
+25 弓兵 LV  1.00 HP 124 SP  33
+Atk  40 Def  16 Int  28 Hit  38 Dex  35 Luk  24
+0 小型竹弓 x x x x x x x 
+馬止 安魂的歌 x x x x x x 
+休養 治癒力 x x x x x x 
+124 0 33 0 139 0 66 0 
+
+北條幻庵
+25 軍監督 LV  1.00 HP 115 SP  40
+Atk  38 Def  19 Int  36 Hit  21 Dex  24 Luk  32
+0 軍扇 x x x x x x x 
+補給 團結一致 x x x x x x 
+解禁 鎮靜 x x x x x x 
+115 0 40 0 140 0 30 0 
+
+松田憲秀
+25 軍監督 LV  1.00 HP 110 SP  38
+Atk  36 Def  18 Int  32 Hit  20 Dex  22 Luk  13
+0 軍扇 x x x x x x x 
+望鄉之歌 補給 x x x x x x 
+鎮靜 充實 x x x x x x 
+110 0 38 0 141 0 36 0 
+
+風魔小太郎
+25 下忍 LV  1.00 HP 122 SP  36
+Atk  48 Def  24 Int  25 Hit  52 Dex  59 Luk  39
+0 手投箭 x x x x x x x 
+火災 撒菱 x x x x x x 
+鍛鍊 煙霧彈 x x x x x x 
+122 0 36 0 147 0 31 0 
+
+田山義慶
+25 刀兵 LV  1.00 HP  96 SP  12
+Atk  33 Def  14 Int  13 Hit  15 Dex  13 Luk   4
+0 大刀 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+96 0 12 0 148 0 26 0 
+
+長續連
+25 刀兵 LV  1.00 HP 114 SP  28
+Atk  35 Def  16 Int  24 Hit  26 Dex  18 Luk  16
+0 大刀 x x x x x x x 
+盜策 x x x x x x x 
+x x x x x x x x 
+114 0 28 0 149 0 32 0 
+
+遊佐續光
+25 軍監督 LV  1.00 HP 115 SP  29
+Atk  36 Def  18 Int  25 Hit  28 Dex  21 Luk  10
+0 軍扇 x x x x x x x 
+馬止 盜策 x x x x x x 
+x x x x x x x x 
+115 0 29 0 38 0 85 1 
+
+武田信玄
+25 槍騎大將 LV 25.00 HP 367 SP 111
+Atk 207 Def 106 Int  63 Hit 120 Dex 118 Luk  77
+0 十字槍 梭側胴具足 黑楯 x x x x x 
+二重刺殺 補給 x x x x x x 
+後方支援 吆喝 身手 x x x x x 
+171 1 111 0 39 0 31 1 
+
+武田勝賴
+25 槍騎大將 LV 30.00 HP 399 SP 117
+Atk 234 Def 118 Int  53 Hit 128 Dex 128 Luk  78
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+突擊 二重刺殺 x x x x x x 
+草原戰術 放棄 x x x x x x 
+143 1 117 0 130 0 32 1 
+
+武田信繁
+25 槍騎兵 LV  1.00 HP 156 SP  32
+Atk  52 Def  26 Int  28 Hit  41 Dex  36 Luk  12
+0 短槍 x x x x x x x 
+突擊 鼓舞的歌 x x x x x x 
+鐵壁 解禁 x x x x x x 
+156 0 32 0 131 0 33 1 
+
+武田信廉
+25 槍騎大將 LV 30.00 HP 392 SP 116
+Atk 230 Def 115 Int  46 Hit 122 Dex 125 Luk  81
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+飛舞大刀 x x x x x x x 
+草原戰術 x x x x x x x 
+136 1 116 0 132 0 32 1 
+
+內藤昌豐
+25 槍騎大將 LV 30.00 HP 398 SP 123
+Atk 233 Def 119 Int  63 Hit 126 Dex 122 Luk  78
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+突擊 補給 x x x x x x 
+鎮靜 身手 x x x x x x 
+142 1 123 0 133 0 29 1 
+
+武田信豐
+25 槍騎大將 LV 30.00 HP 391 SP 115
+Atk 229 Def 116 Int  45 Hit 120 Dex 126 Luk  76
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+突擊 x x x x x x x 
+草原戰術 x x x x x x x 
+135 1 115 0 134 0 29 1 
+
+仁科盛信
+25 刀騎兵 LV  1.00 HP 150 SP  26
+Atk  50 Def  27 Int  24 Hit  28 Dex  34 Luk  17
+0 大刀 x x x x x x x 
+飛舞大刀 x x x x x x x 
+草原戰術 鐵壁 x x x x x x 
+150 0 26 0 135 0 32 1 
+
+小山田信茂
+25 刀騎兵 LV  1.00 HP 152 SP  27
+Atk  51 Def  27 Int  26 Hit  29 Dex  36 Luk  24
+0 大刀 x x x x x x x 
+飛舞大刀 x x x x x x x 
+草原戰術 治癒力 x x x x x x 
+152 0 27 0 71 0 33 1 
+
+山縣景昌
+25 槍騎大將 LV 30.00 HP 400 SP 121
+Atk 235 Def 116 Int  62 Hit 128 Dex 130 Luk  76
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+飛舞大刀 二重刺殺 x x x x x x 
+鐵壁 攻擊指南 x x x x x x 
+144 1 121 0 72 0 31 1 
+
+高阪昌信
+25 槍騎大將 LV 30.00 HP 401 SP 122
+Atk 235 Def 115 Int  63 Hit 126 Dex 129 Luk  75
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+飛舞大刀 二重刺殺 補給 x x x x x 
+攻擊指南 放棄 x x x x x x 
+145 1 122 0 73 0 32 1 
+
+馬場信房
+25 槍騎大將 LV 30.00 HP 400 SP 121
+Atk 235 Def 116 Int  63 Hit 130 Dex 123 Luk  77
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+飛舞大刀 二重刺殺 補給 x x x x x 
+後方支援 身手 x x x x x x 
+144 1 121 0 74 0 33 1 
+
+秋山信友
+25 刀騎兵 LV  1.00 HP 156 SP  29
+Atk  50 Def  25 Int  28 Hit  36 Dex  35 Luk  14
+0 大刀 x x x x x x x 
+飛舞大刀 補給 x x x x x x 
+草原戰術 撥開 x x x x x x 
+156 0 29 0 75 0 18 1 
+
+穴山信君
+25 槍騎大將 LV 30.00 HP 390 SP 115
+Atk 228 Def 114 Int  52 Hit 123 Dex 116 Luk  70
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+突擊 x x x x x x x 
+草原戰術 x x x x x x x 
+134 1 115 0 29 0 74 1 
+
+今川義元
+25 弓騎兵 LV 12.00 HP 254 SP  67
+Atk 125 Def  64 Int  41 Hit  68 Dex  58 Luk  30
+0 藤弓 輕鎧 x x x x x x 
+飛舞大刀 補給 x x x x x x 
+休養 身手 x x x x x x 
+254 0 67 0 54 0 73 0 
+
+太原雪齋
+25 軍監督 LV  1.00 HP 146 SP  36
+Atk  48 Def  26 Int  33 Hit  38 Dex  26 Luk   8
+0 軍扇 x x x x x x x 
+火災 補給 x x x x x x 
+後方支援 放棄 x x x x x x 
+146 0 36 0 55 0 29 0 
+
+山口教繼
+25 槍兵 LV  1.00 HP 130 SP  26
+Atk  40 Def  20 Int  16 Hit  33 Dex  31 Luk  11
+0 短槍 x x x x x x x 
+馬止 x x x x x x x 
+x x x x x x x x 
+130 0 26 0 125 0 74 0 
+
+今川氏真
+25 刀兵 LV  1.00 HP  90 SP  15
+Atk  22 Def  12 Int  13 Hit  10 Dex  12 Luk  10
+0 大刀 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+90 0 15 0 117 0 33 1 
+
+朝比奈泰朝
+25 槍騎兵 LV 12.00 HP 246 SP  60
+Atk 122 Def  62 Int  28 Hit  68 Dex  64 Luk  40
+0 名品短槍 輕鎧 x x x x x x 
+突擊 x x x x x x x 
+城塞戰術 x x x x x x x 
+246 0 60 0 35 0 84 1 
+
+齋藤道三
+25 刀騎兵 LV  6.00 HP 210 SP  52
+Atk  92 Def  46 Int  44 Hit  58 Dex  44 Luk  20
+0 大刀 輕鎧 x x x x x x 
+突擊 飛舞大刀 火攻 二重刺殺 補給 x x x 
+草原戰術 集中 解禁 奮鬥 x x x x 
+210 0 52 0 36 0 29 0 
+
+齋藤龍興
+25 刀大將 LV 24.00 HP 265 SP 112
+Atk 156 Def  69 Int  60 Hit 120 Dex 118 Luk  87
+0 大身大刀 梭側胴具足 x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+9 1 112 0 83 0 30 1 
+
+齋藤義龍
+25 槍騎兵 LV 11.00 HP 246 SP  59
+Atk 120 Def  61 Int  37 Hit  69 Dex  57 Luk  41
+0 短槍 輕鎧 x x x x x x 
+二重刺殺 x x x x x x x 
+渡河戰術 奮鬥 x x x x x x 
+246 0 59 0 84 0 34 0 
+
+堀田道空
+25 僧兵 LV  5.00 HP 154 SP  42
+Atk  61 Def  28 Int  34 Hit  43 Dex  38 Luk  33
+0 短槍 輕鎧 x x x x x x 
+封印的術 x x x x x x x 
+x x x x x x x x 
+154 0 42 0 85 0 33 0 
+
+稻葉一鐵
+25 槍兵 LV 26.00 HP 294 SP 136
+Atk 174 Def  76 Int  75 Hit 142 Dex 136 Luk 104
+0 世穗槍 梭側胴具足 x x x x x x 
+突擊 馬止 x x x x x x 
+森林戰術 x x x x x x x 
+38 1 136 0 86 0 31 0 
+
+安藤守就
+25 軍監督 LV 26.00 HP 265 SP 190
+Atk 146 Def  48 Int 108 Hit 114 Dex 116 Luk 125
+0 天地易軍扇 梭側胴具足 x x x x x x 
+飛舞大刀 火攻 補給 x x x x x 
+x x x x x x x x 
+9 1 190 0 87 0 32 0 
+
+氏家卜全
+25 槍兵 LV 23.00 HP 270 SP 122
+Atk 156 Def  68 Int  67 Hit 127 Dex 127 Luk  87
+0 名品長槍 梭側胴具足 x x x x x x 
+突擊 馬止 x x x x x x 
+x x x x x x x x 
+14 1 122 0 82 0 28 0 
+
+北田具教
+25 槍兵 LV 19.00 HP 244 SP 104
+Atk 136 Def  59 Int  58 Hit 111 Dex 114 Luk  72
+0 名品長槍 南蠻輕鎧 雷神像 x x x x x 
+不殺的大刀 馬止 x x x x x x 
+城塞戰術 x x x x x x x 
+244 0 134 0 154 0 29 0 
+
+木造具政
+25 槍兵 LV  1.00 HP 126 SP  33
+Atk  40 Def  20 Int  23 Hit  32 Dex  33 Luk  24
+0 短槍 x x x x x x x 
+馬止 x x x x x x x 
+草原戰術 充實 x x x x x x 
+126 0 33 0 155 0 29 0 
+
+關盛信
+25 槍兵 LV  1.00 HP 132 SP  26
+Atk  41 Def  22 Int  18 Hit  38 Dex  34 Luk  25
+0 短槍 x x x x x x x 
+突擊 x x x x x x x 
+巷戰戰術 x x x x x x x 
+132 0 26 0 30 0 87 1 
+
+淺井長政
+25 槍騎大將 LV 26.00 HP 362 SP 104
+Atk 207 Def 104 Int  49 Hit 109 Dex 113 Luk  61
+0 世穗槍 南蠻胴具足 x x x x x x 
+飛舞大刀 x x x x x x x 
+城塞戰術 x x x x x x x 
+106 1 104 0 56 0 35 0 
+
+淺井久政
+25 槍大將 LV 25.00 HP 282 SP 130
+Atk 163 Def  68 Int  71 Hit 136 Dex 136 Luk  87
+0 世穗槍 南蠻胴具足 x x x x x x 
+團結一致 x x x x x x x 
+x x x x x x x x 
+26 1 130 0 57 0 29 0 
+
+磯野員昌
+25 槍大將 LV 25.00 HP 287 SP 131
+Atk 169 Def  75 Int  72 Hit 140 Dex 137 Luk  93
+0 十字槍 梭側胴具足 阿修羅像 x x x x x 
+不殺的大刀 突擊 x x x x x x 
+草原戰術 治癒力 x x x x x x 
+31 1 181 0 59 0 29 0 
+
+赤尾清綱
+25 槍大將 LV 25.00 HP 284 SP 130
+Atk 168 Def  74 Int  71 Hit 139 Dex 137 Luk  86
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+突擊 x x x x x x x 
+山岳戰術 x x x x x x x 
+28 1 130 0 60 0 29 1 
+
+海北綱親
+25 槍騎大將 LV 25.00 HP 353 SP 107
+Atk 205 Def 103 Int  53 Hit 106 Dex 110 Luk  60
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+飛舞大刀 補給 x x x x x x 
+巷戰戰術 鐵壁 x x x x x x 
+97 1 107 0 126 0 30 0 
+
+雨森彌兵衛
+25 槍大將 LV 27.00 HP 297 SP 138
+Atk 176 Def  74 Int  72 Hit 141 Dex 145 Luk  89
+0 十字槍 赤絲絨南蠻輕鎧 x x x x x x 
+不殺的大刀 x x x x x x x 
+草原戰術 x x x x x x x 
+41 1 138 0 31 0 88 1 
+
+朝倉義景
+25 槍騎大將 LV 24.00 HP 324 SP  85
+Atk 182 Def  91 Int  38 Hit  95 Dex  98 Luk  66
+0 單鎌槍 赤絲絨南蠻輕鎧 x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+68 1 85 0 127 0 31 0 
+
+朝倉景建
+25 刀大將 LV 24.00 HP 278 SP 125
+Atk 162 Def  69 Int  69 Hit 129 Dex 133 Luk  88
+0 大身大刀 梭側胴具足 阿修羅像 x x x x x 
+突擊 x x x x x x x 
+巷戰戰術 x x x x x x x 
+22 1 175 0 128 0 29 1 
+
+朝倉景鏡
+25 槍騎大將 LV 24.00 HP 338 SP  96
+Atk 189 Def  94 Int  49 Hit  98 Dex 106 Luk  72
+0 世穗槍 梭側胴具足 x x x x x x 
+技能妨礙 x x x x x x x 
+草原戰術 x x x x x x x 
+82 1 96 0 129 0 33 0 
+
+河合吉統
+25 弓兵 LV  1.00 HP 121 SP  17
+Atk  32 Def  18 Int  16 Hit  22 Dex  16 Luk  12
+0 小型竹弓 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+121 0 17 0 37 0 29 0 
+
+六角義賢
+25 弓兵 LV 19.00 HP 250 SP 108
+Atk 138 Def  62 Int  60 Hit 107 Dex 114 Luk  80
+0 重藤弓 梭側胴具足 x x x x x x 
+突擊 鼓舞的歌 x x x x x x 
+城塞戰術 巷戰戰術 x x x x x x 
+250 0 108 0 58 0 32 0 
+
+蒲生賢秀
+25 槍兵 LV 15.00 HP 222 SP  90
+Atk 117 Def  52 Int  50 Hit  97 Dex  93 Luk  74
+0 名品長槍 桶側輕鎧 x x x x x x 
+毒箭 x x x x x x x 
+森林戰術 x x x x x x x 
+222 0 90 0 34 0 39 0 
+
+顯如
+25 僧兵 LV 31.00 HP 342 SP 158
+Atk 200 Def  88 Int  89 Hit 131 Dex 122 Luk 123
+0 長柄刀 明王赤絲絨具足 x x x x x x 
+避雨 封印的術 補給 x x x x x 
+城塞戰術 吆喝 幸運 x x x x x 
+86 1 158 0 109 0 73 0 
+
+教如
+25 僧兵 LV 27.00 HP 305 SP 136
+Atk 173 Def  74 Int  74 Hit 112 Dex 109 Luk 102
+0 長柄刀 白絲絨桶側輕鎧 x x x x x x 
+避雨 x x x x x x x 
+城塞戰術 x x x x x x x 
+49 1 136 0 61 0 66 0 
+
+下間賴照
+25 僧兵 LV 27.00 HP 310 SP 138
+Atk 175 Def  76 Int  77 Hit 110 Dex 115 Luk  99
+0 長柄刀 白絲絨桶側輕鎧 x x x x x x 
+避雨 補給 x x x x x x 
+城塞戰術 x x x x x x x 
+54 1 138 0 62 0 39 0 
+
+下間賴廉
+25 僧兵 LV 27.00 HP 312 SP 140
+Atk 189 Def  78 Int  79 Hit 116 Dex 119 Luk 103
+0 長柄刀 白絲絨桶側輕鎧 x x x x x x 
+避雨 突擊 補給 x x x x x 
+城塞戰術 南蠻砲術 x x x x x x 
+56 1 140 0 63 0 29 0 
+
+鈴木佐大夫
+25 洋槍大將 LV 27.00 HP 287 SP 140
+Atk 179 Def  77 Int  76 Hit 136 Dex 136 Luk  99
+0 拾兩筒 白絲絨桶側輕鎧 x x x x x x 
+避雨 速射 x x x x x x 
+南蠻砲術 彈道眼 x x x x x x 
+31 1 140 0 158 0 32 0 
+
+鈴木重朝
+25 洋槍大將 LV 27.00 HP 282 SP 138
+Atk 177 Def  75 Int  74 Hit 146 Dex 132 Luk 104
+0 中筒 白絲絨桶側輕鎧 x x x x x x 
+避雨 速射 威嚇射擊 x x x x x 
+南蠻砲術 彈道眼 x x x x x x 
+26 1 138 0 159 0 64 0 
+
+鈴木重秀
+25 洋槍大將 LV 27.00 HP 296 SP 142
+Atk 181 Def  78 Int  80 Hit 144 Dex 141 Luk 109
+0 中筒 白絲絨桶側輕鎧 x x x x x x 
+避雨 速射 亂射 威嚇射擊 x x x x 
+城塞戰術 南蠻砲術 彈道眼 x x x x x 
+40 1 142 0 64 0 25 1 
+
+三好長慶
+25 槍騎兵 LV  1.00 HP 151 SP  26
+Atk  50 Def  26 Int  24 Hit  34 Dex  28 Luk  12
+0 短槍 x x x x x x x 
+二重刺殺 補給 x x x x x x 
+休養 放棄 x x x x x x 
+151 0 26 0 65 0 33 1 
+
+三好長逸
+25 槍騎大將 LV 25.00 HP 354 SP 100
+Atk 202 Def 102 Int  47 Hit 107 Dex 103 Luk  66
+0 世穗槍 南蠻胴具足 阿修羅像 x x x x x 
+飛舞大刀 技能妨礙 x x x x x x 
+休養 x x x x x x x 
+98 1 150 0 66 0 32 1 
+
+三好政康
+25 槍騎大將 LV 25.00 HP 358 SP 100
+Atk 205 Def 103 Int  47 Hit 113 Dex 107 Luk  78
+0 世穗槍 赤絲絨南蠻輕鎧 阿修羅像 x x x x x 
+飛舞大刀 二重刺殺 x x x x x x 
+身手 x x x x x x x 
+102 1 150 0 67 0 31 1 
+
+岩成友通
+25 弓騎大將 LV 25.00 HP 350 SP  98
+Atk 200 Def 100 Int  44 Hit 103 Dex 109 Luk  76
+0 紅漆的藤弓 赤絲絨南蠻輕鎧 阿修羅像 x x x x x 
+突擊 x x x x x x x 
+草原戰術 x x x x x x x 
+94 1 148 0 68 0 29 1 
+
+三好義賢
+25 槍騎兵 LV  1.00 HP 150 SP  24
+Atk  51 Def  25 Int  22 Hit  31 Dex  30 Luk  10
+0 大刀 x x x x x x x 
+突擊 x x x x x x x 
+城塞戰術 x x x x x x x 
+150 0 24 0 69 0 32 0 
+
+三好義繼
+25 刀兵 LV  1.00 HP 124 SP  22
+Atk  36 Def  18 Int  15 Hit  28 Dex  24 Luk   8
+0 大刀 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+124 0 22 0 170 0 31 0 
+
+十河存保
+25 刀兵 LV  1.00 HP 132 SP  31
+Atk  40 Def  21 Int  19 Hit  35 Dex  32 Luk  23
+0 大刀 x x x x x x x 
+不殺的大刀 x x x x x x x 
+森林戰術 x x x x x x x 
+132 0 31 0 171 0 29 0 
+
+池田勝正
+25 弓兵 LV  1.00 HP 126 SP  23
+Atk  38 Def  19 Int  17 Hit  34 Dex  34 Luk  26
+0 小型竹弓 x x x x x x x 
+x x x x x x x x 
+草原戰術 x x x x x x x 
+126 0 23 0 172 0 29 0 
+
+安宅信康
+25 海盜 LV  1.00 HP 134 SP  22
+Atk  37 Def  18 Int  12 Hit  23 Dex  24 Luk  21
+0 大刀 x x x x x x x 
+x x x x x x x x 
+海戰戰術 x x x x x x x 
+134 0 22 0 173 0 31 0 
+
+香川元景
+25 刀兵 LV  1.00 HP 133 SP  26
+Atk  41 Def  22 Int  20 Hit  38 Dex  35 Luk  25
+0 大刀 x x x x x x x 
+不殺的大刀 x x x x x x x 
+海戰戰術 x x x x x x x 
+133 0 26 0 174 0 32 0 
+
+筱原長房
+25 槍兵 LV  1.00 HP 125 SP  21
+Atk  38 Def  19 Int  16 Hit  28 Dex  24 Luk  10
+0 短槍 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+125 0 21 0 32 0 43 0 
+
+足利義昭
+25 刀大將 LV 29.00 HP 282 SP 158
+Atk 167 Def  71 Int  93 Hit 144 Dex 135 Luk 110
+0 大身大刀 赤絲絨南蠻輕鎧 x x x x x x 
+技能妨礙 補給 x x x x x x 
+幸運 x x x x x x x 
+26 1 158 0 70 0 43 0 
+
+足利義輝
+25 刀兵 LV  1.00 HP 126 SP  36
+Atk  46 Def  15 Int  13 Hit  46 Dex  41 Luk  12
+0 大刀 x x x x x x x 
+不殺的大刀 飛舞大刀 旋風斬 x x x x x 
+x x x x x x x x 
+126 0 36 0 40 0 35 0 
+
+松永久秀
+25 槍大將 LV 29.00 HP 323 SP 157
+Atk 193 Def  86 Int  95 Hit 153 Dex 151 Luk 108
+0 千鳥槍 明王赤絲絨具足 x x x x x x 
+飛舞大刀 技能妨礙 封印的術 補給 x x x x 
+城塞戰術 休養 痊癒 放棄 x x x x 
+67 1 157 0 156 0 32 0 
+
+松永久通
+25 槍大將 LV 28.00 HP 300 SP 143
+Atk 180 Def  77 Int  77 Hit 146 Dex 150 Luk 102
+0 大身槍 赤絲絨南蠻輕鎧 x x x x x x 
+不殺的大刀 技能妨礙 x x x x x x 
+城塞戰術 x x x x x x x 
+44 1 143 0 174 0 28 0 
+
+奧田忠高
+25 槍大將 LV 28.00 HP 299 SP 137
+Atk 181 Def  76 Int  76 Hit 147 Dex 150 Luk 107
+0 大身槍 赤絲絨南蠻輕鎧 x x x x x x 
+x x x x x x x x 
+草原戰術 x x x x x x x 
+43 1 137 0 41 0 29 0 
+
+荒木村重
+25 野武士 LV 31.00 HP 322 SP 185
+Atk 230 Def  87 Int  53 Hit 193 Dex 188 Luk 144
+0 典太 青絲絨桶側具足 x x x x x x 
+不殺的大刀 飛舞大刀 x x x x x x 
+治癒力 x x x x x x x 
+66 1 185 0 90 0 28 0 
+
+高山右近
+25 槍大將 LV 30.00 HP 312 SP 151
+Atk 191 Def  83 Int  80 Hit 152 Dex 150 Luk 103
+0 大身槍 赤絲絨南蠻輕鎧 x x x x x x 
+不殺的大刀 x x x x x x x 
+城塞戰術 x x x x x x x 
+56 1 151 0 114 0 31 0 
+
+中川清秀
+25 槍大將 LV 30.00 HP 314 SP 146
+Atk 193 Def  85 Int  75 Hit 158 Dex 156 Luk 106
+0 大身槍 赤絲絨南蠻輕鎧 x x x x x x 
+突擊 x x x x x x x 
+山岳戰術 奮鬥 x x x x x x 
+58 1 146 0 91 0 29 0 
+
+波多野秀治
+25 槍兵 LV  1.00 HP 135 SP  30
+Atk  43 Def  24 Int  21 Hit  37 Dex  32 Luk  22
+0 短槍 x x x x x x x 
+突擊 x x x x x x x 
+草原戰術 奮鬥 x x x x x x 
+135 0 30 0 162 0 29 0 
+
+山名豐國
+25 刀兵 LV  1.00 HP 124 SP  21
+Atk  34 Def  18 Int  13 Hit  29 Dex  23 Luk  25
+0 大刀 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+124 0 21 0 160 0 32 0 
+
+尼子勝久
+25 弓兵 LV  1.00 HP 118 SP  16
+Atk  33 Def  15 Int  12 Hit  20 Dex  23 Luk  12
+0 小型竹弓 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+118 0 16 0 161 0 31 0 
+
+山中鹿之介
+25 刀兵 LV  1.00 HP 138 SP  22
+Atk  43 Def  27 Int  25 Hit  36 Dex  38 Luk  10
+0 大刀 x x x x x x x 
+不殺的大刀 飛舞大刀 x x x x x x 
+撥開 x x x x x x x 
+138 0 22 0 163 0 29 0 
+
+宇喜多直家
+25 刀兵 LV 30.00 HP 317 SP 156
+Atk 192 Def  86 Int  97 Hit 160 Dex 152 Luk 106
+0 大身大刀 青絲絨桶側具足 x x x x x x 
+毒箭 封印的術 補給 x x x x x 
+吆喝 集中 鎮靜 x x x x x 
+61 1 156 0 164 0 29 1 
+
+宇喜多忠家
+25 刀騎兵 LV  1.00 HP 151 SP  26
+Atk  51 Def  25 Int  21 Hit  34 Dex  37 Luk  22
+0 大刀 x x x x x x x 
+突擊 x x x x x x x 
+草原戰術 鐵壁 x x x x x x 
+151 0 26 0 92 0 4 0 
+
+毛利輝元
+25 槍大將 LV 32.00 HP 316 SP 153
+Atk 198 Def  85 Int  83 Hit 158 Dex 164 Luk 128
+0 長柄刀 赤絲絨南蠻輕鎧 x x x x x x 
+團結一致 x x x x x x x 
+x x x x x x x x 
+60 1 153 0 93 0 28 0 
+
+小早川隆景
+25 軍師 LV 32.00 HP 295 SP 230
+Atk 170 Def  60 Int 131 Hit 134 Dex 128 Luk 151
+0 方刻易軍扇 青絲絨桶側具足 x x x x x x 
+火攻 水攻 補給 鼓舞的歌 x x x x 
+海戰戰術 後方支援 集中 放棄 x x x x 
+39 1 230 0 94 0 33 1 
+
+吉川元春
+25 槍騎大將 LV 32.00 HP 415 SP 124
+Atk 248 Def 124 Int  54 Hit 130 Dex 134 Luk  88
+0 日本號 青絲絨桶側具足 x x x x x x 
+突擊 二重刺殺 三重刺殺 x x x x x 
+身手 遠見 奮鬥 x x x x x 
+159 1 124 0 165 0 18 0 
+
+安國寺惠瓊
+25 僧兵 LV 31.00 HP 286 SP 154
+Atk 177 Def  77 Int  86 Hit 111 Dex 107 Luk 115
+0 世穗槍 青絲絨桶側具足 x x x x x x 
+望鄉之歌 補給 解禁的歌 x x x x x 
+集中 x x x x x x x 
+30 1 154 0 166 0 41 0 
+
+乃美宗勝
+25 海盜 LV 31.00 HP 329 SP 119
+Atk 201 Def 115 Int  51 Hit  90 Dex 115 Luk  84
+0 鬼丸 青絲絨桶側具足 x x x x x x 
+水攻 x x x x x x x 
+海戰戰術 渡河戰術 x x x x x x 
+73 1 119 0 167 0 27 0 
+
+村上武吉
+25 海盜 LV 31.00 HP 330 SP 117
+Atk 195 Def 109 Int  43 Hit  88 Dex 121 Luk  86
+0 鬼丸 青絲絨桶側具足 x x x x x x 
+水攻 x x x x x x x 
+海戰戰術 渡河戰術 x x x x x x 
+74 1 117 0 168 0 29 1 
+
+吉川元長
+25 槍騎大將 LV 31.00 HP 400 SP 117
+Atk 237 Def 119 Int  51 Hit 123 Dex 124 Luk  83
+0 世穗槍 青絲絨桶側具足 x x x x x x 
+突擊 x x x x x x x 
+x x x x x x x x 
+144 1 117 0 169 0 32 1 
+
+吉川廣家
+25 槍騎兵 LV  1.00 HP 146 SP  25
+Atk  46 Def  23 Int  21 Hit  29 Dex  33 Luk  28
+0 短槍 x x x x x x x 
+x x x x x x x x 
+x x x x x x x x 
+146 0 25 0 95 0 29 1 
+
+長宗我部元親
+25 槍騎兵 LV  1.00 HP 158 SP  34
+Atk  54 Def  29 Int  33 Hit  32 Dex  36 Luk  32
+0 短槍 x x x x x x x 
+突擊 二重刺殺 火攻 補給 x x x x 
+鐵壁 吆喝 痊癒 奮鬥 x x x x 
+158 0 34 0 150 0 29 0 
+
+長宗我部信親
+25 槍兵 LV  1.00 HP 141 SP  29
+Atk  40 Def  23 Int  25 Hit  36 Dex  35 Luk  24
+0 短槍 x x x x x x x 
+突擊 x x x x x x x 
+鐵壁 x x x x x x x 
+141 0 29 0 151 0 28 1 
+
+香宗我部親泰
+25 弓騎兵 LV  1.00 HP 152 SP  26
+Atk  50 Def  25 Int  27 Hit  36 Dex  27 Luk  21
+0 小型竹弓 x x x x x x x 
+毒箭 補給 x x x x x x 
+遠見 x x x x x x x 
+152 0 26 0 152 0 32 1 
+
+吉良親貞
+25 刀騎兵 LV  1.00 HP 151 SP  27
+Atk  52 Def  26 Int  25 Hit  32 Dex  34 Luk  15
+0 大刀 x x x x x x x 
+不殺的大刀 飛舞大刀 x x x x x x 
+草原戰術 放棄 x x x x x x 
+151 0 27 0 153 0 29 0 
+
+久武親信
+25 刀兵 LV  1.00 HP 136 SP  31
+Atk  42 Def  24 Int  25 Hit  36 Dex  34 Luk  10
+0 大刀 x x x x x x x 
+飛舞大刀 x x x x x x x 
+鐵壁 x x x x x x x 
+136 0 31 0 147 0 31 0 
+
+吉川經家
+25 刀兵 LV  1.00 HP 135 SP  30
+Atk  41 Def  23 Int  20 Hit  38 Dex  35 Luk  12
+0 大刀 x x x x x x x 
+突擊 x x x x x x x 
+城塞戰術 x x x x x x x 
+135 0 30 0 140 0 30 0 
+
+北條氏直
+25 槍兵 LV  1.00 HP 128 SP  28
+Atk  40 Def  21 Int  22 Hit  31 Dex  33 Luk  14
+0 短槍 x x x x x x x 
+突擊 馬止 x x x x x x 
+城塞戰術 休養 x x x x x x 
+128 0 28 0 175 0 4 3 
+

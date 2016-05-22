@@ -1,0 +1,7 @@
+<style>
+	.right{float:right;}
+</style>
+<img src='adapter.png' width="675" height="216" /><br />
+在第 44 行以 table 為參數 new 了一個 JScrollPane，這裡的 table 必須是 JComponent，
+但是 RocketTableModel 不能當作 JComponent 用，所以用 JTable 做 Adapter，轉接 
+RocketTableModel(Adaptee) 和 JComponent(Target)。

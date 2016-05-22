@@ -1,0 +1,76 @@
+<title>Teen Girl Squad</title>
+<style>
+    body{
+        font-size: 12pt;
+        line-height: 20pt;
+        font-family:Times New Roman
+    }
+    .Title{
+        font-size: 24pt;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .Time_Limit{
+        font-size: 12pt;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .IOFormat{
+        background: #ffff00;
+        line-height: 15pt;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        padding-left: 3px;
+    }
+    .Description{}
+</style>
+<div class="Title">Q11183: Teen Girl Squad</div>
+妳是一群有手機的十幾歲女孩的一員。妳有一些消息要告訴每個女孩。問題是妳們都不在同一個房間，所以妳們只能用手機傳達這些訊息。更糟的是，妳的父母因為妳過度使用，拒絕支付妳的電話費。所以妳必須以最便宜的方法透過電話散佈這些消息。妳會 call 幾個妳的朋友，她們會 call 一些她們的朋友，如此直到所有人都知道這些消息。
+<p>
+妳們每個用的手機服務提供者都不一樣，而且妳知道對所有 A 和 B，A call B 的價錢。並不是所有妳的朋友都喜歡彼此，而且有些人永遠都不要 call 她不喜歡的人。妳的工作是找出最便宜的方法，讓所有的人都知道這些消息。
+
+<div class="IOFormat"><b>Input</b></div>
+輸入第一行是測資數量 N，接著有 N 組測資。每一組測資的第一行包含 n (0<=n<=1000) 和 m (0<=m<=40000)。女孩的編號從 0 到 n-1，妳是女孩 0。
+接下來 m 行每行都包含三個數字 u,v 和 w 意思是女孩 u call 女孩 v 的成本是 w(0<=w<=1000)，沒有提到的表示因為討厭對方而不可能 call。輸入檔大約有 1200 KB。
+
+<div class="IOFormat"><b>Output</b></div>
+對每組測資，輸出一行包含"Case #x:"，接著是發佈消息最便宜的方法的花費。
+如果沒有方法，則輸出"Possums!"。
+</div>
+<table border="1" width="100%">
+  <tbody>
+  <tr>
+  <td bgcolor="#00ff00" width="50%" ><b>Sample Input</b></div></td>
+  <td bgcolor="#00ff00" width="50%" ><b>Sample Output</b></div></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <pre><font face="courier new">4
+2
+1
+0 1 10
+2
+1
+1 0 10
+4
+4
+0 1 10
+0 2 10
+1 3 20
+2 3 30
+4
+4
+0 1 10
+1 2 20
+2 0 30
+2 3 100</font></pre>
+    </td>
+    <td width="50%" valign="top">
+      <pre><font face="courier new">Case #1: 10
+Case #2: Possums!
+Case #3: 40
+Case #4: 130</font></pre>
+    </td>
+  </tr>
+</tbody></table>
+<font color="#ffff00" face="courier new"><span style="background-color: #000000">Translated by DarkKnight</span></font>

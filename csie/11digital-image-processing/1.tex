@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx,CJK}
+\topmargin=0pt
+\headheight=0pt
+\headsep=0pt
+\textheight=750pt
+\footskip=0pt
+\voffset=-40pt
+\textwidth=520pt
+\marginparsep=0pt
+\marginparwidth=0pt
+\marginparpush=0pt
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\hoffset=-50pt
+\newcommand{\ds}{\displaystyle}
+\newcommand{\cl}[1]{\begin{description}#1\end{description}}
+\newcommand{\ol}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\ul}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\code}[1]{\begin{verbatim} #1 \end{verbatim}}
+
+
+\begin{document}
+\begin{CJK*}{Bg5}{bkai}
+\section*{DIP HW1}
+\subsection*{Programs}
+\ul {
+  \item {linear: Linear scaling and clipping.}
+  \item {eq: histogram equalization.}
+  \item {quan: 五色灰階\ quantization.}
+  \item {med: median filtering.}
+  \item {mean: low-pass filtering.}
+}
+以上五個\ programs\ 都是從\ standard input\ 讀檔，結果輸出至\ standard output.\\
+\ul {
+  \item {cat: 連接前\ 4\ 個參數指定的\ 256x256\ 的\ raw\ 檔，產生\ 512x512 
+    的\ raw\ 檔，輸出至\ standard output.}
+}
+
+\noindent To compile:
+\begin{verbatim}
+make -f README
+\end{verbatim}
+
+\noindent Problem 1 的執行方式：
+\begin{verbatim}
+./linear < sample.raw > o1.raw
+./eq < sample.raw > o2.raw
+./quan < o2.raw > o3.raw
+./cat sample.raw o1.raw o2.raw o3.raw > sample_o.raw
+\end{verbatim}
+
+\noindent Problem 2 的執行方式：
+\begin{verbatim}
+./med < puppy_impulse_low.raw > puppy_li.raw
+./med < puppy_impulse_high.raw > puppy_hi.raw
+./mean < puppy_uniform_low.raw > puppy_lu.raw
+./mean < puppy_uniform_high.raw > puppy_hu.raw
+./cat puppy_li.raw puppy_lu.raw puppy_hi.raw puppy_hu.raw > puppy_output.raw
+\end{verbatim}
+
+\noindent 也可以直接使用 1.sh 及 2.sh.
+
+\subsection*{Problem 1 Image Enhancement}
+\includegraphics[scale=0.5]{sample.png}
+\includegraphics[scale=0.5]{his.png}
+\cl{
+  \item[(a)] 整個圖的顏色分布都集中在暗處一部份，其中 6 種連續
+    顏色次數較多，其他差距不大。
+    以 Linear scaling and clipping 處理之後，對比提高了，暗處仍然模糊，
+    但物件上的細節已能清楚的辨認。
+  \item[(b)] 經過 median filtering 轉換之後，整個圖相較之下偏亮，亮處的對比和 
+Linear scaling 相較之下稍低，但是暗處細節則變得相當清楚。
+  \item[(c)] I 及 C 的 顏色分布都是暗處較多，quantize\ 之後，暗處會轉成一團黑色，其他部分
+影響較小。
+}
+
+\subsection*{Problem 2 Noise Removal}
+\includegraphics[scale=0.5]{puppy.png}
+\includegraphics[scale=0.5]{puppy_o.png}
+\cl{
+  \item[(a)] Median filtering\ 在兩個\ impulse noise 的圖上效果都很好。
+  \item[(b)] low-filtering\ 消除了圖上的\ uniform noise，但轉換後和原圖還是有一段差距。
+}
+\newpage
+\end{CJK*}
+\end{document}

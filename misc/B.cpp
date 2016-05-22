@@ -1,0 +1,35 @@
+#include<stdio.h>
+int num1[5],num2[5],max[20001],
+    c[]={1,5,10,20,50};
+main(){
+int i,j,k,n,t,num3;
+freopen("pb.in","r",stdin);
+freopen("pb.out","w",stdout);
+scanf("%d",&t);
+while(t--){
+    scanf("%d",&n);
+    for(i=0;i<=n*2;i++)
+        max[i]=-1;
+    max[0]=0;
+    num3=0;
+    for(i=0;i<5;i++){
+        scanf("%d",&num1[i]);
+        num3+=num1[i];
+    }
+    for(i=0;i<5;i++)
+        scanf("%d",&num2[i]);
+    for(i=0;i<5;i++){
+        for(j=0;j<num1[i];j++)
+            for(k=n*3-c[i];k>=0;k--)
+                if(max[k]>-1)
+                    max[k+c[i]]>?=(max[k]+1);
+    }
+    for(i=0;i<5;i++){
+        for(j=0;j<num2[i];j++)
+            for(k=c[i];k<=n*3;k++)
+                if(max[k]>-1)
+                    max[k-c[i]]>?=(max[k]-1);
+    }
+    printf("%d\n",num3-max[n]);
+}
+}

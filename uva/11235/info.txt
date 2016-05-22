@@ -1,0 +1,12 @@
+TaskName: 11235
+Name: 11235
+TestCase: 50
+Time: 5000
+InFile: *num*.in
+OutFile: *num*.out
+Compare: 0
+Score: 0 0 0 0 0 0 0 0 0 0 
+       0 0 0 0 0 0 0 0 0 0
+       0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0

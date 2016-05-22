@@ -1,0 +1,16 @@
+                  Problem 2: Schduler for Multicore System
+
+1. Adaptation
+
+   需要依 core 數建兩個 running queue，分別以剩餘執行時間及 priority
+   排序，這兩個 queue 必須能夠移除指定 task。下次操作時間以最快完成的
+   task 及下一個 ready 的 task 計算，替換時從 running queue 中 priority
+   最低及 ready queue 中 priority 最高的依序替換。
+
+2. Problem
+
+   在 Multicore System，無法套用 EDF 及 RMS 的最佳解證明，實際上這兩種
+   演算法排出來的結果也不是最好的；每個 Core 速度可能不同，要如何分配
+   使用又是另外一個問題。如果要達到 Optimized Utilization，必須改良
+   演算法，或是找到新的演算法。
+

@@ -1,0 +1,69 @@
+<style>
+	.fold, .foldC {
+		padding-left: 10px;
+		border-left: 2px solid blue;
+	}
+	.foldC .fold, .foldC .foldC {
+		display: none;
+    }
+    .test {
+        display: inline-block;
+    }
+</style>
+
+<div class="test">
+    <span onclick="alert(t0)">T0</span>
+    <img name="t0"/>
+</div>
+
+<div class="test">
+    <span onclick="alert(t1)">T1</span>
+    <img name="t1"/>
+</div>
+
+<br/>
+
+<div class="fold"><a href=''>test</a>
+	<div class="fold"><b>fold1</b>
+		<div class="fold">item0
+		</div>
+		<div class="fold">item1
+		</div>
+	</div>
+	<div class="fold">fold2
+		<div class="fold">item2
+		</div>
+		<div class="fold">item3
+		</div>
+		<div class="fold">item4
+		</div>
+	</div>
+</div>
+<script>
+addEvent(window,"load",convertfold);
+function addEvent(o,e,f){
+	return (o.addEventListener && o.addEventListener(e,f,true))
+	|| (o.attachEvent && o.attachEvent("on"+e,f));
+}
+function convertfold(){
+	var s=document.getElementsByClassName('fold');
+	for(i=0;i<s.length;i++){
+		if(!s[i].firstChild)
+			continue;
+		if(!s[i].firstChild.tagName)
+		{
+			j=document.createElement('span');
+			if(s[i].firstChild.nodeValue)
+				j.appendChild(document.createTextNode(s[i].firstChild.nodeValue));
+			else
+				j.appendChild(document.createTextNode('&nbsp;'));
+			s[i].removeChild(s[i].firstChild);
+			s[i].insertBefore(j,s[i].firstChild);
+		}
+		s[i].firstChild.onclick=function(){
+			this.parentNode.className=this.parentNode.className=='fold'?'foldC':'fold';
+			return false;
+		}
+	}
+}
+</script>

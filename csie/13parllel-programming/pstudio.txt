@@ -1,0 +1,183 @@
+1. (result of tsp)
+Starting TSP solver for size 18
+time: 17.260535
+Minimum distance: 74
+Correct result!
+
+5-1.
+The only copy of position[] is used by all threads.
+
+5-2.
+
+5-3.
+
+A: dis(5) < min_dis(9)
+B: dis(3) < min_dis(9)
+B: omp_set_lock
+A: omp_set_lock(block)
+B: mindis = dis(3)
+B: omp_unset_lock
+A: omp_set_lock
+A: mindis = dis(5)
+
+6.
+Starting TSP solver for size 18
+time: 6.382821
+Minimum distance: 74
+Correct result!
+
+Suitability report: max 2.82x
+Speed up 17.260535 / 6.382821 = 2.704217
+
+7-2.
+diff --git a/tsp.cpp b/tsp.cpp
+index 6db1745..8b546f1 100644
+--- a/tsp.cpp
++++ b/tsp.cpp
+@@ -25,11 +25,11 @@ int ok(int position[], int next, int test)
+     return 1;
+ }
+ 
+-void tsp(int position[], int next, int dis) {
++void tsp(int position[], int visited, int next, int dis) {
+ 
+     int test;
+     
+-    if (dis > min_dis) {
++    if (dis >= min_dis) {
+ 		return;
+ 	}
+     
+@@ -41,7 +41,8 @@ void tsp(int position[], int next, int dis) {
+     }
+     
+     for (test = 0; test < N; test++) { 
+-        if (ok(position, next, test)) {
++        //if (ok(position, next, test)) {
++		if (!(visited&(1<<test))) {
+             int dx, dy;
+             position[next] = test;
+             dx = coordinate[position[next - 1]][0] - coordinate[position[next]][0];
+@@ -49,7 +50,7 @@ void tsp(int position[], int next, int dis) {
+             
+             dis += dx * dx + dy * dy;
+    
+-            tsp(position, next + 1, dis);
++            tsp(position, visited|(1<<test), next + 1, dis);
+ 			                 
+             dis -= dx * dx + dy * dy;
+         }
+@@ -119,7 +120,7 @@ int main()
+         int position[SIZE];
+         position[0] = i;
+         
+-		tsp(position, 1, dis);
++		tsp(position, 0, 1, dis);
+     }
+ 
+ 	t = omp_get_wtime() - t;
+
+8-1.
+Usage: nqueens boardSize [default is 13].
+Starting nqueens  solver for size 13...
+Number of solutions: 73325
+!!Incorrect result!! Number of solutions should be 73712
+
+Calculations took 0.535617s.
+
+8-3.
+diff --git a/nqueen.cpp b/nqueen.cpp
+index 0f909f7..485e94e 100644
+--- a/nqueen.cpp
++++ b/nqueen.cpp
+@@ -58,16 +58,17 @@ at location (row, col)
+ On Return: nrOfSolutions has been increased to add solutions for this board
+ 
+ */
+-void setQueen(int queens[], int row, int col) {
++int setQueen(int queens[], int row, int col) {
+ 	//check all previously placed rows for attacks
++	int sum = 0;
+ 	for(int i=0; i<row; i++) {
+ 		// vertical attacks
+ 		if (queens[i]==col) {
+-			return;
++			return sum;
+ 		}
+ 		// diagonal attacks
+ 		if (abs(queens[i]-col) == (row-i) ) {
+-			return;
++			return sum;
+ 		}
+ 	}
+ 	// column is ok, set the queen
+@@ -75,15 +76,16 @@ void setQueen(int queens[], int row, int col) {
+ 
+ 	if(row==size-1) {
+ 
+-		nrOfSolutions++;  //Placed final queen, found a solution
++		sum = 1;  //Placed final queen, found a solution
+ 	}
+ 	else {
+ 		// try to fill next row
+ 		for(int i=0; i<size; i++) {
+ 
+-			setQueen(queens, row+1, i);
++			sum += setQueen(queens, row+1, i);
+ 		}
+ 	}
++	return sum;
+ }
+ 
+ /*
+@@ -94,11 +96,11 @@ On Return: nrOfSoultions = number of solutions for size x size chessboard.
+ void solve() {
+ 	 //array representing queens placed on a chess board.  Index is row position, value is column.
+ 
+-#pragma omp parallel for 
++#pragma omp parallel for reduction(+:nrOfSolutions)
+ 		for(int i=0; i<size; i++) {
+ 			int * queens = (int*) malloc(size*sizeof(int));
+ 			// try all positions in first row
+-				setQueen(queens, 0, i);		
++				nrOfSolutions += setQueen(queens, 0, i);		
+ 				
+ 		}
+ }
+
+Usage: nqueens boardSize [default is 13].
+Starting nqueens  solver for size 13...
+Number of solutions: 73712
+Correct result!
+Calculations took 0.543936s.
+
+9-2.
+diff --git a/nqueen.cpp b/nqueen.cpp
+index 485e94e..c6bda0b 100644
+--- a/nqueen.cpp
++++ b/nqueen.cpp
+@@ -101,7 +101,7 @@ void solve() {
+ 			int * queens = (int*) malloc(size*sizeof(int));
+ 			// try all positions in first row
+ 				nrOfSolutions += setQueen(queens, 0, i);		
+-				
++			free(queens);
+ 		}
+ }
+ 
+
+10-2.
+diff --git a/nqueen.cpp b/nqueen.cpp
+index 6139d1f..bd8abd0 100644
+--- a/nqueen.cpp
++++ b/nqueen.cpp
+@@ -96,7 +96,7 @@ On Return: nrOfSoultions = number of solutions for size x size chessboard.
+ void solve() {
+ 	 //array representing queens placed on a chess board.  Index is row position, value is column.
+ 
+-#pragma omp parallel for reduction(+:nrOfSolutions)
++#pragma omp parallel for reduction(+:nrOfSolutions) schedule(dynamic, 1)
+ 		for(int i=0; i<size; i++) {
+ 			int * queens = (int*) malloc(size*sizeof(int));
+ 			// try all positions in first row
+

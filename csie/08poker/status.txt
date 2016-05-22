@@ -1,0 +1,12 @@
+2008/11/14 ¤U¤È 12:31:11
+Queued Matches
+Running Matches
+server:/127.0.0.1 port:2080 card file: data/cards/ai20080.crd name:ai2008.AITA.b.match0rev resultFile:data/results/ai2008.AITA.b.match0rev.res logFile:data/results/ai2008.AITA.b.match0rev.log serverLogFile:data/serverlog/ai2008.AITA.b.match0rev.srv timePerHand:7000 numHands:3000 numCards:9 limit:LIMIT
+BotTarFile b bots\b.jar MyPokerClient\  WINDOWS LOCALWINDOWS
+BotTarFile AITA bots\aitaclient.jar AITAclient\  WINDOWS LOCALWINDOWS
+127.0.0.1 expansion\expansion1\ WINDOWS
+127.0.0.1 expansion\expansion2\ WINDOWS
+
+Hand Number:7
+Available Machines:0
+Available Machines:0

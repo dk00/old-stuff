@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<stdlib.h>
+main(){
+int i,j,n,t,l,r,m,sum,min,max,s[30001];
+scanf("%d",&t);
+while(t--){
+    scanf("%d",&n);
+    min=2147483647,max=-1;
+    for(i=0;i<=30000;i++)s[i]=0;
+    for(i=0;i<n;i++){
+        scanf("%d",&j);
+        min<?=j;
+        max>?=j;
+        s[j]++;
+    }
+    l=s[min],r=n-l;
+    for(sum=0,j=min;j<=max;j++)
+        sum+=s[j]*(j-min);
+    for(i=min+1,min=sum;i<=max;i++){
+        sum+=l-r;
+        l+=s[i],r-=s[i];
+        min<?=sum;
+    }
+    printf("%d\n",min);
+}
+}

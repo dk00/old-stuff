@@ -1,0 +1,20 @@
+1. 16 x "hello, world\n" 
+2. 0.881s (N = 5000)
+3. 0.609s
+   the result was wrong
+
+4. 1.057s
+   this parallel program correctly initialized the matrices
+
+5.  private 0.757s
+    local 0.679s
+
+6.
+
+7. (N = 10000000)
+   seq opt  0.272s
+   
+8. (N = 3000000)
+   seq      1.393s
+   parallel 2.290s
+
